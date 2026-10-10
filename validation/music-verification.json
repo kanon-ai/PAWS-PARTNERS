@@ -1,0 +1,16 @@
+{
+  "rom_sha256": "4ea8e0b01c95d51a2cc0a2b77c8729792c7969010fdbb323e9a4637551dabda1",
+  "machine": "C-BIOS_MSX2_EU",
+  "hardware_tested": false,
+  "speed": "1x emulator time",
+  "checks": 9,
+  "expected": 9,
+  "failures": [],
+  "clips": [
+    {
+      "name": "bgm-test",
+      "start": 8.0,
+      "duration": 75.72000000000003
+    }
+  ]
+}

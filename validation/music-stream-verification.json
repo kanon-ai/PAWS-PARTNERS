@@ -1,0 +1,9 @@
+{
+  "frames": 4100,
+  "restarts": [
+    4018
+  ],
+  "errors": [],
+  "source_hz": 60,
+  "rom_sha256": "4ea8e0b01c95d51a2cc0a2b77c8729792c7969010fdbb323e9a4637551dabda1"
+}

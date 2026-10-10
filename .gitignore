@@ -1,0 +1,8 @@
+__pycache__/
+*.pyc
+/work/
+/outputs/
+/assets/*.bin
+/assets/*.inc
+/assets/*.png
+.DS_Store

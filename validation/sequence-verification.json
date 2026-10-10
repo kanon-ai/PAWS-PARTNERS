@@ -1,0 +1,26 @@
+{
+  "rom_sha256": "4ea8e0b01c95d51a2cc0a2b77c8729792c7969010fdbb323e9a4637551dabda1",
+  "machine": "C-BIOS_MSX2_EU",
+  "hardware_tested": false,
+  "speed": "1x emulator time",
+  "checks": 12,
+  "expected": 12,
+  "failures": [],
+  "clips": [
+    {
+      "name": "01-early",
+      "start": 41.109999999999985,
+      "duration": 7.369999999999997
+    },
+    {
+      "name": "02-timed",
+      "start": 51.21999999999998,
+      "duration": 15.349999999999987
+    },
+    {
+      "name": "03-late",
+      "start": 69.17999999999998,
+      "duration": 8.370000000000005
+    }
+  ]
+}
