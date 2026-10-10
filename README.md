@@ -50,7 +50,7 @@ There is no automatic save; write down stage-clear passwords. Joystick controls 
 
 ## Music / 音楽
 
-**Pixel Party** — music supplied by kanon-ai, produced through a Suno → PSG → AI music editor workflow. Two melodic PSG channels and percussion, with short sound-effect borrowing on channel C.
+**Pixel Party** — music supplied by kanon-ai, produced through a Suno (Premium) → PSG → AI music editor workflow. Two melodic PSG channels and percussion, with short sound-effect borrowing on channel C.
 
 ゲーム中はループし、タイトル／合言葉・行き詰まり画面では停止します。
 

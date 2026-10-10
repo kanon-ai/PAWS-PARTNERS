@@ -3,7 +3,7 @@
 - Project direction, design feedback, and music production: **kanon-ai**.
 - Programming, puzzle construction, graphics, documentation, and emulator test tooling: developed with **OpenAI Codex / ASTRA** assistance and user review.
 - Cat, rabbit, tiles, and title graphics: project-created pixel graphics.
-- BGM: **Pixel Party**, supplied by kanon-ai. The creator's workflow was Suno → PSG conversion → AI music editor. The game uses two melodic PSG channels and one percussion channel.
+- BGM: **Pixel Party**, supplied by kanon-ai. The creator's workflow was Suno (Premium) → PSG conversion → AI music editor. The game uses two melodic PSG channels and one percussion channel.
 
 ## License scope / 適用範囲
 
