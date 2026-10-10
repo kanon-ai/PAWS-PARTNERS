@@ -14,7 +14,7 @@ The renderer uses Windows fonts under `C:/Windows/Fonts`. Different font version
 
 ## Current ROM
 
-SHA-256: `7665adce6203af2d03cad95aa8e04c2aefd7b3b50c4f735b35eceec28c51fc05`
+SHA-256: `548d38a04635cafa0b9ace6f475fe6630ac02d475f353a09dbe55967b05b3556`
 
 1 MiB ASCII8. MSX2 or later, 64 KiB RAM / 64 KiB VRAM. TurboR uses Z80 mode.
 
@@ -23,6 +23,7 @@ For this hash, both openMSX profiles `C-BIOS_MSX2_EU` and `Panasonic_FS-A1ST` pa
 - Full 50-stage keyboard regression, including correct and empty placements, retry and final wrap: 40,897 checks each.
 - PAD boundary fixtures: 56 each (RAM-injected, separate from keyboard tests).
 - Mid-run cancellation: 22 each.
+- Overlay controls: 16 each; tall-page browsing: 88 each.
 - Password entry: 255 each.
 - Music state: 14 each; PSG stream checked separately.
 

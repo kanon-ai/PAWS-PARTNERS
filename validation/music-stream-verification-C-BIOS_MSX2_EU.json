@@ -1,10 +1,10 @@
 {
   "machine": "C-BIOS_MSX2_EU",
-  "frames": 6523,
+  "frames": 6515,
   "restarts": [
-    4020
+    4012
   ],
   "errors": [],
   "source_hz": 60,
-  "rom_sha256": "7665adce6203af2d03cad95aa8e04c2aefd7b3b50c4f735b35eceec28c51fc05"
+  "rom_sha256": "548d38a04635cafa0b9ace6f475fe6630ac02d475f353a09dbe55967b05b3556"
 }

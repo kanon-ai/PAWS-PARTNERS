@@ -1,5 +1,5 @@
 {
-  "rom_sha256": "7665adce6203af2d03cad95aa8e04c2aefd7b3b50c4f735b35eceec28c51fc05",
+  "rom_sha256": "548d38a04635cafa0b9ace6f475fe6630ac02d475f353a09dbe55967b05b3556",
   "machine": "Panasonic_FS-A1ST",
   "hardware_tested": false,
   "speed": "unthrottled emulator; PSG stream correctness, not a performance benchmark",

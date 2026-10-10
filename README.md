@@ -45,6 +45,7 @@ The campaign has been redesigned to replace mirrored and route-length filler wit
 反転・距離違いの水増し面を見直し、全50面を協力・経路・順番・タイミングを考える構成に再設計しました。PAD・!A・2A・SWAP・ONCE・WEAKなどを組み合わせ、終盤には超高難易度を目指した問題を用意しています。難易度は設計上の目安です。
 
 - Esc cancels a run while keeping placed chips. / Escで実行を中断し、配置を残して再挑戦できます。
+- Hide selection frames during execution and skip unchanged terrain redraws to reduce flicker. / 実行中の白枠を非表示にし、変化しない仕掛けの再描画を抑制。
 - Gates remain visibly open until an admitted friend passes through; 2A lamps show the occupied PAD count. / 通過中の扉表示と2Aランプを改善しました。
 - [日本語ヒントブック](docs/HINTBOOK.ja.md) / [English technique hints](docs/HINTBOOK.en.md) — techniques, not stage solutions.
 - [新しい仕掛けのダイジェスト / New mechanisms digest](media/PAWS-PARTNERS-New-Mechanisms-Digest.mp4) — 45 seconds, four fictional stages shown once each, continuous PSG music.

@@ -902,6 +902,9 @@ refresh_tile:
     add hl,de
     ld a,(hl)
     ld c,a
+    ld a,(state)
+    or a
+    jr nz,tile_not_selected
     ld a,(selected)
     cp e
     jr nz,tile_not_selected
@@ -1425,6 +1428,8 @@ terrain_bank_ready:
     add a,a
     add a,060h
     ld (terrain_patch_hi),a
+    call terrain_cache_changed
+    jp z,terrain_draw_next
     ld a,(terrain_index)
     ld c,0
     ld b,a
@@ -1540,6 +1545,7 @@ close_help:
 
 compressed_start: dw 06000h
 upload_stage:
+    call invalidate_terrain_cache
     ld a,(stage)
     ld e,a
     add a,a
@@ -1822,3 +1828,46 @@ relative_x_return:
     pop de
     pop bc
     ret
+
+; Cache the final terrain bank/pattern, not logical gate state. Socket overlays
+; remain on top; unrelated terrain refreshes must not erase them first.
+invalidate_terrain_cache:
+    push af
+    push bc
+    push de
+    push hl
+    ld hl,terrain_visual_cache
+    ld de,terrain_visual_cache+1
+    ld bc,383
+    ld (hl),255
+    ldir
+    pop hl
+    pop de
+    pop bc
+    pop af
+    ret
+terrain_cache_changed:
+    ld a,(terrain_index)
+    ld l,a
+    ld h,0
+    add hl,hl
+    ld de,terrain_visual_cache
+    add hl,de
+    ld a,(terrain_patch_bank)
+    cp (hl)
+    jr nz,terrain_cache_update
+    inc hl
+    ld a,(terrain_patch_hi)
+    cp (hl)
+    ret z
+    dec hl
+terrain_cache_update:
+    ld a,(terrain_patch_bank)
+    ld (hl),a
+    inc hl
+    ld a,(terrain_patch_hi)
+    ld (hl),a
+    ld a,1
+    or a
+    ret
+terrain_visual_cache: defs 384,255

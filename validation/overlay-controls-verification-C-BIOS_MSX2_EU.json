@@ -1,0 +1,9 @@
+{
+  "machine": "C-BIOS_MSX2_EU",
+  "stage": 5,
+  "checks": 16,
+  "expected": 16,
+  "failures": [],
+  "rom_sha256": "548d38a04635cafa0b9ace6f475fe6630ac02d475f353a09dbe55967b05b3556",
+  "hardware_tested": false
+}
