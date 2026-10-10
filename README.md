@@ -40,9 +40,9 @@ Read the manuals for WAIT, FLIP, large-map browsing, retries, and stage password
 
 **v0.2.0 — redesigned 50-stage campaign / 全50面再設計版**
 
-The campaign has been redesigned to replace mirrored and route-length filler with distinct cooperation puzzles. New pressure, inverse-pressure, two-PAD, phase-switching, one-shot and fragile-floor mechanisms combine with route and timing choices. Later stages include larger maps and a demanding final challenge tier.
+Stages with similar layouts have been revisited to give each puzzle a more distinct cooperative challenge. New pressure, inverse-pressure, two-PAD, phase-switching, one-shot and fragile-floor mechanisms combine with route and timing choices. Later stages include larger maps and a demanding final challenge tier.
 
-反転・距離違いの水増し面を見直し、全50面を協力・経路・順番・タイミングを考える構成に再設計しました。PAD・!A・2A・SWAP・ONCE・WEAKなどを組み合わせ、終盤には超高難易度を目指した問題を用意しています。難易度は設計上の目安です。
+類似した構成のステージを見直し、全50面を協力・経路・順番・タイミングを考える構成に再設計しました。PAD・!A・2A・SWAP・ONCE・WEAKなどを組み合わせ、終盤には超高難易度を目指した問題を用意しています。難易度は設計上の目安です。
 
 - Esc cancels a run while keeping placed chips. / Escで実行を中断し、配置を残して再挑戦できます。
 - Hide selection frames during execution and skip unchanged terrain redraws to reduce flicker. / 実行中の白枠を非表示にし、変化しない仕掛けの再描画を抑制。
