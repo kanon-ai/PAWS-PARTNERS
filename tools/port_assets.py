@@ -2,6 +2,74 @@ from PIL import Image,ImageDraw,ImageFont
 
 def terrain_tile(image,c):
  im=image((28,28));d=ImageDraw.Draw(im);d.rectangle((0,0,27,27),fill=1)
+ if c>=32:
+  font=ImageFont.truetype('C:/Windows/Fonts/consolab.ttf',8)
+  if c in (43,44,45,46,47):
+   d.rectangle((2,2,5,26),fill=12);d.rectangle((22,2,25,26),fill=12)
+   d.text((7,1),'2A',font=font,fill=6)
+   lamps={43:0,44:2,45:1,46:0,47:1}[c]
+   for i,x in enumerate((8,16)):d.rectangle((x,11,x+4,15),fill=14 if i<lamps else 0,outline=6 if i<lamps else 2)
+   if c in (43,45):
+    for y in (19,24):d.rectangle((4,y,23,y+1),fill=12)
+  elif c in (41,42):
+   d.rectangle((2,2,5,26),fill=12);d.rectangle((22,2,25,26),fill=12)
+   d.text((6,1),'!A',font=font,fill=6)
+   d.ellipse((11,10,17,16),outline=6)
+   if c==41:
+    for y in (19,24):d.rectangle((4,y,23,y+1),fill=12)
+  elif c in (39,40):
+   d.rounded_rectangle((1,1,26,26),radius=4,fill=14 if c==39 else 2,outline=6)
+   d.text((2,1),'ONCE' if c==39 else 'USED',font=font,fill=0 if c==39 else 6)
+   d.ellipse((8,12,20,24),fill=0 if c==39 else 1,outline=6)
+   if c==39:d.text((12,12),'1',font=font,fill=6)
+   else:d.line((10,18,14,22,21,14),fill=6,width=2)
+  elif c in (32,36):
+   d.rounded_rectangle((1,1,26,26),radius=4,fill=10,outline=6)
+   d.text((3,1),'SWAP',font=font,fill=6)
+   d.rectangle((4,14,11,22),fill=14 if c==36 else 0)
+   d.rectangle((17,14,24,22),fill=0 if c==36 else 14)
+   d.line((8,11,20,11),fill=6);d.point((19,10),fill=6)
+  elif c==35:
+   d.rectangle((1,2,26,25),fill=7,outline=6)
+   for y in (7,14,21):d.line((2,y,25,y),fill=0)
+   d.line((15,2,10,10,17,15,12,25),fill=9,width=2)
+   d.text((2,1),'WEAK',font=font,fill=0)
+  elif c in (33,34,37,38):
+   d.rectangle((2,1,5,26),fill=10);d.rectangle((22,1,25,26),fill=10)
+   if c in (33,34):
+    for y in (11,18,24):d.rectangle((4,y,23,y+1),fill=14)
+   d.text((9,1),'I' if c in (33,37) else 'II',font=font,fill=6)
+  return im
+ if c>=18:
+  font=ImageFont.truetype('C:/Windows/Fonts/consolab.ttf',8)
+  if c in (18,19,21,29,30):
+   pressed=c in (19,21,29)
+   d.rectangle((1,17,26,26),fill=0)
+   d.rectangle((2,15 if pressed else 11,25,23),fill=12 if pressed else 3,outline=6)
+   d.text((4,16 if pressed else 12),'PAD',font=font,fill=0)
+   d.rectangle((1,1,7,7),fill=12 if pressed else 0,outline=6)
+   if c==19:
+    d.rectangle((5,2,23,17),fill=7,outline=0)
+    d.line((7,4,21,15),fill=8,width=2);d.line((7,15,21,4),fill=8,width=2)
+  elif c in (20,22,28):
+   col=12 if c!=28 else 11
+   d.rectangle((2,2,5,25),fill=col);d.rectangle((22,2,25,25),fill=col)
+   if c!=22:
+    for y in (10,17,24):d.rectangle((3,y,24,y+1),fill=col)
+   d.text((8,1),'A' if c!=28 else 'B',font=font,fill=6)
+  elif c==31:
+   d.ellipse((3,3,24,22),fill=11,outline=6);d.text((7,3),'B',font=font,fill=0)
+  direction=c-23 if 23<=c<=26 else (2 if c==28 else (1 if c in (29,30,31) else None))
+  if direction is not None:
+   if 23<=c<=26:
+    # A paved junction with a painted arrow, rather than an arrow in empty grass.
+    d.rounded_rectangle((0,0,27,27),radius=4,fill=5,outline=7)
+   dx,dy=[(0,-1),(1,0),(0,1),(-1,0)][direction]
+   cx,cy=(14,14) if 23<=c<=26 else ((14,8) if c in (29,30) else (14,17))
+   ink=1 if 23<=c<=26 else 6
+   d.line((cx-dx*5,cy-dy*5,cx+dx*5,cy+dy*5),fill=ink,width=2)
+   d.polygon([(cx+dx*7,cy+dy*7),(cx+dx*2-dy*4,cy+dy*2+dx*4),(cx+dx*2+dy*4,cy+dy*2-dx*4)],fill=ink)
+  return im
  if c in (10,13):
   col=7 if c==10 else 11
   d.rectangle((4,11,23,25),fill=5,outline=col,width=2)
@@ -59,14 +127,15 @@ def terrain_tile(image,c):
   d.text((4,0),labels[c],font=font,fill=1)
  return im
 
-def tool_icon(image,part,facing=0):
+def tool_icon(image,part,facing=0,compact=False):
  im=image((24,24));d=ImageDraw.Draw(im)
  if part>=3:
   d.rounded_rectangle((1,1,22,23),radius=4,fill=11,outline=6)
   font=ImageFont.truetype('C:/Windows/Fonts/consolab.ttf',8)
   d.text((2,1),'WAIT',font=font,fill=1)
-  d.ellipse((3,10,13,20),outline=1);d.line((8,12,8,15,11,15),fill=1)
-  d.text((15,12),str((part-2)*2),font=font,fill=1)
+  shift=3 if compact else 0
+  d.ellipse((3,10-shift,13,20-shift),outline=1);d.line((8,12-shift,8,15-shift,11,15-shift),fill=1)
+  d.text((15,12-shift),str((part-2)*2),font=font,fill=1)
   return im
  if part:
   d.rounded_rectangle((1,1,22,23),radius=4,fill=14 if part==1 else 8,outline=6)
@@ -79,7 +148,7 @@ def tool_icon(image,part,facing=0):
   arrow=arrow.rotate(-90*facing)
   mask=arrow.point([0]+[255]*255,mode='L')
   ink=image((12,12));ImageDraw.Draw(ink).rectangle((0,0,11,11),fill=1)
-  im.paste(ink,(6,11),mask)
+  im.paste(ink,(6,7 if compact else 11),mask)
  return im
 
 def character(m,who,direction,phase):
@@ -118,6 +187,26 @@ def generate(m):
      for x,y,sx,sy in [(0,0,1,1),(27,0,-1,1),(0,27,1,-1),(27,27,-1,-1)]:d.line((x+sx*6,y,x,y,x,y+sy*6),fill=15,width=2)
     tiles.extend(pack(im).ljust(512,b'\0'))
  (R/'assets/tiles.bin').write_bytes(tiles)
+ # Compact chips reserve their lower eight pixels for the underlying floor.
+ special=bytearray()
+ for facing in range(4):
+  for selected in range(2):
+   for part in range(8):
+    im=image((28,28));d=ImageDraw.Draw(im);d.rectangle((0,0,27,27),fill=1);rail(d,0,0,15)
+    if part in range(1,7):
+     icon=tool_icon(image,part,facing,compact=True);im.paste(icon,(2,0),icon.point([0]+[255]*255,mode='L'))
+    if selected:
+     for x,y,sx,sy in [(0,0,1,1),(27,0,-1,1)]:d.line((x+sx*6,y,x,y,x,y+sy*6),fill=15,width=2)
+    special.extend(pack(im).ljust(512,b'\0'))
+ (R/'assets/special-tiles.bin').write_bytes(special)
+ labels={1:'PUSH',2:'HOP',6:'FILL',9:'BRDG',14:'FLIP',18:'PAD',19:'BOX A',32:'SWAP',35:'WEAK',39:'ONCE',40:'USED'}
+ badges=bytearray();font=ImageFont.truetype('C:/Windows/Fonts/consolab.ttf',8)
+ for code in range(48):
+  im=image((28,8));d=ImageDraw.Draw(im);d.rectangle((0,0,27,7),fill=0)
+  label=labels.get(code,'');box=d.textbbox((0,0),label,font=font)
+  d.text(((28-(box[2]-box[0]))//2,-1),label,font=font,fill=7 if code==35 else 6)
+  badges.extend(pack(im).ljust(128,b'\0'))
+ (R/'assets/socket-badges.bin').write_bytes(badges.ljust(8192,b'\0'))
  (R/'assets/gates.bin').write_bytes(bytes(8192))
  popup=image((128,112));d=ImageDraw.Draw(popup);d.rounded_rectangle((0,0,127,111),radius=8,fill=5,outline=7,width=2)
  d.text((14,5),'TOGETHER!',font=m.BIG,fill=0)
@@ -125,7 +214,7 @@ def generate(m):
   c=character(m,who,2,0).resize((48,48),Image.Resampling.NEAREST);popup.paste(c,(x,34),c.point([0]+[255]*255,mode='L'))
  d.text((20,92),'THANK YOU!',font=m.FONT,fill=0)
  popup.save(R/'assets/celebration.png');(R/'assets/popup.bin').write_bytes(pack(popup).ljust(8192,b'\0'))
- (R/'assets/terrain.bin').write_bytes(b''.join(pack(terrain_tile(image,c)).ljust(512,b'\0') for c in range(18)).ljust(16384,b'\0'))
+ (R/'assets/terrain.bin').write_bytes(b''.join(pack(terrain_tile(image,c)).ljust(512,b'\0') for c in range(48)))
  (R/'assets/rails.bin').write_bytes(bytes(8192))
  floors=bytearray()
  for mask in range(16):

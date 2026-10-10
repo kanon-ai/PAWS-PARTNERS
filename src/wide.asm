@@ -9,9 +9,6 @@ camera_manual:
     ld a,(map_mode)
     or a
     ret nz
-    ld a,(stage)
-    cp 20
-    ret c
     ld a,(state)
     cp 1
     jr nz,camera_manual_ready
@@ -20,9 +17,25 @@ camera_manual:
     ld a,7
     call status_line
 camera_manual_ready:
+    ld a,(camera_x)
+    ld b,a
     ld a,(camera_y)
+    ld c,a
+    ld a,(params+445)
+    cp 16
+    jr nz,camera_cycle_row
+    ld a,b
+    xor 8
+    ld b,a
+    jp nz,camera_set_xy
+camera_cycle_row:
+    ld a,(params+235)
+    cp 7
+    jp c,camera_set_xy
+    ld a,c
     xor 6
-    jp camera_set
+    ld c,a
+    jp camera_set_xy
 camera_follow_toggle:
     xor a
     ld (camera_manual_mode),a
@@ -38,10 +51,12 @@ camera_selection:
     add a,a
     ld e,a
     ld d,0
-    ld hl,params+20
+    ld hl,params+19
     add hl,de
-    ld a,(hl)
-    jp camera_row
+    ld b,(hl)
+    inc hl
+    ld c,(hl)
+    jp camera_position
 camera_follow:
     ld a,(camera_manual_mode)
     or a
@@ -71,23 +86,34 @@ camera_follow_chosen:
     jr nz,camera_follow_position
     ld ix,cat_actor
 camera_follow_position:
-    ld a,(ix+1)
-camera_row:
-    cp 6
-    ld a,0
-    jr c,camera_set
-    ld a,6
-camera_set:
-    ld b,a
-    ld a,(camera_y)
-    cp b
-    ret z
+    ld b,(ix+0)
+    ld c,(ix+1)
+camera_position:
     ld a,b
+    and 8
+    ld b,a
+    ld a,c
+    cp 6
+    ld c,0
+    jr c,camera_set_xy
+    ld c,6
+camera_set_xy:
+    ld a,(camera_x)
+    cp b
+    jr nz,camera_changed
+    ld a,(camera_y)
+    cp c
+    ret z
+camera_changed:
+    ld a,b
+    ld (camera_x),a
+    ld a,c
     ld (camera_y),a
     call restore_board
     call terrain_changed
     ld a,(status_id)
     jp status_line
+
 toggle_map:
     ld a,(help_mode)
     or a
@@ -108,24 +134,44 @@ map_close:
     call terrain_changed
     ld a,(status_id)
     jp status_line
+camera_x: db 0
 camera_y: db 0
 follow_actor: db 0
 map_mode: db 0
 
-; During execution, cursor UP/DOWN browses without resetting either actor.
+; During execution, cursor arrows browse without resetting either actor.
 camera_cursor:
-    ld a,(stage)
-    cp 20
-    ret c
     ld a,(keys8)
-    and 060h
+    and 0F0h
     ret z
     ld a,1
     ld (camera_manual_mode),a
+    ld a,(camera_x)
+    ld b,a
+    ld a,(camera_y)
+    ld c,a
+    ld a,(keys8)
+    bit 4,a
+    jr z,camera_not_left
+    ld b,0
+camera_not_left:
+    bit 7,a
+    jr z,camera_not_right
+    ld a,(params+445)
+    cp 16
+    jr nz,camera_not_right
+    ld b,8
+camera_not_right:
     ld a,(keys8)
     bit 5,a
-    ld a,0
-    jp nz,camera_set
-    ld a,6
-    jp camera_set
+    jr z,camera_not_up
+    ld c,0
+camera_not_up:
+    bit 6,a
+    jp z,camera_set_xy
+    ld a,(params+235)
+    cp 7
+    jp c,camera_set_xy
+    ld c,6
+    jp camera_set_xy
 camera_manual_mode: db 0

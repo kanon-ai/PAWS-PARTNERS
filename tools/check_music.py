@@ -1,14 +1,15 @@
 """Keyboard-only, real-speed emulator demonstration of the current ROM."""
 from pathlib import Path
-import os,json,hashlib,re,subprocess
-R=Path(__file__).resolve().parents[1];W=R/'work/music-check';W.mkdir(exist_ok=True)
+import os,json,hashlib,re,subprocess,argparse
+parser=argparse.ArgumentParser();parser.add_argument("--machine",default="C-BIOS_MSX2_EU");args=parser.parse_args()
+R=Path(__file__).resolve().parents[1];W=R/'work'/('music-check-'+args.machine);W.mkdir(exist_ok=True)
 levels=json.loads((R/'assets/levels.json').read_text());codes=json.loads((R/'assets/passwords.json').read_text())
 sym=dict((n,int(v,16)) for n,v in re.findall(r'(?m)^(\w+)\s+EQU\s+0([0-9A-F]+)H',(R/'work/game.symbols').read_text()))
 s=['set save_settings_on_exit false','set throttle false','set renderer SDLGL-PP','set minframeskip 0','set maxframeskip 0','set scanline 0','set blur 0','set f [open results.txt w]'];t=8.;checks=0;clips=[]
 def ev(cmd):s.append(f'after time {t:.3f} {{{cmd}}}')
-def key(row,mask):
+def key(row,mask,hold=.12):
  global t
- ev(f'keymatrixdown {row} {mask}');t+=.12;ev(f'keymatrixup {row} {mask}');t+=.25
+ ev(f'keymatrixdown {row} {mask}');t+=hold;ev(f'keymatrixup {row} {mask}');t+=.25
 def wait(n):
  global t
  t+=n
@@ -42,6 +43,10 @@ key(7,128);wait(5);check('stuck-state','state',5);check('stuck-muted','music_run
 # PSG debug names are recorded as evidence, and actual volumes checked.
 ev('puts $::f "psg-muted [expr {[debug read {PSG regs} 8]+[debug read {PSG regs} 9]+[debug read {PSG regs} 10]}] 0"');checks+=1
 key(7,128);wait(1);check('retry-restarts','music_running',1)
+key(6,32);wait(1);check('help-music-on','music_running',1);key(6,32);wait(1)
+prepare(0);key(7,128);wait(.2);key(6,128,hold=1.2);wait(1.5)
+check('paused-state','paused',1);check('paused-music-on','music_running',1)
+wait(1);key(7,128);wait(30);check('clear-state','state',3);check('clear-music-on','music_running',1)
 key(6,64);wait(1);check('back-title-muted','music_running',0)
 stop();ev('close $::musiclog')
 
@@ -49,9 +54,9 @@ ev('close $::f;exit');s.append('after realtime 180 {exit}')
 (W/'capture.tcl').write_text('\n'.join(s))
 env=os.environ.copy();env.update(OPENMSX_HOME=str(W/'home'),OPENMSX_USER_DATA=str(W/'user-data'),OPENMSX_SYSTEM_DATA='C:/Program Files/openMSX/share')
 rom=R/'outputs/PAWS-PARTNERS-MSX2.rom'
-p=subprocess.run(['C:/Program Files/openMSX/openmsx.exe','-machine','C-BIOS_MSX2_EU','-cart',str(rom),'-romtype','ASCII8','-script','capture.tcl'],cwd=W,env=env,capture_output=True,timeout=190,creationflags=subprocess.CREATE_NO_WINDOW)
+p=subprocess.run(['C:/Program Files/openMSX/openmsx.exe','-machine',args.machine,'-cart',str(rom),'-romtype','ASCII8','-script','capture.tcl'],cwd=W,env=env,capture_output=True,timeout=190,creationflags=subprocess.CREATE_NO_WINDOW)
 (W/'launch.log').write_bytes(p.stdout+p.stderr)
 lines=(W/'results.txt').read_text().splitlines();fail=[x for x in lines if x.split()[1]!=x.split()[2]]
-report=dict(rom_sha256=hashlib.sha256(rom.read_bytes()).hexdigest(),machine='C-BIOS_MSX2_EU',hardware_tested=False,speed='1x emulator time',checks=len(lines),expected=checks,failures=fail,clips=clips)
-(R/'outputs/music-verification.json').write_text(json.dumps(report,indent=2));print(report)
+report=dict(rom_sha256=hashlib.sha256(rom.read_bytes()).hexdigest(),machine=args.machine,hardware_tested=False,speed='unthrottled emulator; PSG stream correctness, not a performance benchmark',checks=len(lines),expected=checks,failures=fail,clips=clips)
+(R/('outputs/music-verification-'+args.machine+'.json')).write_text(json.dumps(report,indent=2));print(report)
 assert p.returncode==0 and len(lines)==checks and not fail

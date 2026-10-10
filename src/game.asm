@@ -2,7 +2,7 @@
 VDP equ 098h
     org 08000h
     jp entry
-params equ 0E300h
+params equ 0E800h
 parts equ 0E400h
 satbuf equ 0E100h
 entry:
@@ -57,6 +57,7 @@ presented:
 
 load_stage:
     xor a
+    ld (camera_x),a
     ld (camera_y),a
     ld (map_mode),a
     ld (follow_actor),a
@@ -64,18 +65,24 @@ load_stage:
     ld e,1
     call reg_write
     ld a,(stage)
+    ld e,a
     add a,a
+    add a,e
     ld e,a
     ld d,0
     ld hl,level_table
     add hl,de
+    ld a,(hl)
+    ld (level_bank),a
+    call music_map_bank
+    inc hl
     ld e,(hl)
     inc hl
     ld d,(hl)
     ex de,hl
     ld (level_ptr),hl
     ld de,params
-    ld bc,253
+    ld bc,446
     ldir
     xor a
     ld hl,0
@@ -104,14 +111,17 @@ clear_loop:
     djnz clear_loop
     jp edit_mode
 reset_ball:
+    ld a,(level_bank)
+    call music_map_bank
     ld hl,(level_ptr)
     ld de,43
     add hl,de
     ld de,params+43
-    ld bc,96
+    ld bc,192
     ldir
     xor a
     ld (gate),a
+    ld (pressure),a
     ld (paused),a
     ld (stuck_frames),a
     dec a
@@ -127,8 +137,9 @@ reset_ball:
     ld hl,params
     call init_actor
     ld ix,rabbit_actor
-    ld hl,params+248
+    ld hl,params+440
     call init_actor
+    call update_pressure
     call terrain_changed
     ret
 init_actor:
@@ -363,6 +374,7 @@ run_tick:
     ld a,(paused)
     or a
     ret nz
+    call update_pressure
     xor a
     ld (who),a
     ld ix,cat_actor
@@ -431,6 +443,8 @@ actor_not_waiting:
     ld a,(next_code)
     cp 1
     ret z
+    cp 19
+    ret z
     cp 2
     ret z
     cp 5
@@ -441,7 +455,10 @@ actor_not_waiting:
 check_crate:
     ld a,(next_code)
     cp 1
+    jr z,crate_found
+    cp 19
     jr nz,check_barrier
+crate_found:
     ld a,(who)
     or a
     ret nz
@@ -461,9 +478,21 @@ check_barrier:
 check_blue_gate:
     ld a,(next_code)
     cp 7
-    jr nz,begin_walk
+    jr z,blue_barrier
+    cp 28
+    jr nz,check_pressure_gate
+blue_barrier:
     ld a,(gate)
     bit 1,a
+    ret z
+check_pressure_gate:
+    call check_swap_gate
+    ret c
+    ld a,(next_code)
+    cp 20
+    jr nz,begin_walk
+    ld a,(pressure)
+    or a
     ret z
 begin_walk:
     ld a,(next_x)
@@ -503,6 +532,8 @@ walk_down:
 walked:
     dec (ix+5)
     ret nz
+    call gate_visual_depart
+    call fragile_depart
     ld a,(ix+9)
     ld (ix+0),a
     ld (next_x),a
@@ -523,13 +554,18 @@ walked:
 land_blue:
     ld a,(hl)
     cp 8
+    jr z,blue_landed
+    cp 31
     jr nz,land_socket
+blue_landed:
     ld a,(gate)
     or 2
     ld (gate),a
     call terrain_changed
 land_socket:
+    call swap_floor
     call sequence_floor
+    call fixed_floor
     ld hl,params+19
     ld de,parts
     ld a,(params+5)
@@ -567,7 +603,7 @@ actor_goal:
     ld a,(who)
     or a
     jr z,goal_pointer
-    ld hl,params+251
+    ld hl,params+443
 goal_pointer:
     ld a,(ix+0)
     cp (hl)
@@ -605,9 +641,7 @@ target_down:
     ret
 target_index:
     ld a,(next_y)
-    add a,a
-    add a,a
-    add a,a
+    call row_to_index
     ld e,a
     ld a,(next_x)
     add a,e
@@ -615,14 +649,16 @@ target_index:
     ld d,0
     ret
 inspect_target:
+    ld a,(params+445)
+    ld b,a
     ld a,(next_x)
-    cp 8
+    cp b
     jr nc,target_bad
     ld a,(next_y)
     cp 12
     jr nc,target_bad
     call target_index
-    ld hl,params+140
+    ld hl,params+236
     add hl,de
     ld c,(hl)
     ld a,(ix+4)
@@ -668,6 +704,8 @@ not_occupied:
     or a
     ret
 push_box:
+    ld a,(next_code)
+    ld (box_old_code),a
     ld a,(next_x)
     ld (box_x),a
     ld a,(next_y)
@@ -678,6 +716,8 @@ push_box:
     call occupied
     jr c,box_blocked
     ld a,(next_code)
+    cp 18
+    jr z,box_on_plate
     or a
     jr z,box_on_floor
     cp 9
@@ -691,6 +731,9 @@ box_fill:
     jr box_write
 box_on_floor:
     ld a,1
+    jr box_write
+box_on_plate:
+    ld a,19
 box_write:
     push af
     call target_index
@@ -702,8 +745,15 @@ box_write:
     call target_index
     ld hl,params+43
     add hl,de
-    ld (hl),0
     xor a
+    ld b,a
+    ld a,(box_old_code)
+    cp 19
+    ld a,b
+    jr nz,box_restore_floor
+    ld a,18
+box_restore_floor:
+    ld (hl),a
     ld (next_code),a
     call terrain_changed
     or a
@@ -792,7 +842,11 @@ actor_ground:
     jr c,actor_on_page
     ld c,221
 actor_on_page:
-    ld b,(ix+2)
+    call actor_relative_x
+    jr nc,actor_x_visible
+    ld c,221
+actor_x_visible:
+    ld b,a
     dec c
     ld a,(ix+6)
     or a
@@ -855,10 +909,20 @@ refresh_tile:
     add a,8
     ld c,a
 tile_not_selected:
-    ld hl,params+236
+    call socket_badge_type
+    ld hl,params+428
     add hl,de
     ld a,(hl)
+    ld b,a
+    ld a,(socket_badge)
+    or a
+    ld a,b
+    jr nz,tile_special_bank
     add a,TILE_BANK
+    jr tile_bank_ready
+tile_special_bank:
+    add a,SPECIAL_TILE_BANK
+tile_bank_ready:
     call music_map_bank
     ld a,c
     and 15
@@ -867,6 +931,7 @@ tile_not_selected:
     ld h,a
     ld l,0
     call patch28
+    call draw_socket_badge
 refresh_tile_next:
     ld hl,render_index
     inc (hl)
@@ -977,7 +1042,12 @@ socket_xy:
     ld d,0
     ld hl,params+19
     add hl,de
+    ld a,(camera_x)
+    ld b,a
     ld a,(hl)
+    sub b
+    cp 8
+    jr nc,socket_off_page
     call times28
     add a,16
     ld (temp_x),a
@@ -1257,10 +1327,19 @@ refresh_terrain:
     ld (terrain_index),a
 terrain_draw_loop:
     ld a,(terrain_index)
-    and 0F8h
-    rrca
-    rrca
-    rrca
+    ld b,a
+    ld a,(params+445)
+    dec a
+    and b
+    ld b,a
+    ld a,(camera_x)
+    ld c,a
+    ld a,b
+    sub c
+    cp 8
+    jp nc,terrain_draw_next
+    ld a,(terrain_index)
+    call index_to_row
     ld b,a
     ld a,(camera_y)
     ld c,a
@@ -1280,7 +1359,7 @@ terrain_draw_loop:
     jp z,terrain_draw_next
     or a
     jr nz,terrain_present
-    ld hl,params+140
+    ld hl,params+236
     add hl,de
     ld a,(hl)
     or a
@@ -1289,7 +1368,10 @@ terrain_draw_loop:
     ld a,FLOOR_BANK
     jr terrain_bank_chosen
 terrain_present:
+    call gate_visual_tile
     ld b,a
+    cp 18
+    jp nc,pressure_tile
     cp 14
     jr c,terrain_standard
     ld a,(gate)
@@ -1329,12 +1411,14 @@ terrain_bank_default:
 terrain_bank_chosen:
     ld c,a
     ld a,b
+terrain_bank_loop:
     cp 16
     jr c,terrain_bank_ready
     sub 16
-    ld b,a
     inc c
+    jr terrain_bank_loop
 terrain_bank_ready:
+    ld b,a
     ld a,c
     ld (terrain_patch_bank),a
     ld a,b
@@ -1343,13 +1427,22 @@ terrain_bank_ready:
     ld (terrain_patch_hi),a
     ld a,(terrain_index)
     ld c,0
+    ld b,a
+    ld a,(params+445)
+    ld d,a
+    ld a,b
 terrain_div8:
-    cp 8
+    cp d
     jr c,terrain_xy
-    sub 8
+    sub d
     inc c
     jr terrain_div8
 terrain_xy:
+    ld b,a
+    ld a,(camera_x)
+    ld d,a
+    ld a,b
+    sub d
     push bc
     call times28
     add a,16
@@ -1372,7 +1465,7 @@ terrain_draw_next:
     ld hl,terrain_index
     inc (hl)
     ld a,(hl)
-    cp 96
+    cp 192
     jp nz,terrain_draw_loop
     ret
 normal_colors:
@@ -1396,6 +1489,7 @@ heavy_colors:
 jump_heights:
     db 0,2,3,5,6,8,9,10,11,12,13,13,14,14,14,14,14,13,13,12,11,10,9,8,6,5,3,2,0
 level_ptr: dw 0
+level_bank: db 0
 weight: db 0
 air_steps: db 0
 paused: db 0
@@ -1449,6 +1543,7 @@ upload_stage:
     ld a,(stage)
     ld e,a
     add a,a
+    add a,a
     add a,e
     ld e,a
     ld a,(map_mode)
@@ -1456,11 +1551,19 @@ upload_stage:
     jr z,upload_camera_page
     inc e
     inc e
+    inc e
+    inc e
     jr upload_page_chosen
 upload_camera_page:
+    ld a,(camera_x)
+    or a
+    jr z,upload_camera_row
+    inc e
+upload_camera_row:
     ld a,(camera_y)
     or a
     jr z,upload_page_chosen
+    inc e
     inc e
 upload_page_chosen:
     ld d,0
@@ -1628,4 +1731,94 @@ wait_last_cat: db 255
 wait_last_rabbit: db 255
 wait_changed: db 0
 
+    include "src/pressure.asm"
+    include "src/advanced.asm"
     include "src/music.asm"
+
+; v2 level width is 8 or 16. Preserve BC for callers holding a column there.
+row_to_index:
+    push bc
+    ld b,a
+    ld a,(params+445)
+    cp 16
+    ld a,b
+    pop bc
+    jr nz,row_index_eight
+    add a,a
+row_index_eight:
+    add a,a
+    add a,a
+    add a,a
+    ret
+index_to_row:
+    push bc
+    ld b,a
+    ld a,(params+445)
+    cp 16
+    ld a,b
+    pop bc
+    jr nz,index_row_eight
+    srl a
+index_row_eight:
+    srl a
+    srl a
+    srl a
+    ret
+
+; Derive signed screen X from world tile and in-flight progress. Pixel bytes
+; alone wrap at x=256 and cannot safely decide whether a sprite is on screen.
+actor_relative_x:
+    push bc
+    push de
+    push hl
+    ld a,(camera_x)
+    ld b,a
+    ld a,(ix+0)
+    sub b
+    cp 8
+    jr nc,relative_x_hidden
+    call times28
+    add a,14
+    ld l,a
+    ld h,0
+    ld a,(ix+5)
+    or a
+    jr z,relative_x_done
+    ld b,a
+    ld a,(ix+8)
+    or a
+    ld a,14
+    jr z,relative_x_duration
+    ld a,28
+relative_x_duration:
+    sub b
+    add a,a
+    ld e,a
+    ld d,0
+    ld a,(ix+4)
+    cp 1
+    jr z,relative_x_right
+    cp 3
+    jr nz,relative_x_done
+    or a
+    sbc hl,de
+    jr relative_x_done
+relative_x_right:
+    add hl,de
+relative_x_done:
+    ld a,h
+    or a
+    jr nz,relative_x_hidden
+    ld a,l
+    cp 240
+    jr nc,relative_x_hidden
+    or a
+    jr relative_x_return
+relative_x_hidden:
+    xor a
+    scf
+relative_x_return:
+    pop hl
+    pop de
+    pop bc
+    ret

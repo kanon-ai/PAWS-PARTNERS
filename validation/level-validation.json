@@ -1,0 +1,3231 @@
+[
+  {
+    "name": "STAGE 01",
+    "minimum": 2,
+    "solutions": [
+      [
+        2,
+        1
+      ]
+    ],
+    "checked": 13,
+    "events": [
+      "cat-home",
+      "rabbit-home"
+    ],
+    "without_cat": true,
+    "without_rabbit": true,
+    "source_trial": 38
+  },
+  {
+    "name": "STAGE 02",
+    "minimum": 2,
+    "solutions": [
+      [
+        2,
+        1
+      ]
+    ],
+    "checked": 13,
+    "events": [
+      "cat-home",
+      "rabbit-home"
+    ],
+    "without_cat": true,
+    "without_rabbit": true,
+    "source_trial": 7
+  },
+  {
+    "name": "STAGE 03",
+    "minimum": 2,
+    "solutions": [
+      [
+        0,
+        2,
+        1
+      ]
+    ],
+    "checked": 22,
+    "events": [
+      "push",
+      "cat-home",
+      "rabbit-home"
+    ],
+    "without_cat": false,
+    "without_rabbit": true,
+    "source_trial": 10
+  },
+  {
+    "name": "STAGE 04",
+    "minimum": 2,
+    "solutions": [
+      [
+        2,
+        1
+      ]
+    ],
+    "checked": 7,
+    "events": [
+      "fill",
+      "hop",
+      "cat-home",
+      "rabbit-home"
+    ],
+    "without_cat": false,
+    "without_rabbit": false,
+    "source_trial": 12
+  },
+  {
+    "name": "STAGE 05",
+    "minimum": 2,
+    "solutions": [
+      [
+        0,
+        2,
+        2
+      ]
+    ],
+    "checked": 10,
+    "events": [
+      "push",
+      "push",
+      "cat-home",
+      "rabbit-home"
+    ],
+    "without_cat": false,
+    "without_rabbit": true,
+    "source_trial": 1
+  },
+  {
+    "name": "STAGE 06",
+    "minimum": 2,
+    "solutions": [
+      [
+        1,
+        1
+      ]
+    ],
+    "checked": 7,
+    "events": [
+      "blue",
+      "cat-home",
+      "rabbit-home"
+    ],
+    "without_cat": true,
+    "without_rabbit": true,
+    "source_trial": 2
+  },
+  {
+    "name": "STAGE 07",
+    "minimum": 2,
+    "solutions": [
+      [
+        0,
+        2,
+        2
+      ]
+    ],
+    "checked": 16,
+    "events": [
+      "red",
+      "switch",
+      "arrow-down",
+      "cat-home",
+      "rabbit-home"
+    ],
+    "without_cat": true,
+    "without_rabbit": true,
+    "source_trial": 25
+  },
+  {
+    "name": "STAGE 08",
+    "minimum": 2,
+    "solutions": [
+      [
+        1,
+        2
+      ]
+    ],
+    "checked": 7,
+    "events": [
+      "red",
+      "blue",
+      "cat-home",
+      "rabbit-home"
+    ],
+    "without_cat": true,
+    "without_rabbit": true,
+    "source_trial": 8
+  },
+  {
+    "name": "STAGE 09",
+    "minimum": 2,
+    "solutions": [
+      [
+        6,
+        1
+      ],
+      [
+        5,
+        1
+      ],
+      [
+        4,
+        1
+      ],
+      [
+        3,
+        1
+      ]
+    ],
+    "checked": 36,
+    "events": [
+      "wait-2",
+      "cat-home",
+      "rabbit-home"
+    ],
+    "without_cat": true,
+    "without_rabbit": true,
+    "source_trial": 37
+  },
+  {
+    "name": "STAGE 10",
+    "minimum": 2,
+    "solutions": [
+      [
+        0,
+        2,
+        0,
+        0,
+        2
+      ]
+    ],
+    "checked": 43,
+    "events": [
+      "push",
+      "push",
+      "push",
+      "blue",
+      "cat-home",
+      "rabbit-home"
+    ],
+    "without_cat": false,
+    "without_rabbit": true,
+    "source_trial": 43
+  },
+  {
+    "name": "STAGE 11",
+    "minimum": 2,
+    "solutions": [
+      [
+        6,
+        6,
+        1
+      ],
+      [
+        6,
+        5,
+        1
+      ],
+      [
+        6,
+        4,
+        1
+      ],
+      [
+        5,
+        6,
+        1
+      ],
+      [
+        5,
+        5,
+        1
+      ],
+      [
+        5,
+        4,
+        1
+      ],
+      [
+        4,
+        6,
+        1
+      ],
+      [
+        4,
+        5,
+        1
+      ],
+      [
+        4,
+        4,
+        1
+      ],
+      [
+        3,
+        6,
+        1
+      ],
+      [
+        3,
+        5,
+        1
+      ],
+      [
+        3,
+        4,
+        1
+      ],
+      [
+        0,
+        6,
+        1
+      ],
+      [
+        0,
+        5,
+        1
+      ]
+    ],
+    "checked": 302,
+    "events": [
+      "wait-6",
+      "rabbit-home",
+      "cat-home"
+    ],
+    "without_cat": true,
+    "without_rabbit": true,
+    "source_trial": 15
+  },
+  {
+    "name": "STAGE 12",
+    "minimum": 2,
+    "solutions": [
+      [
+        1,
+        1
+      ]
+    ],
+    "checked": 10,
+    "events": [
+      "arrow-right",
+      "blue",
+      "switch",
+      "arrow-down",
+      "red",
+      "cat-home",
+      "rabbit-home"
+    ],
+    "without_cat": true,
+    "without_rabbit": true,
+    "source_trial": 9
+  },
+  {
+    "name": "STAGE 13",
+    "minimum": 2,
+    "solutions": [
+      [
+        0,
+        1,
+        2
+      ]
+    ],
+    "checked": 16,
+    "events": [
+      "blue",
+      "rabbit-home",
+      "cat-home"
+    ],
+    "without_cat": true,
+    "without_rabbit": true,
+    "source_trial": 19
+  },
+  {
+    "name": "STAGE 14",
+    "minimum": 2,
+    "solutions": [
+      [
+        2,
+        1
+      ]
+    ],
+    "checked": 7,
+    "events": [
+      "push",
+      "push",
+      "push",
+      "blue",
+      "cat-home",
+      "rabbit-home"
+    ],
+    "without_cat": false,
+    "without_rabbit": true,
+    "source_trial": 20
+  },
+  {
+    "name": "STAGE 15",
+    "minimum": 2,
+    "solutions": [
+      [
+        0,
+        2,
+        1
+      ]
+    ],
+    "checked": 10,
+    "events": [
+      "push",
+      "blue",
+      "fill",
+      "cat-home",
+      "rabbit-home"
+    ],
+    "without_cat": false,
+    "without_rabbit": true,
+    "source_trial": 11
+  },
+  {
+    "name": "STAGE 16",
+    "minimum": 2,
+    "solutions": [
+      [
+        6,
+        2,
+        6
+      ],
+      [
+        6,
+        2,
+        5
+      ],
+      [
+        6,
+        2,
+        4
+      ],
+      [
+        6,
+        2,
+        3
+      ],
+      [
+        6,
+        2,
+        0
+      ],
+      [
+        5,
+        2,
+        6
+      ],
+      [
+        5,
+        2,
+        5
+      ],
+      [
+        5,
+        2,
+        4
+      ],
+      [
+        5,
+        2,
+        3
+      ],
+      [
+        5,
+        2,
+        0
+      ],
+      [
+        4,
+        2,
+        6
+      ],
+      [
+        4,
+        2,
+        5
+      ],
+      [
+        4,
+        2,
+        4
+      ],
+      [
+        4,
+        2,
+        3
+      ],
+      [
+        4,
+        2,
+        0
+      ]
+    ],
+    "checked": 246,
+    "events": [
+      "wait-4",
+      "hop",
+      "fill",
+      "rabbit-home",
+      "cat-home"
+    ],
+    "without_cat": false,
+    "without_rabbit": false,
+    "source_trial": 13
+  },
+  {
+    "name": "STAGE 17",
+    "minimum": 2,
+    "solutions": [
+      [
+        2,
+        6,
+        6
+      ],
+      [
+        2,
+        6,
+        5
+      ],
+      [
+        2,
+        6,
+        4
+      ],
+      [
+        2,
+        6,
+        3
+      ],
+      [
+        2,
+        6,
+        0
+      ],
+      [
+        2,
+        5,
+        6
+      ],
+      [
+        2,
+        5,
+        5
+      ],
+      [
+        2,
+        5,
+        4
+      ],
+      [
+        2,
+        5,
+        3
+      ],
+      [
+        2,
+        5,
+        0
+      ],
+      [
+        2,
+        4,
+        6
+      ],
+      [
+        2,
+        4,
+        5
+      ],
+      [
+        2,
+        4,
+        4
+      ],
+      [
+        2,
+        4,
+        3
+      ],
+      [
+        2,
+        4,
+        0
+      ],
+      [
+        2,
+        3,
+        6
+      ],
+      [
+        2,
+        3,
+        5
+      ],
+      [
+        2,
+        3,
+        4
+      ],
+      [
+        2,
+        3,
+        3
+      ],
+      [
+        2,
+        3,
+        0
+      ]
+    ],
+    "checked": 274,
+    "events": [
+      "wait-2",
+      "crumble",
+      "hop",
+      "cat-home",
+      "rabbit-home"
+    ],
+    "without_cat": true,
+    "without_rabbit": false,
+    "source_trial": 14
+  },
+  {
+    "name": "STAGE 18",
+    "minimum": 3,
+    "solutions": [
+      [
+        4,
+        2,
+        6,
+        2
+      ],
+      [
+        3,
+        2,
+        6,
+        2
+      ],
+      [
+        3,
+        2,
+        5,
+        2
+      ],
+      [
+        0,
+        2,
+        6,
+        2
+      ],
+      [
+        0,
+        2,
+        5,
+        2
+      ],
+      [
+        0,
+        2,
+        4,
+        2
+      ]
+    ],
+    "checked": 1597,
+    "events": [
+      "wait-6",
+      "blue",
+      "crumble",
+      "cat-home",
+      "hop",
+      "rabbit-home"
+    ],
+    "without_cat": true,
+    "without_rabbit": false,
+    "source_trial": 6
+  },
+  {
+    "name": "STAGE 19",
+    "minimum": 3,
+    "solutions": [
+      [
+        2,
+        2,
+        2
+      ]
+    ],
+    "checked": 16,
+    "events": [
+      "crumble",
+      "blue",
+      "cat-home",
+      "hop",
+      "rabbit-home"
+    ],
+    "without_cat": true,
+    "without_rabbit": false,
+    "source_trial": 40
+  },
+  {
+    "name": "STAGE 20",
+    "minimum": 3,
+    "solutions": [
+      [
+        0,
+        2,
+        2,
+        1
+      ]
+    ],
+    "checked": 58,
+    "events": [
+      "crumble",
+      "fill",
+      "blue",
+      "rabbit-home",
+      "cat-home"
+    ],
+    "without_cat": false,
+    "without_rabbit": true,
+    "source_trial": 22
+  },
+  {
+    "name": "STAGE 21",
+    "minimum": 3,
+    "solutions": [
+      [
+        0,
+        2,
+        1,
+        1
+      ]
+    ],
+    "checked": 19,
+    "events": [
+      "push",
+      "blue",
+      "rabbit-home",
+      "fill",
+      "cat-home"
+    ],
+    "without_cat": false,
+    "without_rabbit": true,
+    "source_trial": 23
+  },
+  {
+    "name": "STAGE 22",
+    "minimum": 2,
+    "solutions": [
+      [
+        1,
+        1
+      ]
+    ],
+    "checked": 13,
+    "events": [
+      "blue",
+      "fill",
+      "rabbit-home",
+      "cat-home"
+    ],
+    "without_cat": false,
+    "without_rabbit": true,
+    "source_trial": 26
+  },
+  {
+    "name": "STAGE 23",
+    "minimum": 2,
+    "solutions": [
+      [
+        2,
+        1
+      ]
+    ],
+    "checked": 7,
+    "events": [
+      "fill",
+      "fill",
+      "blue",
+      "rabbit-home",
+      "cat-home"
+    ],
+    "without_cat": false,
+    "without_rabbit": true,
+    "source_trial": 34
+  },
+  {
+    "name": "STAGE 24",
+    "minimum": 2,
+    "solutions": [
+      [
+        0,
+        0,
+        2,
+        1
+      ]
+    ],
+    "checked": 19,
+    "events": [
+      "blue",
+      "rabbit-home",
+      "cat-home"
+    ],
+    "without_cat": true,
+    "without_rabbit": true,
+    "source_trial": 45
+  },
+  {
+    "name": "STAGE 25",
+    "minimum": 2,
+    "solutions": [
+      [
+        2,
+        1
+      ]
+    ],
+    "checked": 7,
+    "events": [
+      "blue",
+      "red",
+      "cat-home",
+      "rabbit-home"
+    ],
+    "without_cat": true,
+    "without_rabbit": true,
+    "source_trial": 31
+  },
+  {
+    "name": "STAGE 26",
+    "minimum": 2,
+    "solutions": [
+      [
+        1,
+        6
+      ],
+      [
+        1,
+        5
+      ]
+    ],
+    "checked": 57,
+    "events": [
+      "wait-6",
+      "fill",
+      "cat-home",
+      "rabbit-home"
+    ],
+    "without_cat": false,
+    "without_rabbit": true,
+    "source_trial": 32
+  },
+  {
+    "name": "STAGE 27",
+    "minimum": 3,
+    "solutions": [
+      [
+        6,
+        2,
+        6,
+        6,
+        1
+      ],
+      [
+        6,
+        2,
+        6,
+        5,
+        1
+      ],
+      [
+        6,
+        2,
+        6,
+        4,
+        1
+      ],
+      [
+        6,
+        2,
+        6,
+        3,
+        1
+      ],
+      [
+        6,
+        2,
+        5,
+        6,
+        1
+      ],
+      [
+        6,
+        2,
+        5,
+        5,
+        1
+      ],
+      [
+        6,
+        2,
+        5,
+        4,
+        1
+      ],
+      [
+        6,
+        2,
+        5,
+        3,
+        1
+      ],
+      [
+        6,
+        2,
+        4,
+        6,
+        1
+      ],
+      [
+        6,
+        2,
+        4,
+        5,
+        1
+      ],
+      [
+        6,
+        2,
+        4,
+        4,
+        1
+      ],
+      [
+        6,
+        2,
+        4,
+        3,
+        1
+      ],
+      [
+        6,
+        2,
+        3,
+        6,
+        1
+      ],
+      [
+        6,
+        2,
+        3,
+        5,
+        1
+      ],
+      [
+        6,
+        2,
+        3,
+        4,
+        1
+      ],
+      [
+        6,
+        2,
+        3,
+        3,
+        1
+      ],
+      [
+        6,
+        2,
+        0,
+        6,
+        1
+      ],
+      [
+        6,
+        2,
+        0,
+        5,
+        1
+      ],
+      [
+        6,
+        2,
+        0,
+        4,
+        1
+      ],
+      [
+        6,
+        2,
+        0,
+        3,
+        1
+      ],
+      [
+        5,
+        2,
+        6,
+        6,
+        1
+      ],
+      [
+        5,
+        2,
+        6,
+        5,
+        1
+      ],
+      [
+        5,
+        2,
+        6,
+        4,
+        1
+      ],
+      [
+        5,
+        2,
+        6,
+        3,
+        1
+      ],
+      [
+        5,
+        2,
+        5,
+        6,
+        1
+      ],
+      [
+        5,
+        2,
+        5,
+        5,
+        1
+      ],
+      [
+        5,
+        2,
+        5,
+        4,
+        1
+      ],
+      [
+        5,
+        2,
+        5,
+        3,
+        1
+      ],
+      [
+        5,
+        2,
+        4,
+        6,
+        1
+      ],
+      [
+        5,
+        2,
+        4,
+        5,
+        1
+      ],
+      [
+        5,
+        2,
+        4,
+        4,
+        1
+      ],
+      [
+        5,
+        2,
+        4,
+        3,
+        1
+      ],
+      [
+        5,
+        2,
+        3,
+        6,
+        1
+      ],
+      [
+        5,
+        2,
+        3,
+        5,
+        1
+      ],
+      [
+        5,
+        2,
+        3,
+        4,
+        1
+      ],
+      [
+        5,
+        2,
+        3,
+        3,
+        1
+      ],
+      [
+        5,
+        2,
+        0,
+        6,
+        1
+      ],
+      [
+        5,
+        2,
+        0,
+        5,
+        1
+      ],
+      [
+        5,
+        2,
+        0,
+        4,
+        1
+      ],
+      [
+        5,
+        2,
+        0,
+        3,
+        1
+      ],
+      [
+        4,
+        2,
+        6,
+        6,
+        1
+      ],
+      [
+        4,
+        2,
+        6,
+        5,
+        1
+      ],
+      [
+        4,
+        2,
+        6,
+        4,
+        1
+      ],
+      [
+        4,
+        2,
+        6,
+        3,
+        1
+      ],
+      [
+        4,
+        2,
+        5,
+        6,
+        1
+      ],
+      [
+        4,
+        2,
+        5,
+        5,
+        1
+      ],
+      [
+        4,
+        2,
+        5,
+        4,
+        1
+      ],
+      [
+        4,
+        2,
+        5,
+        3,
+        1
+      ],
+      [
+        4,
+        2,
+        4,
+        6,
+        1
+      ],
+      [
+        4,
+        2,
+        4,
+        5,
+        1
+      ],
+      [
+        4,
+        2,
+        4,
+        4,
+        1
+      ],
+      [
+        4,
+        2,
+        4,
+        3,
+        1
+      ],
+      [
+        4,
+        2,
+        3,
+        6,
+        1
+      ],
+      [
+        4,
+        2,
+        3,
+        5,
+        1
+      ],
+      [
+        4,
+        2,
+        3,
+        4,
+        1
+      ],
+      [
+        4,
+        2,
+        3,
+        3,
+        1
+      ],
+      [
+        4,
+        2,
+        0,
+        6,
+        1
+      ],
+      [
+        4,
+        2,
+        0,
+        5,
+        1
+      ],
+      [
+        4,
+        2,
+        0,
+        4,
+        1
+      ],
+      [
+        4,
+        2,
+        0,
+        3,
+        1
+      ],
+      [
+        3,
+        2,
+        6,
+        6,
+        1
+      ],
+      [
+        3,
+        2,
+        6,
+        5,
+        1
+      ],
+      [
+        3,
+        2,
+        6,
+        4,
+        1
+      ],
+      [
+        3,
+        2,
+        6,
+        3,
+        1
+      ],
+      [
+        3,
+        2,
+        5,
+        6,
+        1
+      ],
+      [
+        3,
+        2,
+        5,
+        5,
+        1
+      ],
+      [
+        3,
+        2,
+        5,
+        4,
+        1
+      ],
+      [
+        3,
+        2,
+        5,
+        3,
+        1
+      ],
+      [
+        3,
+        2,
+        4,
+        6,
+        1
+      ],
+      [
+        3,
+        2,
+        4,
+        5,
+        1
+      ],
+      [
+        3,
+        2,
+        4,
+        4,
+        1
+      ],
+      [
+        3,
+        2,
+        4,
+        3,
+        1
+      ],
+      [
+        3,
+        2,
+        3,
+        6,
+        1
+      ],
+      [
+        3,
+        2,
+        3,
+        5,
+        1
+      ],
+      [
+        3,
+        2,
+        3,
+        4,
+        1
+      ],
+      [
+        3,
+        2,
+        3,
+        3,
+        1
+      ],
+      [
+        3,
+        2,
+        0,
+        6,
+        1
+      ],
+      [
+        3,
+        2,
+        0,
+        5,
+        1
+      ],
+      [
+        3,
+        2,
+        0,
+        4,
+        1
+      ],
+      [
+        3,
+        2,
+        0,
+        3,
+        1
+      ],
+      [
+        0,
+        2,
+        6,
+        6,
+        1
+      ],
+      [
+        0,
+        2,
+        6,
+        5,
+        1
+      ],
+      [
+        0,
+        2,
+        6,
+        4,
+        1
+      ],
+      [
+        0,
+        2,
+        6,
+        3,
+        1
+      ],
+      [
+        0,
+        2,
+        5,
+        6,
+        1
+      ],
+      [
+        0,
+        2,
+        5,
+        5,
+        1
+      ],
+      [
+        0,
+        2,
+        5,
+        4,
+        1
+      ],
+      [
+        0,
+        2,
+        5,
+        3,
+        1
+      ],
+      [
+        0,
+        2,
+        4,
+        6,
+        1
+      ],
+      [
+        0,
+        2,
+        4,
+        5,
+        1
+      ],
+      [
+        0,
+        2,
+        4,
+        4,
+        1
+      ],
+      [
+        0,
+        2,
+        4,
+        3,
+        1
+      ],
+      [
+        0,
+        2,
+        3,
+        6,
+        1
+      ],
+      [
+        0,
+        2,
+        3,
+        5,
+        1
+      ],
+      [
+        0,
+        2,
+        3,
+        4,
+        1
+      ],
+      [
+        0,
+        2,
+        3,
+        3,
+        1
+      ],
+      [
+        0,
+        2,
+        0,
+        6,
+        1
+      ],
+      [
+        0,
+        2,
+        0,
+        5,
+        1
+      ],
+      [
+        0,
+        2,
+        0,
+        4,
+        1
+      ],
+      [
+        0,
+        2,
+        0,
+        3,
+        1
+      ]
+    ],
+    "checked": 953,
+    "events": [
+      "wait-4",
+      "blue",
+      "rabbit-home",
+      "cat-home"
+    ],
+    "without_cat": true,
+    "without_rabbit": true,
+    "source_trial": 35
+  },
+  {
+    "name": "STAGE 28",
+    "minimum": 4,
+    "solutions": [
+      [
+        0,
+        2,
+        1,
+        1,
+        2
+      ],
+      [
+        0,
+        2,
+        1,
+        1,
+        1
+      ]
+    ],
+    "checked": 31,
+    "events": [
+      "push",
+      "blue",
+      "push",
+      "cat-home",
+      "rabbit-home"
+    ],
+    "without_cat": false,
+    "without_rabbit": true,
+    "source_trial": 36
+  },
+  {
+    "name": "STAGE 29",
+    "minimum": 4,
+    "solutions": [
+      [
+        0,
+        2,
+        1,
+        1,
+        1
+      ]
+    ],
+    "checked": 37,
+    "events": [
+      "fill",
+      "blue",
+      "push",
+      "rabbit-home",
+      "cat-home"
+    ],
+    "without_cat": false,
+    "without_rabbit": true,
+    "source_trial": 39
+  },
+  {
+    "name": "STAGE 30",
+    "minimum": 3,
+    "solutions": [
+      [
+        0,
+        2,
+        1,
+        2
+      ]
+    ],
+    "checked": 28,
+    "events": [
+      "push",
+      "switch",
+      "push",
+      "arrow-down",
+      "cat-home",
+      "rabbit-home"
+    ],
+    "without_cat": false,
+    "without_rabbit": true,
+    "source_trial": 21
+  },
+  {
+    "name": "STAGE 31",
+    "minimum": 2,
+    "solutions": [
+      [
+        0,
+        1,
+        1
+      ]
+    ],
+    "checked": 19,
+    "events": [
+      "valve-open",
+      "valve-close",
+      "blue",
+      "cat-home",
+      "rabbit-home"
+    ],
+    "without_cat": true,
+    "without_rabbit": true,
+    "source_trial": 4
+  },
+  {
+    "name": "STAGE 32",
+    "minimum": 2,
+    "solutions": [
+      [
+        0,
+        1,
+        1
+      ]
+    ],
+    "checked": 10,
+    "events": [
+      "valve-open",
+      "fill",
+      "valve-close",
+      "rabbit-home",
+      "cat-home"
+    ],
+    "without_cat": false,
+    "without_rabbit": true,
+    "source_trial": 24
+  },
+  {
+    "name": "STAGE 33",
+    "minimum": 3,
+    "solutions": [
+      [
+        5,
+        1,
+        1,
+        6
+      ],
+      [
+        4,
+        1,
+        1,
+        6
+      ],
+      [
+        4,
+        1,
+        1,
+        5
+      ],
+      [
+        3,
+        1,
+        1,
+        6
+      ],
+      [
+        3,
+        1,
+        1,
+        5
+      ],
+      [
+        3,
+        1,
+        1,
+        4
+      ],
+      [
+        0,
+        1,
+        1,
+        6
+      ],
+      [
+        0,
+        1,
+        1,
+        5
+      ],
+      [
+        0,
+        1,
+        1,
+        4
+      ],
+      [
+        0,
+        1,
+        1,
+        3
+      ]
+    ],
+    "checked": 316,
+    "events": [
+      "valve-open",
+      "wait-2",
+      "valve-close",
+      "cat-home",
+      "rabbit-home"
+    ],
+    "without_cat": true,
+    "without_rabbit": true,
+    "source_trial": 5
+  },
+  {
+    "name": "STAGE 34",
+    "minimum": 2,
+    "solutions": [
+      [
+        1,
+        2
+      ]
+    ],
+    "checked": 7,
+    "events": [
+      "valve-open",
+      "spent",
+      "blue",
+      "rabbit-home",
+      "cat-home"
+    ],
+    "without_cat": true,
+    "without_rabbit": true,
+    "source_trial": 28
+  },
+  {
+    "name": "STAGE 35",
+    "minimum": 2,
+    "solutions": [
+      [
+        0,
+        2,
+        0,
+        1
+      ]
+    ],
+    "checked": 19,
+    "events": [
+      "valve-open",
+      "valve-close",
+      "valve-open",
+      "valve-close",
+      "valve-open",
+      "cat-home",
+      "rabbit-home"
+    ],
+    "without_cat": true,
+    "without_rabbit": true,
+    "source_trial": 16
+  },
+  {
+    "name": "STAGE 36",
+    "minimum": 2,
+    "solutions": [
+      [
+        0,
+        2,
+        0,
+        2
+      ]
+    ],
+    "checked": 34,
+    "events": [
+      "valve-open",
+      "valve-close",
+      "valve-open",
+      "blue",
+      "blue",
+      "rabbit-home",
+      "cat-home"
+    ],
+    "without_cat": true,
+    "without_rabbit": true,
+    "source_trial": 30
+  },
+  {
+    "name": "STAGE 37",
+    "minimum": 2,
+    "solutions": [
+      [
+        1,
+        2,
+        0,
+        0
+      ]
+    ],
+    "checked": 31,
+    "events": [
+      "valve-open",
+      "spent",
+      "valve-close",
+      "valve-open",
+      "spent",
+      "valve-close",
+      "cat-home",
+      "rabbit-home"
+    ],
+    "without_cat": true,
+    "without_rabbit": true,
+    "source_trial": 29
+  },
+  {
+    "name": "STAGE 38",
+    "minimum": 4,
+    "solutions": [
+      [
+        0,
+        2,
+        2,
+        1,
+        1
+      ]
+    ],
+    "checked": 25,
+    "events": [
+      "valve-open",
+      "spent",
+      "blue",
+      "valve-close",
+      "valve-open",
+      "cat-home",
+      "rabbit-home"
+    ],
+    "without_cat": true,
+    "without_rabbit": true,
+    "source_trial": 50
+  },
+  {
+    "name": "STAGE 39",
+    "minimum": 3,
+    "solutions": [
+      [
+        5,
+        0,
+        0,
+        2,
+        6,
+        1
+      ],
+      [
+        4,
+        0,
+        0,
+        2,
+        6,
+        1
+      ],
+      [
+        4,
+        0,
+        0,
+        2,
+        5,
+        1
+      ],
+      [
+        3,
+        0,
+        0,
+        2,
+        6,
+        1
+      ],
+      [
+        3,
+        0,
+        0,
+        2,
+        5,
+        1
+      ],
+      [
+        3,
+        0,
+        0,
+        2,
+        4,
+        1
+      ],
+      [
+        0,
+        0,
+        0,
+        2,
+        6,
+        1
+      ],
+      [
+        0,
+        0,
+        0,
+        2,
+        5,
+        1
+      ],
+      [
+        0,
+        0,
+        0,
+        2,
+        4,
+        1
+      ],
+      [
+        0,
+        0,
+        0,
+        2,
+        3,
+        1
+      ]
+    ],
+    "checked": 1744,
+    "events": [
+      "switch",
+      "arrow-down",
+      "red",
+      "wait-2",
+      "switch",
+      "arrow-right",
+      "blue",
+      "cat-home",
+      "rabbit-home"
+    ],
+    "without_cat": true,
+    "without_rabbit": true,
+    "source_trial": 44
+  },
+  {
+    "name": "STAGE 40",
+    "minimum": 4,
+    "solutions": [
+      [
+        0,
+        2,
+        1,
+        1,
+        0,
+        1,
+        2
+      ],
+      [
+        0,
+        2,
+        1,
+        1,
+        0,
+        1,
+        0
+      ]
+    ],
+    "checked": 118,
+    "events": [
+      "fill",
+      "blue",
+      "cat-home",
+      "rabbit-home"
+    ],
+    "without_cat": false,
+    "without_rabbit": true,
+    "source_trial": 33
+  },
+  {
+    "name": "STAGE 41",
+    "minimum": 4,
+    "solutions": [
+      [
+        0,
+        0,
+        2,
+        2,
+        2,
+        2
+      ]
+    ],
+    "checked": 34,
+    "events": [
+      "blue",
+      "push",
+      "fill",
+      "cat-home",
+      "rabbit-home"
+    ],
+    "without_cat": false,
+    "without_rabbit": true,
+    "source_trial": 42
+  },
+  {
+    "name": "STAGE 42",
+    "minimum": 7,
+    "solutions": [
+      [
+        2,
+        1,
+        1,
+        2,
+        1,
+        1,
+        2
+      ]
+    ],
+    "checked": 202,
+    "events": [
+      "crumble",
+      "crumble",
+      "hop",
+      "fill",
+      "rabbit-home",
+      "cat-home"
+    ],
+    "without_cat": false,
+    "without_rabbit": false,
+    "source_trial": 48
+  },
+  {
+    "name": "STAGE 43",
+    "minimum": 2,
+    "solutions": [
+      [
+        4,
+        2,
+        6,
+        0
+      ],
+      [
+        3,
+        2,
+        6,
+        3
+      ],
+      [
+        3,
+        2,
+        6,
+        0
+      ],
+      [
+        0,
+        2,
+        6,
+        4
+      ],
+      [
+        0,
+        2,
+        6,
+        3
+      ],
+      [
+        0,
+        2,
+        6,
+        0
+      ],
+      [
+        3,
+        2,
+        5,
+        0
+      ],
+      [
+        0,
+        2,
+        5,
+        3
+      ],
+      [
+        0,
+        2,
+        5,
+        0
+      ],
+      [
+        0,
+        2,
+        4,
+        0
+      ]
+    ],
+    "checked": 547,
+    "events": [
+      "wait-4",
+      "crumble",
+      "arrow-right",
+      "switch",
+      "arrow-down",
+      "hop",
+      "blue",
+      "rabbit-home",
+      "cat-home"
+    ],
+    "without_cat": true,
+    "without_rabbit": false,
+    "source_trial": 17
+  },
+  {
+    "name": "STAGE 44",
+    "minimum": 2,
+    "solutions": [
+      [
+        6,
+        6,
+        6,
+        1
+      ],
+      [
+        6,
+        6,
+        5,
+        1
+      ],
+      [
+        6,
+        6,
+        4,
+        1
+      ],
+      [
+        6,
+        6,
+        3,
+        1
+      ],
+      [
+        6,
+        6,
+        0,
+        1
+      ],
+      [
+        6,
+        5,
+        6,
+        1
+      ],
+      [
+        6,
+        5,
+        5,
+        1
+      ],
+      [
+        6,
+        5,
+        4,
+        1
+      ],
+      [
+        6,
+        5,
+        3,
+        1
+      ],
+      [
+        6,
+        5,
+        0,
+        1
+      ],
+      [
+        6,
+        4,
+        6,
+        1
+      ],
+      [
+        6,
+        4,
+        5,
+        1
+      ],
+      [
+        6,
+        4,
+        4,
+        1
+      ],
+      [
+        6,
+        4,
+        3,
+        1
+      ],
+      [
+        6,
+        4,
+        0,
+        1
+      ],
+      [
+        6,
+        3,
+        6,
+        1
+      ],
+      [
+        6,
+        3,
+        5,
+        1
+      ],
+      [
+        6,
+        3,
+        4,
+        1
+      ],
+      [
+        6,
+        3,
+        3,
+        1
+      ],
+      [
+        6,
+        3,
+        0,
+        1
+      ],
+      [
+        5,
+        6,
+        6,
+        1
+      ],
+      [
+        5,
+        6,
+        5,
+        1
+      ],
+      [
+        5,
+        6,
+        4,
+        1
+      ],
+      [
+        5,
+        6,
+        3,
+        1
+      ],
+      [
+        5,
+        6,
+        0,
+        1
+      ],
+      [
+        5,
+        5,
+        6,
+        1
+      ],
+      [
+        5,
+        5,
+        5,
+        1
+      ],
+      [
+        5,
+        5,
+        4,
+        1
+      ],
+      [
+        5,
+        5,
+        3,
+        1
+      ],
+      [
+        5,
+        5,
+        0,
+        1
+      ],
+      [
+        5,
+        4,
+        6,
+        1
+      ],
+      [
+        5,
+        4,
+        5,
+        1
+      ],
+      [
+        5,
+        4,
+        4,
+        1
+      ],
+      [
+        5,
+        4,
+        3,
+        1
+      ],
+      [
+        5,
+        4,
+        0,
+        1
+      ],
+      [
+        5,
+        3,
+        6,
+        1
+      ],
+      [
+        5,
+        3,
+        5,
+        1
+      ],
+      [
+        5,
+        3,
+        4,
+        1
+      ],
+      [
+        5,
+        3,
+        3,
+        1
+      ],
+      [
+        5,
+        3,
+        0,
+        1
+      ],
+      [
+        4,
+        6,
+        6,
+        1
+      ],
+      [
+        4,
+        6,
+        5,
+        1
+      ],
+      [
+        4,
+        6,
+        4,
+        1
+      ],
+      [
+        4,
+        6,
+        3,
+        1
+      ],
+      [
+        4,
+        6,
+        0,
+        1
+      ],
+      [
+        4,
+        5,
+        6,
+        1
+      ],
+      [
+        4,
+        5,
+        5,
+        1
+      ],
+      [
+        4,
+        5,
+        4,
+        1
+      ],
+      [
+        4,
+        5,
+        3,
+        1
+      ],
+      [
+        4,
+        5,
+        0,
+        1
+      ],
+      [
+        4,
+        4,
+        6,
+        1
+      ],
+      [
+        4,
+        4,
+        5,
+        1
+      ],
+      [
+        4,
+        4,
+        4,
+        1
+      ],
+      [
+        4,
+        4,
+        3,
+        1
+      ],
+      [
+        4,
+        4,
+        0,
+        1
+      ],
+      [
+        4,
+        3,
+        6,
+        1
+      ],
+      [
+        4,
+        3,
+        5,
+        1
+      ],
+      [
+        4,
+        3,
+        4,
+        1
+      ],
+      [
+        4,
+        3,
+        3,
+        1
+      ],
+      [
+        4,
+        3,
+        0,
+        1
+      ],
+      [
+        3,
+        6,
+        6,
+        1
+      ],
+      [
+        3,
+        6,
+        5,
+        1
+      ],
+      [
+        3,
+        6,
+        4,
+        1
+      ],
+      [
+        3,
+        6,
+        3,
+        1
+      ],
+      [
+        3,
+        6,
+        0,
+        1
+      ],
+      [
+        3,
+        5,
+        6,
+        1
+      ],
+      [
+        3,
+        5,
+        5,
+        1
+      ],
+      [
+        3,
+        5,
+        4,
+        1
+      ],
+      [
+        3,
+        5,
+        3,
+        1
+      ],
+      [
+        3,
+        5,
+        0,
+        1
+      ],
+      [
+        3,
+        4,
+        6,
+        1
+      ],
+      [
+        3,
+        4,
+        5,
+        1
+      ],
+      [
+        3,
+        4,
+        4,
+        1
+      ],
+      [
+        3,
+        4,
+        3,
+        1
+      ],
+      [
+        3,
+        4,
+        0,
+        1
+      ],
+      [
+        3,
+        3,
+        6,
+        1
+      ],
+      [
+        3,
+        3,
+        5,
+        1
+      ],
+      [
+        3,
+        3,
+        4,
+        1
+      ],
+      [
+        3,
+        3,
+        3,
+        1
+      ],
+      [
+        3,
+        3,
+        0,
+        1
+      ],
+      [
+        0,
+        6,
+        6,
+        1
+      ],
+      [
+        0,
+        6,
+        5,
+        1
+      ],
+      [
+        0,
+        6,
+        4,
+        1
+      ],
+      [
+        0,
+        6,
+        3,
+        1
+      ],
+      [
+        0,
+        6,
+        0,
+        1
+      ],
+      [
+        0,
+        5,
+        6,
+        1
+      ],
+      [
+        0,
+        5,
+        5,
+        1
+      ],
+      [
+        0,
+        5,
+        4,
+        1
+      ],
+      [
+        0,
+        5,
+        3,
+        1
+      ],
+      [
+        0,
+        5,
+        0,
+        1
+      ],
+      [
+        0,
+        4,
+        6,
+        1
+      ],
+      [
+        0,
+        4,
+        5,
+        1
+      ],
+      [
+        0,
+        4,
+        4,
+        1
+      ],
+      [
+        0,
+        4,
+        3,
+        1
+      ],
+      [
+        0,
+        4,
+        0,
+        1
+      ]
+    ],
+    "checked": 1527,
+    "events": [
+      "valve-open",
+      "wait-4",
+      "blue",
+      "valve-close",
+      "rabbit-home",
+      "cat-home"
+    ],
+    "without_cat": true,
+    "without_rabbit": true,
+    "source_trial": 27
+  },
+  {
+    "name": "STAGE 45",
+    "minimum": 2,
+    "solutions": [
+      [
+        6,
+        6,
+        2
+      ],
+      [
+        6,
+        5,
+        2
+      ],
+      [
+        6,
+        4,
+        2
+      ],
+      [
+        6,
+        3,
+        2
+      ],
+      [
+        6,
+        0,
+        2
+      ],
+      [
+        5,
+        6,
+        2
+      ],
+      [
+        5,
+        5,
+        2
+      ],
+      [
+        5,
+        4,
+        2
+      ],
+      [
+        5,
+        3,
+        2
+      ],
+      [
+        5,
+        0,
+        2
+      ],
+      [
+        4,
+        6,
+        2
+      ],
+      [
+        4,
+        5,
+        2
+      ],
+      [
+        4,
+        4,
+        2
+      ],
+      [
+        4,
+        3,
+        2
+      ],
+      [
+        4,
+        0,
+        2
+      ],
+      [
+        3,
+        6,
+        2
+      ],
+      [
+        3,
+        5,
+        2
+      ],
+      [
+        3,
+        4,
+        2
+      ],
+      [
+        3,
+        3,
+        2
+      ],
+      [
+        3,
+        0,
+        2
+      ],
+      [
+        0,
+        6,
+        2
+      ],
+      [
+        0,
+        5,
+        2
+      ],
+      [
+        0,
+        4,
+        2
+      ],
+      [
+        0,
+        3,
+        2
+      ]
+    ],
+    "checked": 302,
+    "events": [
+      "push",
+      "push",
+      "wait-2",
+      "fill",
+      "blue",
+      "cat-home",
+      "rabbit-home"
+    ],
+    "without_cat": false,
+    "without_rabbit": true,
+    "source_trial": 3
+  },
+  {
+    "name": "STAGE 46",
+    "minimum": 4,
+    "solutions": [
+      [
+        1,
+        1,
+        2,
+        4
+      ]
+    ],
+    "checked": 281,
+    "events": [
+      "wait-4",
+      "valve-open",
+      "wait-4",
+      "valve-close",
+      "blue",
+      "rabbit-home",
+      "cat-home"
+    ],
+    "without_cat": true,
+    "without_rabbit": true,
+    "source_trial": 49
+  },
+  {
+    "name": "STAGE 47",
+    "minimum": 6,
+    "solutions": [
+      [
+        0,
+        2,
+        2,
+        1,
+        0,
+        1,
+        1,
+        2,
+        0
+      ]
+    ],
+    "checked": 142,
+    "events": [
+      "blue",
+      "valve-open",
+      "valve-close",
+      "red",
+      "cat-home",
+      "valve-open",
+      "rabbit-home"
+    ],
+    "without_cat": true,
+    "without_rabbit": true,
+    "source_trial": 47
+  },
+  {
+    "name": "STAGE 48",
+    "minimum": 8,
+    "solutions": [
+      [
+        1,
+        1,
+        2,
+        2,
+        1,
+        1,
+        1,
+        2,
+        1
+      ],
+      [
+        1,
+        1,
+        2,
+        0,
+        2,
+        2,
+        2,
+        2,
+        1
+      ]
+    ],
+    "checked": 61,
+    "events": [
+      "push",
+      "push",
+      "red",
+      "push",
+      "fill",
+      "cat-home",
+      "rabbit-home"
+    ],
+    "without_cat": false,
+    "without_rabbit": true,
+    "source_trial": 46
+  },
+  {
+    "name": "STAGE 49",
+    "minimum": 9,
+    "solutions": [
+      [
+        2,
+        1,
+        1,
+        1,
+        2,
+        1,
+        4,
+        2,
+        1,
+        6
+      ],
+      [
+        2,
+        1,
+        1,
+        1,
+        2,
+        1,
+        4,
+        2,
+        1,
+        5
+      ],
+      [
+        2,
+        1,
+        1,
+        1,
+        2,
+        1,
+        4,
+        2,
+        1,
+        4
+      ],
+      [
+        2,
+        1,
+        1,
+        1,
+        2,
+        1,
+        4,
+        2,
+        1,
+        3
+      ],
+      [
+        2,
+        1,
+        1,
+        1,
+        2,
+        1,
+        4,
+        2,
+        1,
+        2
+      ],
+      [
+        2,
+        1,
+        1,
+        1,
+        2,
+        1,
+        4,
+        2,
+        1,
+        0
+      ],
+      [
+        2,
+        1,
+        1,
+        1,
+        2,
+        1,
+        3,
+        2,
+        1,
+        6
+      ],
+      [
+        2,
+        1,
+        1,
+        1,
+        2,
+        1,
+        3,
+        2,
+        1,
+        5
+      ],
+      [
+        2,
+        1,
+        1,
+        1,
+        2,
+        1,
+        3,
+        2,
+        1,
+        4
+      ],
+      [
+        2,
+        1,
+        1,
+        1,
+        2,
+        1,
+        3,
+        2,
+        1,
+        3
+      ],
+      [
+        2,
+        1,
+        1,
+        1,
+        2,
+        1,
+        3,
+        2,
+        1,
+        2
+      ],
+      [
+        2,
+        1,
+        1,
+        1,
+        2,
+        1,
+        3,
+        2,
+        1,
+        0
+      ]
+    ],
+    "checked": 49029,
+    "events": [
+      "valve-open",
+      "wait-2",
+      "valve-close",
+      "red",
+      "cat-home",
+      "rabbit-home"
+    ],
+    "without_cat": true,
+    "without_rabbit": true,
+    "source_trial": 41
+  },
+  {
+    "name": "STAGE 50",
+    "minimum": 5,
+    "solutions": [
+      [
+        4,
+        2,
+        2,
+        6,
+        0,
+        2,
+        2
+      ],
+      [
+        3,
+        2,
+        2,
+        6,
+        3,
+        2,
+        2
+      ],
+      [
+        3,
+        2,
+        2,
+        6,
+        0,
+        2,
+        2
+      ],
+      [
+        0,
+        2,
+        2,
+        6,
+        4,
+        2,
+        2
+      ],
+      [
+        0,
+        2,
+        2,
+        6,
+        3,
+        2,
+        2
+      ],
+      [
+        0,
+        2,
+        2,
+        6,
+        0,
+        2,
+        2
+      ],
+      [
+        3,
+        2,
+        2,
+        5,
+        0,
+        2,
+        2
+      ],
+      [
+        0,
+        2,
+        2,
+        5,
+        3,
+        2,
+        2
+      ],
+      [
+        0,
+        2,
+        2,
+        5,
+        0,
+        2,
+        2
+      ],
+      [
+        0,
+        2,
+        2,
+        4,
+        0,
+        2,
+        2
+      ]
+    ],
+    "checked": 3508,
+    "events": [
+      "wait-4",
+      "crumble",
+      "arrow-right",
+      "switch",
+      "arrow-down",
+      "hop",
+      "blue",
+      "valve-open",
+      "valve-close",
+      "valve-open",
+      "cat-home",
+      "rabbit-home"
+    ],
+    "without_cat": true,
+    "without_rabbit": false,
+    "source_trial": 18
+  }
+]

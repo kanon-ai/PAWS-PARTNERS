@@ -1,0 +1,9 @@
+{
+  "machine": "C-BIOS_MSX2_EU",
+  "checks": 40897,
+  "expected": 40897,
+  "failures": [],
+  "rom_sha256": "7665adce6203af2d03cad95aa8e04c2aefd7b3b50c4f735b35eceec28c51fc05",
+  "hardware_tested": false,
+  "wrong_paths": true
+}

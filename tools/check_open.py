@@ -34,10 +34,10 @@ for i,lv in enumerate(levels):
   if j+1<len(lv['answer']):
    key(8,128);t+=1.2 if i>=20 else 0
  t+=.4;ev(f'openmsx::internal_screenshot -raw stage-{i+1}-placed.png')
- if i==21:
+ if i==22:
   key(7,2);check('wide-map-open','map_mode',1);t+=1;ev('openmsx::internal_screenshot -raw wide-map.png');key(7,2);t+=1.5;check('wide-map-close','map_mode',0)
  key(7,128);check(f'{i+1}-run','state',1)
- if i==21:
+ if i==22:
   key(8,64);t+=1.5;check('cursor-lower','camera_y',6);check('cursor-manual','camera_manual_mode',1)
   t+=1;check('cursor-stays-lower','camera_y',6);check('scroll-keeps-running','state',1)
   key(8,32);t+=1.5;check('cursor-upper','camera_y',0)

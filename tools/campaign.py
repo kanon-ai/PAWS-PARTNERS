@@ -124,6 +124,8 @@ def main():
         print(i+1,minimum,len(lv['sockets']),checked,flush=True)
     from sequence_campaign import insert
     levels=insert(levels,compile_routes)
+    from pressure_campaign import insert as insert_pressure
+    levels=insert_pressure(levels)
     (R/'assets/levels.json').write_text(json.dumps(levels,indent=2))
 
 if __name__=='__main__':main()

@@ -44,12 +44,14 @@ def make(kind,mirror=False):
  return dict(name=name,starts=starts,goals=[p[-1] for p in route],start=starts[0],goal=route[0][-1],sockets=sockets,answer=answer,facing=facing,mask=6,terrain=terrain,tracks=tracks,locks=0,par=len(answer),tier='TEAM',routes=route)
 
 def simulate(lv,parts,cat_power=True,rabbit_power=True,trace=False):
- terrain=lv['terrain'][:];gate=0;events=[];height=len(terrain)//8
+ width=lv.get('width',8);terrain=lv['terrain'][:];gate=0;events=[];height=len(terrain)//width
  # x,y,d,remaining,targetX,targetY,done,jump,blocked
  actors=[[x,y,d,0,x,y,0,0,0,0] for x,y,d in lv['starts']]
  sockets={tuple(p):a for p,a in zip(lv['sockets'],parts)};seen=set();frames=[]
  def occupant(x,y,other):return not other[6] and ([x,y]==other[:2] or (other[3] and [x,y]==other[4:6]))
  for tick in range(6000):
+  support_count=sum(t==19 for t in terrain)+sum(not a[6] and terrain[a[1]*width+a[0]] in (18,30) for a in actors)
+  pressure=support_count>0
   key=(tuple(terrain),gate,tuple(tuple(a) for a in actors))
   if key in seen:return False,events,frames,'waiting-or-loop'
   seen.add(key)
@@ -58,8 +60,8 @@ def simulate(lv,parts,cat_power=True,rabbit_power=True,trace=False):
    if a[9]:a[9]-=1;continue
    if a[3]==0:
     a[8]=1;x,y,d=a[:3];dx,dy=DIR[d];nx=x+dx;ny=y+dy
-    if not(0<=nx<8 and 0<=ny<height):continue
-    idx=ny*8+nx
+    if not(0<=nx<width and 0<=ny<height):continue
+    idx=ny*width+nx
     if not(lv['tracks'][idx]&(1<<((d+2)%4))):continue
     t=terrain[idx];other=actors[1-who]
     if occupant(nx,ny,other):continue
@@ -67,27 +69,40 @@ def simulate(lv,parts,cat_power=True,rabbit_power=True,trace=False):
     if t==2:
      if who!=1 or not rabbit_power:continue
      nx+=dx;ny+=dy;jump=1
-     if not(0<=nx<8 and 0<=ny<height):continue
-     idx=ny*8+nx;t=terrain[idx]
+     if not(0<=nx<width and 0<=ny<height):continue
+     idx=ny*width+nx;t=terrain[idx]
      if not(lv['tracks'][idx]&(1<<((d+2)%4))) or occupant(nx,ny,other):continue
-     if t in (1,2,5,6):continue
-    if t==1:
+     if t in (1,2,5,6,19):continue
+    if t in (1,19):
      if who!=0 or not cat_power or jump:continue
      bx=nx+dx;by=ny+dy
-     if not(0<=bx<8 and 0<=by<height):continue
-     bi=by*8+bx;bt=terrain[bi]
-     if not lv['tracks'][bi] or bt not in (0,2,6,9) or occupant(bx,by,other):continue
-     terrain[bi]=9 if bt in (2,6) else 1;terrain[idx]=0;events.append('fill' if bt in (2,6) else 'push')
+     if not(0<=bx<width and 0<=by<height):continue
+     bi=by*width+bx;bt=terrain[bi]
+     if not lv['tracks'][bi] or bt not in (0,2,6,9,18) or occupant(bx,by,other):continue
+     terrain[bi]=9 if bt in (2,6) else (19 if bt==18 else 1);terrain[idx]=18 if t==19 else 0;events.append('fill' if bt in (2,6) else 'push')
     if t in (5,6):continue
     if t==3 and not(gate&1):continue
-    if t==7 and not(gate&2):continue
+    if t in (7,28) and not(gate&2):continue
+    if t==20 and not pressure:continue
+    if t==41 and pressure:continue
+    if t==43 and support_count<2:continue
+    if t==33 and not(gate&8):continue
+    if t==34 and gate&8:continue
     a[3]=28 if jump else 14;a[4]=nx;a[5]=ny;a[7]=jump;a[8]=0
     if jump:events.append('hop')
    a[3]-=1
    if a[3]==0:
-    a[0:2]=a[4:6];a[7]=0;t=terrain[a[1]*8+a[0]]
+    old=a[1]*width+a[0]
+    if terrain[old]==35:terrain[old]=2;events.append('crumble')
+    a[0:2]=a[4:6];a[7]=0;t=terrain[a[1]*width+a[0]]
     if t==4:gate|=1;events.append('red')
-    if t==8:gate|=2;events.append('blue')
+    if t in (32,39):
+     gate^=8;events.append('valve-open' if gate&8 else 'valve-close')
+     if t==39:terrain[a[1]*width+a[0]]=40;events.append('spent')
+    if t in (8,31):gate|=2;events.append('blue')
+    if 23<=t<=26:a[2]=t-23
+    if t==28:a[2]=2
+    if t in (30,31):a[2]=1
     if t==14 and who==0:gate^=4;events.append('switch')
     if t==15:a[2]=2 if gate&4 else 1;events.append('arrow-down' if gate&4 else 'arrow-right')
     tool=sockets.get(tuple(a[:2]),0)

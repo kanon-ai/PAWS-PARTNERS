@@ -38,11 +38,20 @@ Read the manuals for WAIT, FLIP, large-map browsing, retries, and stage password
 
 ## Status / 公開状況
 
-**v0.1.0 — public prototype / 公開試作版**
+**v0.2.0 — redesigned 50-stage campaign / 全50面再設計版**
 
-The 50 stages include mirrored layouts and route variations, not 50 unrelated mechanisms. Larger maps and timing puzzles appear later. Stage data and source code contain solutions, but the player manuals do not list stage solutions or passwords.
+The campaign has been redesigned to replace mirrored and route-length filler with distinct cooperation puzzles. New pressure, inverse-pressure, two-PAD, phase-switching, one-shot and fragile-floor mechanisms combine with route and timing choices. Later stages include larger maps and a demanding final challenge tier.
 
-50面には反転・経路違いの派生を含みます。後半では広いマップやタイミングを考える仕掛けが登場します。ソース・面データには解法が含まれますが、プレイヤー向けマニュアルには解答や合言葉一覧を載せていません。
+反転・距離違いの水増し面を見直し、全50面を協力・経路・順番・タイミングを考える構成に再設計しました。PAD・!A・2A・SWAP・ONCE・WEAKなどを組み合わせ、終盤には超高難易度を目指した問題を用意しています。難易度は設計上の目安です。
+
+- Esc cancels a run while keeping placed chips. / Escで実行を中断し、配置を残して再挑戦できます。
+- Gates remain visibly open until an admitted friend passes through; 2A lamps show the occupied PAD count. / 通過中の扉表示と2Aランプを改善しました。
+- [日本語ヒントブック](docs/HINTBOOK.ja.md) / [English technique hints](docs/HINTBOOK.en.md) — techniques, not stage solutions.
+- [新しい仕掛けのダイジェスト / New mechanisms digest](media/PAWS-PARTNERS-New-Mechanisms-Digest.mp4) — 45 seconds, four fictional stages shown once each, continuous PSG music.
+
+Stage contents and order have changed. Old passwords may not correspond to the same puzzle; starting from stage 1 is recommended. Source data contains solutions.
+
+面内容と順序を変更しています。旧版の合言葉で同じ問題に戻れるとは限らないため、1面からのプレイをおすすめします。ソース・面データには解法が含まれます。
 
 There is no automatic save; write down stage-clear passwords. Joystick controls are not implemented. Continuously moving loops are not automatically detected: press Esc to retry.
 
@@ -58,9 +67,9 @@ There is no automatic save; write down stage-clear passwords. Joystick controls 
 
 [Build instructions and test evidence / ビルドと検証](docs/BUILD.md)
 
-The released ROM passed 821 checks on each of three openMSX machine profiles, plus password and audio-specific tests. These are emulator results, not a physical-hardware guarantee.
+The v0.2.0 ROM passed 40,897 full-campaign checks on each of two openMSX profiles (MSX2 and TurboR), plus PAD, cancellation, password and music tests. These are emulator checks; physical hardware is unverified.
 
-公開ROMはopenMSXの3機種設定で各821項目、および合言葉・音楽の専用検証を通過しています。すべての遊び方や実機互換性を保証するものではありません。
+最新版ROMはopenMSXのMSX2・TurboR設定で各40,897項目の全50面検証と、PAD・中断・合言葉・音楽の追加検証を通過しています。実機では未確認です。
 
 ## License and disclaimer / ライセンス・免責
 

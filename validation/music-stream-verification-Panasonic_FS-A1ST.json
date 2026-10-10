@@ -1,0 +1,10 @@
+{
+  "machine": "Panasonic_FS-A1ST",
+  "frames": 6523,
+  "restarts": [
+    4019
+  ],
+  "errors": [],
+  "source_hz": 60,
+  "rom_sha256": "7665adce6203af2d03cad95aa8e04c2aefd7b3b50c4f735b35eceec28c51fc05"
+}

@@ -82,12 +82,18 @@ def main():
  passwords.generate(sys.modules[__name__])
  report=verify();boards=bytearray();bt=[]
  for i,lv in enumerate(LEVELS):
-  for page in range(3):
-   bt.append((4+len(boards)//8192,0x6000+len(boards)%8192))
-   boards.extend(compressed(presentation.overview(sys.modules[__name__],i,lv) if page==2 else presentation.board(sys.modules[__name__],i,lv,page*6),False))
+  entries=[]
+  for page in range(5):
+   if page in (1,3) and lv.get('width',8)==8:
+    entry=entries[page-1]
+   else:
+    entry=(4+len(boards)//8192,0x6000+len(boards)%8192)
+    bitmap=presentation.overview(sys.modules[__name__],i,lv) if page==4 else presentation.board(sys.modules[__name__],i,lv,(page//2)*6,(page%2)*8)
+    boards.extend(compressed(bitmap,False))
+   entries.append(entry);bt.append(entry)
  boards=bytes(boards).ljust((len(boards)+8191)//8192*8192,b'\0')
  base=4+len(boards)//8192
- layout=dict(LEVEL_COUNT=len(LEVELS),STATUS_BANK=base,TILE_BANK=base+8,POPUP_BANK=base+12,TERRAIN_BANK=base+13,HELP_BANK=base+15,FLOOR_BANK=base+17,PASSWORD_BANK=base+18,MUSIC_BANK=base+20)
+ layout=dict(LEVEL_COUNT=len(LEVELS),STATUS_BANK=base,TILE_BANK=base+8,POPUP_BANK=base+12,TERRAIN_BANK=base+13,HELP_BANK=base+16,FLOOR_BANK=base+18,PASSWORD_BANK=base+19,MUSIC_BANK=base+21,SPECIAL_TILE_BANK=base+22,SPECIAL_BADGE_BANK=base+26)
  (R/'assets/layout.inc').write_text(''.join(f'{k} equ {v}\n' for k,v in layout.items()))
  (R/'assets/board_table.inc').write_text('board_table:\n'+''.join(f' db {bank}\n dw {addr}\n' for bank,addr in bt))
  (R/'assets/boards.bin').write_bytes(boards)
@@ -95,17 +101,23 @@ def main():
  (R/'assets/help.bin').write_bytes(presentation.guide(sys.modules[__name__]))
  from port_assets import generate
  generate(sys.modules[__name__])
- inc='level_table:\n dw '+','.join('level_'+str(i) for i in range(len(LEVELS)))+'\n'
+ inc='level_table:\n';level_data=bytearray()
  for i,lv in enumerate(LEVELS):
-  data=lv['start']+lv['goal']+[len(lv['sockets']),lv['mask']]+lv['answer']+[0]*(12-len(lv['answer']))+sum(lv['sockets'],[])+[0]*(24-len(lv['sockets'])*2)+lv['terrain']+[0]*(96-len(lv['terrain']))+[0]+lv['tracks']+[0]*(96-len(lv['tracks']))+lv['facing']+[0]*(12-len(lv['facing']))+lv['starts'][1]+lv['goals'][1]
-  assert len(data)==253
-  inc+=f'level_{i}:\n db '+','.join(map(str,data))+'\n'
+  data=lv['start']+lv['goal']+[len(lv['sockets']),lv['mask']]+lv['answer']+[0]*(12-len(lv['answer']))+sum(lv['sockets'],[])+[0]*(24-len(lv['sockets'])*2)+lv['terrain']+[0]*(192-len(lv['terrain']))+[lv.get('height',len(lv['terrain'])//8)]+lv['tracks']+[0]*(192-len(lv['tracks']))+lv['facing']+[0]*(12-len(lv['facing']))+lv['starts'][1]+lv['goals'][1]+[lv.get('width',8)]
+  assert len(data)==446
+  bank=base+27+len(level_data)//8192
+  address=0x6000+len(level_data)%8192
+  inc+=f' db {bank}\n dw {address}\n'
+  level_data.extend(bytes(data).ljust(512,b'\0'))
+ (R/'assets/level-data.bin').write_bytes(bytes(level_data).ljust((len(level_data)+8191)//8192*8192,b'\0'))
  (R/'assets/levels.inc').write_text(inc)
  asm=os.environ.get('PASMO') or shutil.which('pasmo') or 'C:/Software/Pasmo/pasmo.exe'
  for n in ['boot','game']:subprocess.run([asm,'--bin',str(R/f'src/{n}.asm'),str(R/f'work/{n}.bin'),str(R/f'work/{n}.symbols')],cwd=R,check=True)
  code=(R/'work/game.bin').read_bytes();assert len(code)<=24576
  rom=(R/'work/boot.bin').read_bytes()+code.ljust(24576,b'\xff')+boards+stats+b''.join((R/'assets'/n).read_bytes() for n in ['tiles.bin','popup.bin','terrain.bin','help.bin','floors.bin','password-screen.bin'])
  rom+=(R/'assets/music/psg-stream.bin').read_bytes().ljust(8192,b'\xff')
+ rom+=(R/'assets/special-tiles.bin').read_bytes()+(R/'assets/socket-badges.bin').read_bytes()
+ rom+=(R/'assets/level-data.bin').read_bytes()
  used=len(rom);size=524288 if used<=524288 else 1048576
  assert used<=size
  rom=rom.ljust(size,b'\xff');(R/'outputs/PAWS-PARTNERS-MSX2.rom').write_bytes(rom)

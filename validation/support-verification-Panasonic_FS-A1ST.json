@@ -1,0 +1,8 @@
+{
+  "machine": "Panasonic_FS-A1ST",
+  "checks": 56,
+  "expected": 56,
+  "failures": [],
+  "rom_sha256": "7665adce6203af2d03cad95aa8e04c2aefd7b3b50c4f735b35eceec28c51fc05",
+  "scope": "RAM-injected boundary fixtures; not player-input validation"
+}
