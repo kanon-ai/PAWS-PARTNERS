@@ -93,7 +93,7 @@ def main():
    entries.append(entry);bt.append(entry)
  boards=bytes(boards).ljust((len(boards)+8191)//8192*8192,b'\0')
  base=4+len(boards)//8192
- layout=dict(RESULT_BANK=base+27+(len(LEVELS)*512+8191)//8192,LEVEL_COUNT=len(LEVELS),STATUS_BANK=base,TILE_BANK=base+8,POPUP_BANK=base+12,TERRAIN_BANK=base+13,HELP_BANK=base+16,FLOOR_BANK=base+18,PASSWORD_BANK=base+19,MUSIC_BANK=base+21,SPECIAL_TILE_BANK=base+22,SPECIAL_BADGE_BANK=base+26)
+ layout=dict(MAP_TILE_BANK=base+28+(len(LEVELS)*512+8191)//8192,RESULT_BANK=base+27+(len(LEVELS)*512+8191)//8192,LEVEL_COUNT=len(LEVELS),STATUS_BANK=base,TILE_BANK=base+8,POPUP_BANK=base+12,TERRAIN_BANK=base+13,HELP_BANK=base+16,FLOOR_BANK=base+18,PASSWORD_BANK=base+19,MUSIC_BANK=base+21,SPECIAL_TILE_BANK=base+22,SPECIAL_BADGE_BANK=base+26)
  (R/'assets/layout.inc').write_text(''.join(f'{k} equ {v}\n' for k,v in layout.items()))
  (R/'assets/board_table.inc').write_text('board_table:\n'+''.join(f' db {bank}\n dw {addr}\n' for bank,addr in bt))
  (R/'assets/boards.bin').write_bytes(boards)
@@ -117,7 +117,7 @@ def main():
  rom=(R/'work/boot.bin').read_bytes()+code.ljust(24576,b'\xff')+boards+stats+b''.join((R/'assets'/n).read_bytes() for n in ['tiles.bin','popup.bin','terrain.bin','help.bin','floors.bin','password-screen.bin'])
  rom+=(R/'assets/music/music-bank.bin').read_bytes()
  rom+=(R/'assets/special-tiles.bin').read_bytes()+(R/'assets/socket-badges.bin').read_bytes()
- rom+=(R/'assets/level-data.bin').read_bytes()+(R/'assets/results.bin').read_bytes()
+ rom+=(R/'assets/level-data.bin').read_bytes()+(R/'assets/results.bin').read_bytes()+(R/'assets/map-tiles.bin').read_bytes()
  used=len(rom);size=524288 if used<=524288 else 1048576
  assert used<=size
  rom=rom.ljust(size,b'\xff');(R/'outputs/PAWS-PARTNERS-MSX2.rom').write_bytes(rom)

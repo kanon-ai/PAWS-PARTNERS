@@ -206,6 +206,21 @@ def generate(m):
      for x,y,sx,sy in [(0,0,1,1),(27,0,-1,1),(0,27,1,-1),(27,27,-1,-1)]:d.line((x+sx*6,y,x,y,x,y+sy*6),fill=15,width=2)
     tiles.extend(pack(im).ljust(512,b'\0'))
  (R/'assets/tiles.bin').write_bytes(tiles)
+ mini=bytearray()
+ for facing in range(4):
+  for selected in range(2):
+   for part in range(8):
+    im=image((28,28));d=ImageDraw.Draw(im);d.rectangle((0,0,27,27),fill=1);rail(d,0,0,15)
+    if part in range(1,7):
+     icon=tool_icon(image,part,facing,compact=True);im.paste(icon,(2,0),icon.point([0]+[255]*255,mode='L'))
+    im=im.resize((14,14),Image.Resampling.NEAREST)
+    if selected:ImageDraw.Draw(im).rectangle((0,0,13,9),outline=15)
+    mini.extend(pack(im).ljust(128,b'\0'))
+ for code in range(64):
+  badge=mechanism_badge(image,code).resize((14,4),Image.Resampling.NEAREST)
+  mini.extend(pack(badge).ljust(32,b'\0'))
+ (R/'assets/map-tiles.bin').write_bytes(mini.ljust(16384,b'\0'))
+
  # Compact chips reserve their lower eight pixels for the underlying floor.
  special=bytearray()
  for facing in range(4):

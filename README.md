@@ -38,7 +38,11 @@ Read the manuals for WAIT, FLIP, large-map browsing, retries, and stage password
 
 ## Status / 公開状況
 
-**v0.2.4 — Password in HELP / HELPでパスワード確認**
+**v0.2.5 — Edit in the overview / 全体マップで配置**
+
+配置中にF5を押すと、全体マップでチップを設定できます。左右で場所を選択、Spaceで変更、Enterで実行。F5またはEscで通常画面に戻ります。選択中のチップ名は下部に表示されます。ステージ内容と合言葉は変更していません。
+
+During planning, press F5 to edit chips in the overview. Left/Right selects a spot, Space changes its chip, Enter starts the run, and F5/Esc returns to the normal view. The selected chip name appears below. Stages and passwords are unchanged.
 
 F1のHELP最下段で現在の面番号とパスワードを確認できます。F1またはEscで元の状態に戻ります。
 

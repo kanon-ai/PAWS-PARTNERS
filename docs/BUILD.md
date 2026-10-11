@@ -1,4 +1,4 @@
-# Build and verification — v0.2.4
+# Build and verification — v0.2.5
 
 Python 3, Pillow, Pasmo and Windows fonts are required. Fonts and BIOS files are not bundled.
 
@@ -12,11 +12,11 @@ This rebuilds the checked-in 50 stages without regenerating or reordering them. 
 
 The renderer uses Windows fonts under `C:/Windows/Fonts`. Different font versions can change the ROM. Do not rebuild a ROM while an emulator has it open. Authoring scripts are not needed for a release rebuild. Stage data and validation evidence contain solutions.
 
-## Current ROM — v0.2.4
+## Current ROM — v0.2.5
 
-SHA-256: `b9da54b8cb686c908da910ba3bdaa72a5fbbe1211be757634dc3983b1b2488e5`.
+SHA-256: `f32fc54e0c38c1a06ad461804ab790bc496370a79497595912690cb9ceee2317`.
 
-Current ROM: 755 keyboard-driven checks per openMSX profile (C-BIOS_MSX2_EU and Panasonic_FS-A1ST), including all 50 stage numbers and passwords compared byte-for-byte with expected HELP pixels, F1/Esc closing, password entry and placement after returning. Overlay controls: 16 checks per profile, including frozen actor/terrain state while HELP is open. Clear jingle: exact 100-frame PSG comparison and 12 transition checks on MSX2. Earlier reports retain their original hashes. Source rebuild matches the distributed ROM. F5 remains a static starting-layout overview that pauses play. Physical hardware is unverified.
+Current ROM: 1,255 keyboard-driven checks per openMSX profile (C-BIOS_MSX2_EU and Panasonic_FS-A1ST), covering overview edits across all 50 stages, byte-exact selected-tile rendering, placement preservation, clearing and view switching. Stage 26 was configured in the overview and cleared via Enter in both profiles (5 checks each). Overlay pause/return checks: 16 per profile. Stage data, passwords and puzzle rules are unchanged. Historical reports retain their tested ROM hashes. F5 during execution remains a paused starting-layout overview, without editing. Physical hardware is unverified.
 
 1 MiB ASCII8. MSX2 or later, 64 KiB RAM / 64 KiB VRAM; TurboR uses Z80 mode. Physical hardware is unverified.
 

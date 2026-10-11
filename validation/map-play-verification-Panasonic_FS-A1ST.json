@@ -1,0 +1,9 @@
+{
+  "machine": "Panasonic_FS-A1ST",
+  "stage": 26,
+  "checks": 5,
+  "expected": 5,
+  "failures": [],
+  "rom_sha256": "f32fc54e0c38c1a06ad461804ab790bc496370a79497595912690cb9ceee2317",
+  "hardware_tested": false
+}

@@ -218,7 +218,7 @@ keyboard:
     jp nz,toggle_map
     ld a,(map_mode)
     or a
-    ret nz
+    jp nz,map_keys
     ld a,(keys7)
     bit 0,a
     jp nz,camera_follow_toggle
@@ -295,7 +295,9 @@ select_next:
     xor a
 select_store:
     ld (selected),a
-    call camera_selection
+    ld a,(map_mode)
+    or a
+    call z,camera_selection
     ld a,1
     ld (dirty),a
     xor a
@@ -1155,6 +1157,11 @@ times28:
     ret
 
 status_line:
+    ld b,a
+    ld a,(map_mode)
+    or a
+    ld a,b
+    ret nz
     or a
     jr nz,status_chosen
     call part_pointer

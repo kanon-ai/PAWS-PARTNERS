@@ -117,6 +117,6 @@ def overview(m,i,lv):
   im.paste(icon,(left+x*14,22+y*14),icon.point([0]+[255]*255,mode='L'))
  for x,y in lv['sockets']:
   d.rectangle((left+x*14,22+y*14,left+x*14+13,35+y*14),outline=14)
- d.text((10,193),'START MAP / F5 TO RETURN',font=m.FONT,fill=0)
+ d.text((10,193),'PLAN: LEFT RIGHT / SPACE TURN',font=m.FONT,fill=0)
  im.crop((0,0,256,212)).save(m.R/f'outputs/map-{i+1}.png')
  return m.pack(im)

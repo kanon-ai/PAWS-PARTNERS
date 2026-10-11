@@ -177,3 +177,7 @@ When both friends arrive home, CLEAR! appears in the center and the clear jingle
 ## Taking a break
 
 Press F1 to open HELP. The bottom row shows the current stage number and password. Write it down to restart that stage later. Play stops while HELP is open; F1 or Esc returns to your current setup and progress. The password does not save chip placements or progress within a stage.
+
+## Place chips in the overview
+
+During planning, press F5 to edit while viewing the whole map. Left/Right selects a placement spot; Space cycles its chip. The selected chip name appears below. Up supplies a hint for the selected spot; Down clears all chips. Enter returns to the normal view and starts the run. F5 or Esc returns without losing placements. Both views share the same placements. During execution, F5 remains a paused starting-layout overview and cannot be edited.
