@@ -1,4 +1,4 @@
-# PAWS PARTNERS Expert Version 1.0.0
+# PAWS PARTNERS Expert Version 1.0.1
 
 **新作50面の高難易度版 / 50 new expert puzzles**
 
@@ -32,6 +32,16 @@ MSX2 or later, 64 KiB RAM and 64 KiB VRAM, keyboard, and support for 1 MiB ASCII
 - F5で全体表示・通常表示を切替。全体表示でも配置・実行できます / F5 toggles overview, including editing and live simulation.
 - 実行中Enterで停止・再開、Escで配置へ戻る / Enter pauses/resumes; Esc cancels back to planning.
 - F1でヘルプと現在のパスワード、F2でパスワード入力 / F1 shows help and the current password; F2 opens password entry.
+
+## Version 1.0.1 / 更新内容
+
+F5の縮小画面でチップを設定してEnterを押すと、縮小画面のまま実行を開始します。通常画面から開始した場合も、その表示を維持します。ステージとパスワードの変更はありません。
+
+Pressing Enter after editing in the F5 overview now starts the simulation in that same view. Starting from the normal view also preserves that view. Stages and passwords are unchanged.
+
+今回の修正はopenMSXのMSX2・TurboR両設定で、各24項目と144タイルの描画を確認しました。配置保持、両表示からの開始、一時停止・再開、取消、クリアを含みます。
+
+This change passed 24 checks and 144 tile comparisons on each of the MSX2 and TurboR profiles in openMSX, covering retained placements, starting in either view, pause/resume, cancellation and clearing a stage.
 
 ## Verification / 検証
 

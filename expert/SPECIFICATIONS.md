@@ -2,7 +2,7 @@
 
 | 項目 / Item | 内容 / Details |
 |---|---|
-| Edition | Expert Version 1.0.0 |
+| Edition | Expert Version 1.0.1 |
 | Stages | 新作50面 / 50 new stages |
 | Target | MSX2, 64 KiB RAM, 64 KiB VRAM; TurboR Z80 mode |
 | ROM | 1,048,576 bytes; ASCII8 mapper |
