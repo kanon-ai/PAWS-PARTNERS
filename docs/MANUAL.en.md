@@ -173,3 +173,7 @@ See [LICENSE](../LICENSE), [DISCLAIMER](../DISCLAIMER.md), and [CREDITS](../CRED
 ## Results and music
 
 When both friends arrive home, CLEAR! appears in the center and the clear jingle plays once. Enter advances; Esc retries. NO WAY offers Enter to retry with placed chips preserved, or Esc to return to the title. F5 shows a static starting-layout map and pauses progression while open.
+
+## Taking a break
+
+Press F1 to open HELP. The bottom row shows the current stage number and password. Write it down to restart that stage later. Play stops while HELP is open; F1 or Esc returns to your current setup and progress. The password does not save chip placements or progress within a stage.

@@ -1605,6 +1605,7 @@ toggle_help:
     ld a,HELP_BANK
     ld (bank_number),a
     call upload_compressed
+    call password_show_help
     ld a,043h
     ld e,1
     jp reg_write

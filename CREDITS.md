@@ -24,4 +24,4 @@ Python, Pillow, Pasmo, openMSX, FFmpeg, and Windows fonts are used by the develo
 
 No original Suno audio, BIOS image, emulator executable, or third-party game asset is included in this repository.
 
-- Clear phrase: **Fairy Crystal - Clear Jingle**, supplied by kanon-ai. Its separate [MIT notice](assets/music/clear-jingle/LICENSE) is retained alongside the source data.
+- Clear phrase: **Moonlit Gem - Clear Jingle B**, supplied by kanon-ai. Its separate [MIT notice](assets/music/clear-jingle/LICENSE) is retained alongside the source data.

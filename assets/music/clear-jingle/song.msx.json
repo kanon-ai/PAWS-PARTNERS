@@ -1,7 +1,7 @@
 {
   "format": "msx-music-studio",
   "version": 1,
-  "title": "Fairy Crystal - Clear Jingle",
+  "title": "Moonlit Gem - Clear Jingle B",
   "bpm": 144,
   "ppq": 96,
   "bars": 1,
@@ -21,7 +21,7 @@
   "tracks": [
     {
       "id": "psg1",
-      "name": "PSG Crystal melody",
+      "name": "PSG Moonlit melody",
       "chip": "PSG",
       "channel": 0,
       "instrument": 0,
@@ -62,66 +62,59 @@
       "mute": false,
       "notes": [
         {
-          "id": "j0",
+          "id": "alt0",
           "start": 0,
-          "duration": 40,
-          "pitch": 76,
-          "velocity": 11
+          "duration": 30,
+          "pitch": 81,
+          "velocity": 10
         },
         {
-          "id": "j1",
+          "id": "alt1",
           "start": 48,
-          "duration": 40,
-          "pitch": 79,
+          "duration": 54,
+          "pitch": 78,
           "velocity": 11
         },
         {
-          "id": "j2",
-          "start": 96,
-          "duration": 40,
-          "pitch": 83,
-          "velocity": 10
-        },
-        {
-          "id": "j3",
-          "start": 144,
-          "duration": 40,
-          "pitch": 86,
-          "velocity": 10
-        },
-        {
-          "id": "j4",
-          "start": 192,
-          "duration": 96,
-          "pitch": 84,
-          "velocity": 11
-        },
-        {
-          "id": "release0",
-          "start": 288,
+          "id": "alt2",
+          "start": 120,
           "duration": 24,
-          "pitch": 84,
+          "pitch": 88,
+          "velocity": 9
+        },
+        {
+          "id": "alt3",
+          "start": 168,
+          "duration": 114,
+          "pitch": 86,
+          "velocity": 11
+        },
+        {
+          "id": "fade0",
+          "start": 282,
+          "duration": 24,
+          "pitch": 86,
           "velocity": 8
         },
         {
-          "id": "release1",
-          "start": 312,
+          "id": "fade1",
+          "start": 306,
           "duration": 24,
-          "pitch": 84,
+          "pitch": 86,
           "velocity": 6
         },
         {
-          "id": "release2",
-          "start": 336,
+          "id": "fade2",
+          "start": 330,
           "duration": 24,
-          "pitch": 84,
+          "pitch": 86,
           "velocity": 4
         }
       ]
     },
     {
       "id": "psg2",
-      "name": "PSG Fairy harmony",
+      "name": "PSG Glass answer",
       "chip": "PSG",
       "channel": 1,
       "instrument": 0,
@@ -162,52 +155,59 @@
       "mute": false,
       "notes": [
         {
-          "id": "j0",
-          "start": 0,
-          "duration": 82,
-          "pitch": 60,
-          "velocity": 8
+          "id": "alt0",
+          "start": 24,
+          "duration": 24,
+          "pitch": 74,
+          "velocity": 7
         },
         {
-          "id": "j1",
-          "start": 96,
-          "duration": 82,
-          "pitch": 67,
-          "velocity": 8
-        },
-        {
-          "id": "j2",
-          "start": 192,
-          "duration": 96,
-          "pitch": 76,
-          "velocity": 8
-        },
-        {
-          "id": "release0",
-          "start": 288,
+          "id": "alt1",
+          "start": 84,
           "duration": 24,
           "pitch": 76,
+          "velocity": 7
+        },
+        {
+          "id": "alt2",
+          "start": 144,
+          "duration": 24,
+          "pitch": 81,
+          "velocity": 7
+        },
+        {
+          "id": "alt3",
+          "start": 168,
+          "duration": 114,
+          "pitch": 78,
+          "velocity": 8
+        },
+        {
+          "id": "fade0",
+          "start": 282,
+          "duration": 24,
+          "pitch": 78,
           "velocity": 5
         },
         {
-          "id": "release1",
-          "start": 312,
+          "id": "fade1",
+          "start": 306,
           "duration": 24,
-          "pitch": 76,
+          "pitch": 78,
           "velocity": 3
         },
         {
-          "id": "release2",
-          "start": 336,
+          "id": "fade2",
+          "start": 330,
           "duration": 24,
-          "pitch": 76,
+          "pitch": 78,
           "velocity": 1
         }
       ]
     },
     {
       "id": "psg3",
-      "name": "PSG Warm foundation",
+      "name": "PSG Soft foundation",
       "chip": "PSG",
       "channel": 2,
       "instrument": 0,
@@ -248,45 +248,45 @@
       "mute": false,
       "notes": [
         {
-          "id": "j0",
+          "id": "alt0",
           "start": 0,
-          "duration": 82,
-          "pitch": 48,
-          "velocity": 8
+          "duration": 66,
+          "pitch": 50,
+          "velocity": 7
         },
         {
-          "id": "j1",
+          "id": "alt1",
           "start": 96,
-          "duration": 82,
-          "pitch": 55,
+          "duration": 42,
+          "pitch": 57,
+          "velocity": 6
+        },
+        {
+          "id": "alt2",
+          "start": 168,
+          "duration": 114,
+          "pitch": 62,
           "velocity": 7
         },
         {
-          "id": "j2",
-          "start": 192,
-          "duration": 96,
-          "pitch": 67,
-          "velocity": 7
-        },
-        {
-          "id": "release0",
-          "start": 288,
+          "id": "fade0",
+          "start": 282,
           "duration": 24,
-          "pitch": 67,
+          "pitch": 62,
           "velocity": 4
         },
         {
-          "id": "release1",
-          "start": 312,
+          "id": "fade1",
+          "start": 306,
           "duration": 24,
-          "pitch": 67,
+          "pitch": 62,
           "velocity": 2
         },
         {
-          "id": "release2",
-          "start": 336,
+          "id": "fade2",
+          "start": 330,
           "duration": 24,
-          "pitch": 67,
+          "pitch": 62,
           "velocity": 1
         }
       ]

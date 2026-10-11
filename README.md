@@ -38,7 +38,13 @@ Read the manuals for WAIT, FLIP, large-map browsing, retries, and stage password
 
 ## Status / 公開状況
 
-**v0.2.3 — Clear celebration and readability / クリア演出・読みやすさ改善**
+**v0.2.4 — Password in HELP / HELPでパスワード確認**
+
+F1のHELP最下段で現在の面番号とパスワードを確認できます。F1またはEscで元の状態に戻ります。
+
+Press F1 to see the current stage and password at the bottom of HELP; F1 or Esc returns to play.
+
+![Password in HELP](docs/images/help-password.png)
 
 文字とTURN矢印を見やすくし、クリア時に二匹が喜ぶ動きと短いPSGフレーズを追加しました。CLEAR / NO WAYを中央の小窓に表示します。v0.2.2からステージ内容・順序・合言葉は変更していません。
 
@@ -55,7 +61,7 @@ Stages with similar layouts have been revisited to give each puzzle a more disti
 - Hide selection frames during execution and skip unchanged terrain redraws to reduce flicker. / 実行中の白枠を非表示にし、変化しない仕掛けの再描画を抑制。
 - Gates remain visibly open until an admitted friend passes through; 2A lamps show the occupied PAD count. / 通過中の扉表示と2Aランプを改善しました。
 - [日本語ヒントブック](docs/HINTBOOK.ja.md) / [English technique hints](docs/HINTBOOK.en.md) — techniques, not stage solutions.
-- [新しい仕掛けのダイジェスト / New mechanisms digest](media/PAWS-PARTNERS-New-Mechanisms-Digest.mp4) — 45 seconds, four fictional stages shown once each, continuous PSG music.
+- [新しい仕掛けのダイジェスト / New mechanisms digest](media/PAWS-PARTNERS-New-Mechanisms-Digest.mp4) — 45 seconds, four fictional stages shown once each, actual gameplay audio including the clear jingle.
 
 Stage contents and order have changed. Old passwords may not correspond to the same puzzle; starting from stage 1 is recommended. Source data contains solutions.
 
@@ -69,9 +75,9 @@ There is no automatic save; write down stage-clear passwords. Joystick controls 
 
 **Pixel Party** — music supplied by kanon-ai, produced through a Suno (Premium) → PSG → AI music editor workflow. Two melodic PSG channels and percussion, with short sound-effect borrowing on channel C.
 
-ゲーム中はループし、タイトル／合言葉・行き詰まり画面では停止します。クリア時は **Fairy Crystal - Clear Jingle**（kanon-ai提供）を一度だけ再生し、次の面でBGMを再開します。
+ゲーム中はループし、タイトル／合言葉・行き詰まり画面では停止します。クリア時は **Moonlit Gem - Clear Jingle B**（kanon-ai提供）を一度だけ再生し、次の面でBGMを再開します。
 
-At stage clear, **Fairy Crystal - Clear Jingle**, supplied by kanon-ai, plays once. BGM resumes on the next stage.
+At stage clear, **Moonlit Gem - Clear Jingle B**, supplied by kanon-ai, plays once. BGM resumes on the next stage.
 
 ## Development / 開発
 

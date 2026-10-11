@@ -1,4 +1,4 @@
-# Build and verification — v0.2.3
+# Build and verification — v0.2.4
 
 Python 3, Pillow, Pasmo and Windows fonts are required. Fonts and BIOS files are not bundled.
 
@@ -12,11 +12,11 @@ This rebuilds the checked-in 50 stages without regenerating or reordering them. 
 
 The renderer uses Windows fonts under `C:/Windows/Fonts`. Different font versions can change the ROM. Do not rebuild a ROM while an emulator has it open. Authoring scripts are not needed for a release rebuild. Stage data and validation evidence contain solutions.
 
-## Current ROM — v0.2.3
+## Current ROM — v0.2.4
 
-SHA-256: `7ad89f68c7008877a2740d94dcf5fa4797522633cbbf121920b912947e099791`.
+SHA-256: `b9da54b8cb686c908da910ba3bdaa72a5fbbe1211be757634dc3983b1b2488e5`.
 
-Current ROM: 12 clear-jingle checks and exact 100-frame PSG register comparisons per openMSX profile (C-BIOS_MSX2_EU and Panasonic_FS-A1ST), including one-shot completion, silence, next-stage BGM restart and byte-exact VRAM restoration after closing CLEAR. Final-stage celebration/replay: 6 checks per profile. MSX2: 22 cancellation, 16 overlay and 16 music checks, including NO WAY window restoration, BGM looping, title/stuck silence and retry. All passed. Earlier validation reports retain their original tested hashes. No stage or rule changes in this release. Small text uses a project-defined bitmap font; larger titles still use Windows fonts. F5 remains a static starting-layout map that pauses progression.
+Current ROM: 755 keyboard-driven checks per openMSX profile (C-BIOS_MSX2_EU and Panasonic_FS-A1ST), including all 50 stage numbers and passwords compared byte-for-byte with expected HELP pixels, F1/Esc closing, password entry and placement after returning. Overlay controls: 16 checks per profile, including frozen actor/terrain state while HELP is open. Clear jingle: exact 100-frame PSG comparison and 12 transition checks on MSX2. Earlier reports retain their original hashes. Source rebuild matches the distributed ROM. F5 remains a static starting-layout overview that pauses play. Physical hardware is unverified.
 
 1 MiB ASCII8. MSX2 or later, 64 KiB RAM / 64 KiB VRAM; TurboR uses Z80 mode. Physical hardware is unverified.
 

@@ -167,6 +167,35 @@ password_cursor_first:
     ld d,044h
     ld hl,password_mark
     jp password_text
+password_show_help:
+    ld a,(stage)
+    inc a
+    ld b,48
+password_help_tens:
+    cp 10
+    jr c,password_help_digits
+    sub 10
+    inc b
+    jr password_help_tens
+password_help_digits:
+    add a,48
+    ld (password_help_label+7),a
+    ld a,b
+    ld (password_help_label+6),a
+    ld hl,password_help_label
+    ld de,06584h
+    call password_text
+    ld a,(stage)
+    ld l,a
+    ld h,0
+    add hl,hl
+    add hl,hl
+    add hl,hl
+    ld de,password_table
+    add hl,de
+    ld de,065D4h
+    jp password_words
+password_help_label: db "STAGE 00 PASSWORD",0
 password_show_clear:
     ld hl,password_label
     ld de,05F04h
