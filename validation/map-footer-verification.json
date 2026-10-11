@@ -1,0 +1,55 @@
+{
+  "labels_checked": 11,
+  "captures": [
+    {
+      "machine": "C-BIOS_MSX2_EU",
+      "state": "planning",
+      "pixels_checked": 2048,
+      "guard_row_intact": true
+    },
+    {
+      "machine": "C-BIOS_MSX2_EU",
+      "state": "paused",
+      "pixels_checked": 2048,
+      "guard_row_intact": true
+    },
+    {
+      "machine": "C-BIOS_MSX2_EU",
+      "state": "running",
+      "pixels_checked": 2048,
+      "guard_row_intact": true
+    },
+    {
+      "machine": "C-BIOS_MSX2_EU",
+      "state": "clear",
+      "pixels_checked": 2048,
+      "guard_row_intact": true
+    },
+    {
+      "machine": "Panasonic_FS-A1ST",
+      "state": "planning",
+      "pixels_checked": 2048,
+      "guard_row_intact": true
+    },
+    {
+      "machine": "Panasonic_FS-A1ST",
+      "state": "paused",
+      "pixels_checked": 2048,
+      "guard_row_intact": true
+    },
+    {
+      "machine": "Panasonic_FS-A1ST",
+      "state": "running",
+      "pixels_checked": 2048,
+      "guard_row_intact": true
+    },
+    {
+      "machine": "Panasonic_FS-A1ST",
+      "state": "clear",
+      "pixels_checked": 2048,
+      "guard_row_intact": true
+    }
+  ],
+  "rom_sha256": "0f696fc9fee952cf632fec5cebc0e23eaa3b5808e7565478dbf6b3409eccea85",
+  "hardware_tested": false
+}

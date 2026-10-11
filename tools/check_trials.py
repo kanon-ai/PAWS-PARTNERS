@@ -4,8 +4,9 @@ import json,re,os,subprocess,hashlib,argparse
 from puzzles import simulate
 parser=argparse.ArgumentParser();parser.add_argument('--machine',default='C-BIOS_MSX2_EU')
 parser.add_argument('--record',action='store_true')
+parser.add_argument('--overview',action='store_true')
 parser.add_argument('--wrong-paths',action='store_true');args=parser.parse_args()
-R=Path(__file__).resolve().parents[1];W=R/'work'/(('wrong-trials-' if args.wrong_paths else 'trials-')+args.machine);W.mkdir(exist_ok=True)
+R=Path(__file__).resolve().parents[1];W=R/'work'/(('live-map-trials-' if args.overview else 'wrong-trials-' if args.wrong_paths else 'trials-')+args.machine);W.mkdir(exist_ok=True)
 levels=json.loads((R/'assets/levels.json').read_text());sym=dict((n,int(v,16)) for n,v in re.findall(r'(?m)^(\w+)\s+EQU\s+0([0-9A-F]+)H',(R/'work/game.symbols').read_text()))
 s=['set save_settings_on_exit false','set throttle false','set renderer SDLGL-PP','set minframeskip 0','set maxframeskip 0','set f [open results.txt w]'];t=8.;expected=0
 def ev(c):s.append(f'after time {t:.3f} {{{c}}}')
@@ -19,6 +20,15 @@ def check(label,address,value):
  expected+=1
  if isinstance(address,str):address=sym[address]
  ev(f'puts $::f "{label} [debug read memory {address}] {value}";flush $::f')
+if args.overview:
+ s.append('set trace [open live-frames.txt w];set previous_cache ""')
+ capture=(f'if {{[debug read memory {sym["map_mode"]}] && [debug read memory {sym["state"]}] == 1}} {{'
+          f'puts $::trace "F [debug read memory {sym["stage"]}] [binary encode hex [debug read_block memory {sym["cat_actor"]} 32]] [binary encode hex [debug read_block memory {sym["satbuf"]} 32]]";'
+          f'set cache [debug read_block memory {sym["terrain_visual_cache"]} 384];'
+          'if {$cache ne $::previous_cache} {'
+          f'puts $::trace "V [debug read memory {sym["stage"]}] [binary encode hex $cache] [binary encode hex [debug read_block VRAM 0 24320]]";'
+          'set ::previous_cache $cache}}')
+ s.append(f'debug set_bp {sym["render_sat"]} {{}} {{{capture}}}')
 key(7,128);wait(2)
 for i,lv in enumerate(levels):
  initial_pressure=int(19 in lv['terrain'] or any(lv['terrain'][y*lv.get('width',8)+x] in (18,30) for x,y,d in lv['starts']))
@@ -43,6 +53,8 @@ for i,lv in enumerate(levels):
   ev('set throttle true');wait(.25)
   ev(f'openmsx::internal_screenshot -raw wide-{i+1}-map.png');ev('set throttle false')
   key(7,2);wait(1.5);check(f'{i}-map-close','map_mode',0)
+ if args.overview:
+  key(7,2);wait(1.5);check(f'{i}-live-map-open','map_mode',1)
  if args.wrong_paths:
   wrong=simulate(lv,[0]*len(lv['sockets']),trace=True)
   assert not wrong[0]
@@ -79,7 +91,7 @@ for i,lv in enumerate(levels):
  ev(f'openmsx::internal_screenshot -raw trial-{i+1}-placed.png');ev('set throttle false')
  if args.record:ev(f'record start ./trial-{i+1}.avi')
  key(7,128)
- if lv.get('width',8)>8:
+ if lv.get('width',8)>8 and not args.overview:
   # Pause through the real keyboard before browsing. Camera operations must
   # leave both actors and every mutable terrain cell exactly unchanged.
   # F3 explicitly pauses instead of toggling pause, and the held key spans
@@ -135,6 +147,6 @@ p=subprocess.run(['C:/Program Files/openMSX/openmsx.exe','-machine',args.machine
 (W/'launch.log').write_bytes(p.stdout+p.stderr)
 lines=(W/'results.txt').read_text().splitlines();fail=[l for l in lines if l.split()[1]!=l.split()[2]]
 out=dict(machine=args.machine,checks=len(lines),expected=expected,failures=fail,rom_sha256=hashlib.sha256(rom.read_bytes()).hexdigest(),hardware_tested=False,wrong_paths=args.wrong_paths)
-prefix='wrong-trial-verification' if args.wrong_paths else 'trial-verification'
+prefix='live-map-trial-verification' if args.overview else 'wrong-trial-verification' if args.wrong_paths else 'trial-verification'
 (R/f'outputs/{prefix}-{args.machine}.json').write_text(json.dumps(out,indent=2));print(out)
 assert p.returncode==0 and not fail and len(lines)==expected

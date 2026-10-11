@@ -42,9 +42,6 @@ main_loop:
     ld a,(password_mode)
     or a
     jp nz,presented
-    ld a,(map_mode)
-    or a
-    jp nz,presented
     ld a,(help_mode)
     or a
     jp nz,presented
@@ -772,6 +769,9 @@ restore_box_target:
     ret
 
 render:
+    ld a,(map_mode)
+    or a
+    jp nz,map_render
     call camera_follow
     ld a,(dirty)
     or a
@@ -784,6 +784,7 @@ render:
     ld ix,rabbit_actor
     ld a,128
     call draw_actor
+render_sat:
     ld (hl),216
     ld a,1
     ld hl,03600h
@@ -826,6 +827,9 @@ actor_normal_pose:
     add a,e
     ld e,a
 actor_pose:
+    ld a,(map_mode)
+    or a
+    jp nz,map_actor_position
     ld b,(ix+2)
     ld a,(camera_y)
     call times28
@@ -1087,7 +1091,12 @@ restore_board:
     call vram_address
     call upload_stage
     call load_sprite_data
+    ld a,(map_mode)
+    or a
     ld a,043h
+    jr z,restore_sprite_size
+    dec a
+restore_sprite_size:
     ld e,1
     call reg_write
     ret
@@ -1161,7 +1170,7 @@ status_line:
     ld a,(map_mode)
     or a
     ld a,b
-    ret nz
+    jp nz,map_status
     or a
     jr nz,status_chosen
     call part_pointer
@@ -1410,6 +1419,9 @@ refresh_terrain:
     ld (terrain_refresh),a
     ld (terrain_index),a
 terrain_draw_loop:
+    ld a,(map_mode)
+    or a
+    jr nz,terrain_visible
     ld a,(terrain_index)
     ld b,a
     ld a,(params+445)
@@ -1431,6 +1443,7 @@ terrain_draw_loop:
     sub c
     cp 6
     jp nc,terrain_draw_next
+terrain_visible:
     ld a,(terrain_index)
     ld e,a
     ld d,0
@@ -1525,6 +1538,9 @@ terrain_div8:
     jr terrain_div8
 terrain_xy:
     ld b,a
+    ld a,(map_mode)
+    or a
+    jp nz,map_terrain_patch
     ld a,(camera_x)
     ld d,a
     ld a,b

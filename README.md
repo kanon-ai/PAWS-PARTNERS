@@ -38,11 +38,15 @@ Read the manuals for WAIT, FLIP, large-map browsing, retries, and stage password
 
 ## Status / 公開状況
 
-**v0.2.5 — Edit in the overview / 全体マップで配置**
+**v0.2.6 — Live overview / 全体マップで進行**
 
-配置中にF5を押すと、全体マップでチップを設定できます。左右で場所を選択、Spaceで変更、Enterで実行。F5またはEscで通常画面に戻ります。選択中のチップ名は下部に表示されます。ステージ内容と合言葉は変更していません。
+F5の全体マップでも、ネコとうさぎの移動や箱・ゲートなどの変化を見ながら進行できるようになりました。Enterで開始／一時停止／再開、実行中はEscで配置を残してやり直せます。F5で通常画面へ切り替えても状態を保ちます。全体マップ下部の案内文字が欠ける問題も修正しました。ステージ内容・難易度・合言葉は変更していません。
 
-During planning, press F5 to edit chips in the overview. Left/Right selects a spot, Space changes its chip, Enter starts the run, and F5/Esc returns to the normal view. The selected chip name appears below. Stages and passwords are unchanged.
+The F5 overview now shows both friends moving and updates crates, gates and other mechanisms as the run progresses. Enter starts, pauses or resumes; Esc during a run retries with placed chips preserved. F5 switches views without resetting progress. Fixed clipped text in the overview footer. Stages, difficulty and passwords are unchanged.
+
+![Live overview](docs/images/live-map.png)
+
+[全体マップの動作動画 / Live overview preview](media/PAWS-PARTNERS-F5-Live-Preview.mp4) — 21 seconds, actual gameplay and audio. Contains part of stage 26.
 
 F1のHELP最下段で現在の面番号とパスワードを確認できます。F1またはEscで元の状態に戻ります。
 

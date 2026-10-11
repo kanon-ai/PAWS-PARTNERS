@@ -112,11 +112,8 @@ def overview(m,i,lv):
    board(m,i,lv,py*6,px*8)
    part=Image.open(m.R/f'outputs/stage-{i+1}-page-{py*2+px}.png').crop((16,12,240,180)).resize((112,84),Image.Resampling.NEAREST)
    im.paste(part,(left+px*112,22+py*84))
- for who,(x,y,di) in enumerate(lv['starts']):
-  icon=character(m,who,di,0).resize((14,14),Image.Resampling.NEAREST)
-  im.paste(icon,(left+x*14,22+y*14),icon.point([0]+[255]*255,mode='L'))
  for x,y in lv['sockets']:
   d.rectangle((left+x*14,22+y*14,left+x*14+13,35+y*14),outline=14)
- d.text((10,193),'PLAN: LEFT RIGHT / SPACE TURN',font=m.FONT,fill=0)
+ d.text((10,193),'F5 VIEW / ENTER GO-PAUSE',font=m.FONT,fill=0)
  im.crop((0,0,256,212)).save(m.R/f'outputs/map-{i+1}.png')
  return m.pack(im)

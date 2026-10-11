@@ -187,7 +187,7 @@ SWAP changes the state every time; ONCE acts only on its first use. Trace the ou
 
 Press Enter to pause and observe. While running, the arrow keys change the displayed area; F4 changes the friend you follow.
 
-F5 shows the initial layout. **Use the normal view to inspect current crate positions and gate states.**
+F5 shows the current positions of both friends and crates, along with gate states. **Execution continues in the overview; press Enter to pause and think.**
 
 If a run differs from your prediction, press Esc to return to the start with your placements retained. You do not need to watch it finish.
 

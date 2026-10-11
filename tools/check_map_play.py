@@ -15,6 +15,9 @@ def wait(n):
  t+=n
 def key(row,mask,hold=.2):
  ev(f'keymatrixdown {row} {mask}');wait(hold);ev(f'keymatrixup {row} {mask}');wait(.5)
+def footer(name):
+ ev(f'set vf [open footer-{name}.bin wb];puts -nonewline $vf [debug read_block VRAM 25600 1536];close $vf')
+
 def chk(label,expr,value):
  global checks
  checks+=1;ev(f'puts $::f "{label} [{expr}] {value}";flush $::f')
@@ -31,14 +34,35 @@ for j,part in enumerate(lv['answer']):
  for _ in range(part):key(8,1);wait(.4)
  if j+1<len(lv['sockets']):key(8,128);wait(.7)
 ev('set throttle true');wait(.4)
-ev('openmsx::internal_screenshot -raw map-placed.png');ev('set throttle false')
+ev('openmsx::internal_screenshot -raw map-placed.png');ev('set throttle false');footer('planning')
 wait(2);key(7,2);wait(1)
 chk('normal-view',f'debug read memory {sym["map_mode"]}',0)
 ev('set throttle true');wait(.4)
 ev('openmsx::internal_screenshot -raw normal-placed.png');ev('set throttle false')
-wait(1);key(7,2);wait(1);key(7,128);wait(25)
-chk('map-enter-closes',f'debug read memory {sym["map_mode"]}',0)
+wait(1);key(7,2);wait(1);key(7,128);wait(.2)
+chk('running-in-map',f'debug read memory {sym["state"]}',1)
+key(7,128);wait(.5)
+chk('map-paused',f'debug read memory {sym["paused"]}',1);footer('paused')
+ev(f'set frozen [debug read_block memory {sym["cat_actor"]} 32];set ground [debug read_block memory {sym["params"]+43} 192]')
+wait(2)
+for flag in [0,1]:
+ key(7,2);wait(1.5)
+ chk('paused-view-'+str(flag),f'debug read memory {sym["map_mode"]}',flag)
+ chk('view-keeps-actors',f'expr {{[debug read_block memory {sym["cat_actor"]} 32] eq $::frozen}}',1)
+ chk('view-keeps-terrain',f'expr {{[debug read_block memory {sym["params"]+43} 192] eq $::ground}}',1)
+key(7,128);wait(.5)
+chk('map-resumed',f'debug read memory {sym["paused"]}',0)
+
+ev('set throttle true');wait(.4);ev('openmsx::internal_screenshot -raw map-running.png');ev('set throttle false');footer('running')
+wait(25)
+chk('map-enter-stays',f'debug read memory {sym["map_mode"]}',1)
 chk('cleared-from-map',f'debug read memory {sym["state"]}',3)
+ev('set throttle true');wait(.4);ev('openmsx::internal_screenshot -raw map-clear.png');ev('set throttle false')
+footer('clear')
+key(7,4);wait(1.5)
+chk('map-retry',f'debug read memory {sym["state"]}',0)
+chk('retry-keeps-map',f'debug read memory {sym["map_mode"]}',1)
+for j,part in enumerate(lv['answer']):chk('retry-part-'+str(j),f'debug read memory {sym["parts"]+j}',part)
 ev('record stop')
 ev('close $::f;exit');s.append('after realtime 90 {exit}')
 (W/'test.tcl').write_text('\n'.join(s))

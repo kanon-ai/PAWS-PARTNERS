@@ -1,4 +1,4 @@
-# Build and verification — v0.2.5
+# Build and verification — v0.2.6
 
 Python 3, Pillow, Pasmo and Windows fonts are required. Fonts and BIOS files are not bundled.
 
@@ -12,16 +12,21 @@ This rebuilds the checked-in 50 stages without regenerating or reordering them. 
 
 The renderer uses Windows fonts under `C:/Windows/Fonts`. Different font versions can change the ROM. Do not rebuild a ROM while an emulator has it open. Authoring scripts are not needed for a release rebuild. Stage data and validation evidence contain solutions.
 
-## Current ROM — v0.2.5
+## Current ROM — v0.2.6
 
-SHA-256: `f32fc54e0c38c1a06ad461804ab790bc496370a79497595912690cb9ceee2317`.
+SHA-256: `0f696fc9fee952cf632fec5cebc0e23eaa3b5808e7565478dbf6b3409eccea85`.
 
-Current ROM: 1,255 keyboard-driven checks per openMSX profile (C-BIOS_MSX2_EU and Panasonic_FS-A1ST), covering overview edits across all 50 stages, byte-exact selected-tile rendering, placement preservation, clearing and view switching. Stage 26 was configured in the overview and cleared via Enter in both profiles (5 checks each). Overlay pause/return checks: 16 per profile. Stage data, passwords and puzzle rules are unchanged. Historical reports retain their tested ROM hashes. F5 during execution remains a paused starting-layout overview, without editing. Physical hardware is unverified.
+The live-overview implementation passed 40,687 checks in each openMSX profile (C-BIOS_MSX2_EU and Panasonic_FS-A1ST): all 50 stages, successful and blocked routes, retry and state preservation. Recorded overview rendering was checked over 33,648 sprite frames and 22,955 terrain patches. These reports identify the tested pre-footer-fix ROM hash.
+
+The release ROM also fixes clipped text in the overview footer. On this final ROM, both profiles passed 18 keyboard-driven checks covering overview execution, pause/resume, switching, clear and retry. All 11 label widths and eight captured footer states were checked against VRAM, including the row below the footer. Stage data, passwords and puzzle rules are unchanged. Reports retain their actual tested ROM hashes. Physical hardware is unverified.
 
 1 MiB ASCII8. MSX2 or later, 64 KiB RAM / 64 KiB VRAM; TurboR uses Z80 mode. Physical hardware is unverified.
 
 ```powershell
-python tools/check_trials.py --machine C-BIOS_MSX2_EU --wrong-paths
+python tools/check_trials.py --machine C-BIOS_MSX2_EU --overview --wrong-paths
+python tools/check_map_play.py --machine C-BIOS_MSX2_EU
+python tools/check_map_play.py --machine Panasonic_FS-A1ST
+python tools/check_map_footer.py
 python tools/check_supports.py --machine C-BIOS_MSX2_EU
 python tools/check_cancel.py --machine C-BIOS_MSX2_EU
 python tools/check_passwords.py --machine C-BIOS_MSX2_EU

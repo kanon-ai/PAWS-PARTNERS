@@ -59,7 +59,7 @@ The usual order is Empty → Right TURN → Left TURN. In supported stages, WAIT
 Both friends use the same placed chips. Returning to a WAIT spot makes the character wait again.
 
 One WAIT beat is the time it takes to walk one ordinary tile.
-Pausing, opening help, or opening the overview also freezes the countdown. A longer wait is not always better.
+Pausing or opening help freezes the countdown. The F5 overview keeps running; press Enter to pause when you need time to think. A longer wait is not always better.
 
 ## Built-in mechanisms
 
@@ -122,12 +122,12 @@ The friends cannot pass through each other, so one may need to wait for the othe
 |Normal play|F2|Open the title / password screen.|
 |Large maps|F3|Cycle through the available pages. This pauses a running attempt; press Enter to resume.|
 |Normal play|F4|Switch automatic following between cat and rabbit. Restore following after manual browsing.|
-|Normal play|F5|Open / close the **initial-layout** overview. Movement stops while it is open.|
+|Normal play|F5|Switch to / from the live overview. Movement continues; Enter pauses/resumes.|
 
 Large stages can have up to 16×12 tiles, shown in 8×6 pages. A 16×6 stage uses two side-by-side pages, an 8×12 stage uses two stacked pages, and a 16×12 stage uses four pages.
 You can also use F5 while planning your placements, then press F5 again to return.
 
-**The F5 overview does not show placed chips, the current positions of moved crates, or the current gate states.** Browse the normal left/right and upper/lower views to inspect the live situation.
+**The overview shows placed chips, both friends, moved crates and current gate states.** Switching views preserves progress and placements. A paused run remains paused when switching.
 Page redraws may cause a brief visual pause.
 
 ## Waiting and retrying
@@ -172,7 +172,7 @@ See [LICENSE](../LICENSE), [DISCLAIMER](../DISCLAIMER.md), and [CREDITS](../CRED
 
 ## Results and music
 
-When both friends arrive home, CLEAR! appears in the center and the clear jingle plays once. Enter advances; Esc retries. NO WAY offers Enter to retry with placed chips preserved, or Esc to return to the title. F5 shows a static starting-layout map and pauses progression while open.
+When both friends arrive home, CLEAR! appears in the center and the clear jingle plays once. Enter advances; Esc retries. NO WAY offers Enter to retry with placed chips preserved, or Esc to return to the title.
 
 ## Taking a break
 
@@ -180,4 +180,4 @@ Press F1 to open HELP. The bottom row shows the current stage number and passwor
 
 ## Place chips in the overview
 
-During planning, press F5 to edit while viewing the whole map. Left/Right selects a placement spot; Space cycles its chip. The selected chip name appears below. Up supplies a hint for the selected spot; Down clears all chips. Enter returns to the normal view and starts the run. F5 or Esc returns without losing placements. Both views share the same placements. During execution, F5 remains a paused starting-layout overview and cannot be edited.
+During planning, press F5 to edit while viewing the whole map. Left/Right selects a placement spot; Space cycles its chip. The selected chip name appears below. Up supplies a hint for the selected spot; Down clears all chips. Enter starts the run in the overview. F5, or Esc while planning, returns without losing placements. Both views share the same placements. During execution, Enter pauses/resumes and Esc retries with placements kept. Chips cannot be edited during execution. Clear and stuck windows also appear in the overview.

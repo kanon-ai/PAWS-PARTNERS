@@ -40,6 +40,9 @@ for j in reversed(range(len(lv['sockets']))):
  if j:key(8,16);wait(1.3)
 key(7,128);wait(.2)
 for label,row,mask,flag in [('help',6,32,'help_mode'),('map',7,2,'map_mode')]:
+ if label=='map':
+  key(7,128);wait(.2)
+  chk('map-explicit-pause',f'debug read memory {sym["paused"]}',1)
  key(row,mask,1.2);wait(1)
  chk(label+'-open',f'debug read memory {sym[flag]}',1)
  ev(f'set frozen [debug read_block memory {sym["cat_actor"]} 32];set terrain [debug read_block memory {sym["params"]+43} 192]')
@@ -48,7 +51,7 @@ for label,row,mask,flag in [('help',6,32,'help_mode'),('map',7,2,'map_mode')]:
  chk(label+'-terrain-frozen',f'expr {{[debug read_block memory {sym["params"]+43} 192] eq $::terrain}}',1)
  ev('set throttle true');wait(.3);ev(f'openmsx::internal_screenshot -raw {label}.png');ev('set throttle false')
  # Help accepts Esc; the documented overview close key is F5.
- key(7,4 if label=='help' else 2,1);wait(1)
+ key(7,4 if label=='help' else 2,.2);wait(.2)
  chk(label+'-closed',f'debug read memory {sym[flag]}',0)
 key(7,4,1);wait(2)
 chk('cancel-editing',f'debug read memory {sym["state"]}',0)
