@@ -1,0 +1,7 @@
+{
+  "font": "integer 5x7 pixels",
+  "turn_mirror_and_four_rotations": "pass",
+  "game_rules_and_stages_unchanged": true,
+  "publication": "local only",
+  "rom_sha256": "b8cead4085e4399b029d44398a9b6134153a2b42ab8a1860e310c8a05b99622d"
+}

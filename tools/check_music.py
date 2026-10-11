@@ -36,17 +36,18 @@ def prepare(i):
 ev('set musiclog [open music-trace.txt w]')
 ev(f'debug set_bp {sym["music_output"]} {{}} {{puts $::musiclog [binary encode hex [debug read_block memory {sym["music_shadow"]} 14]];debug cont}}')
 record('bgm-test');wait(2);check('title-muted','music_running',0)
-key(7,128);wait(1);check('game-music-on','music_running',1);shot('game-music')
+key(7,128);wait(1);check('game-music-on','music_running',1);shot('game-music');ev('set before [debug read_block VRAM 8192 8192]')
 wait(61);checks+=1;ev(f'puts $::f "loop-twice [expr {{[debug read memory {sym["music_loops"]}]>=2}}] 1"')
 key(7,2);wait(1);check('map-music-on','music_running',1);key(7,2);wait(1.5)
 key(7,128);wait(5);check('stuck-state','state',5);check('stuck-muted','music_running',0);shot('stuck-muted')
 # PSG debug names are recorded as evidence, and actual volumes checked.
 ev('puts $::f "psg-muted [expr {[debug read {PSG regs} 8]+[debug read {PSG regs} 9]+[debug read {PSG regs} 10]}] 0"');checks+=1
 key(7,128);wait(1);check('retry-restarts','music_running',1)
+checks+=1;ev('puts $::f "stuck-popup-restored [expr {$::before eq [debug read_block VRAM 8192 8192]}] 1"')
 key(6,32);wait(1);check('help-music-on','music_running',1);key(6,32);wait(1)
 prepare(0);key(7,128);wait(.2);key(6,128,hold=1.2);wait(1.5)
 check('paused-state','paused',1);check('paused-music-on','music_running',1)
-wait(1);key(7,128);wait(30);check('clear-state','state',3);check('clear-music-on','music_running',1)
+wait(1);key(7,128);wait(30);check('clear-state','state',3);check('clear-jingle-finished','music_finished',1);check('clear-muted-after-phrase','music_running',0)
 key(6,64);wait(1);check('back-title-muted','music_running',0)
 stop();ev('close $::musiclog')
 

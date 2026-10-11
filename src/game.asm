@@ -160,8 +160,8 @@ init_actor:
     ret
 edit_mode:
     ld a,(state)
-    cp 4
-    call z,restore_board
+    cp 3
+    call nc,restore_board
     xor a
     ld (state),a
     call reset_ball
@@ -398,8 +398,8 @@ run_tick:
 duo_clear:
     ld (state),a
     push af
-    ld a,75
-    call sound_start
+    xor a
+    ld (sound_time),a
     pop af
     jp status_line
 
@@ -791,6 +791,20 @@ render:
     jp write_bytes
 draw_actor:
     ld e,a
+    ld a,(state)
+    cp 3
+    jr nz,actor_normal_pose
+    ; Cleared stage: face the player and alternate the existing happy foot poses.
+    ld a,e
+    add a,64
+    ld e,a
+    ld a,(tick)
+    and 8
+    add a,a
+    add a,e
+    ld e,a
+    jr actor_pose
+actor_normal_pose:
     ld a,(ix+4)
     add a,a
     add a,a
@@ -834,6 +848,25 @@ actor_pose:
     pop de
     pop hl
 actor_ground:
+    ld a,(state)
+    cp 3
+    jr nz,actor_clear_hop_done
+    push hl
+    push de
+    ld a,(tick)
+    and 63
+    srl a
+    ld l,a
+    ld h,0
+    ld de,clear_hop_heights
+    add hl,de
+    ld a,c
+    add a,6
+    sub (hl)
+    ld c,a
+    pop de
+    pop hl
+actor_clear_hop_done:
     ld a,(camera_y)
     ld b,a
     ld a,(ix+1)
@@ -851,8 +884,30 @@ actor_x_visible:
     ld a,(ix+6)
     or a
     jr z,actor_visible
+    ld a,(state)
+    cp 3
+    jr z,actor_visible
     ld c,220
 actor_visible:
+    ; Sprites must not obscure result-window text (sprite size 32x32).
+    ld a,(state)
+    cp 3
+    jr z,actor_result_clip
+    cp 5
+    jr nz,actor_result_done
+actor_result_clip:
+    ld a,b
+    cp 192
+    jr nc,actor_result_done
+    cp 33
+    jr c,actor_result_done
+    ld a,c
+    cp 128
+    jr nc,actor_result_done
+    cp 32
+    jr c,actor_result_done
+    ld c,220
+actor_result_done:
     ld a,e
     ld d,4
 actor_planes:
@@ -944,6 +999,10 @@ refresh_tile_next:
     jp refresh_popup
 refresh_popup:
     ld a,(state)
+    cp 3
+    jr z,result_popup
+    cp 5
+    jr z,result_popup
     cp 4
     ret nz
     ld a,POPUP_BANK
@@ -956,6 +1015,21 @@ refresh_popup:
     ld a,64
     ld (patch_bytes),a
     ld a,112
+    ld (patch_rows),a
+    jp patch_blit
+result_popup:
+    ld a,RESULT_BANK
+    call music_map_bank
+    ld hl,06000h
+    ld a,(state)
+    cp 5
+    jr nz,result_popup_address
+    ld hl,07000h
+result_popup_address:
+    ld a,64
+    ld (patch_x),a
+    ld (patch_y),a
+    ld (patch_bytes),a
     ld (patch_rows),a
     jp patch_blit
 patch28:
@@ -1871,3 +1945,7 @@ terrain_cache_update:
     or a
     ret
 terrain_visual_cache: defs 384,255
+
+clear_hop_heights:
+    db 0,0,0,0,1,2,4,6,8,9,9,8,6,4,2,1
+    db 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0

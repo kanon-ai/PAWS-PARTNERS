@@ -4,6 +4,6 @@
   "checks": 22,
   "expected": 22,
   "failures": [],
-  "rom_sha256": "89d5ea4ba5ac14b7544c27a2346f13937faf7a57eb6272b7cee433fa59b63fc0",
+  "rom_sha256": "7ad89f68c7008877a2740d94dcf5fa4797522633cbbf121920b912947e099791",
   "hardware_tested": false
 }

@@ -38,7 +38,11 @@ Read the manuals for WAIT, FLIP, large-map browsing, retries, and stage password
 
 ## Status / 公開状況
 
-**v0.2.2 — redesigned 50-stage campaign / 全50面再設計版**
+**v0.2.3 — Clear celebration and readability / クリア演出・読みやすさ改善**
+
+文字とTURN矢印を見やすくし、クリア時に二匹が喜ぶ動きと短いPSGフレーズを追加しました。CLEAR / NO WAYを中央の小窓に表示します。v0.2.2からステージ内容・順序・合言葉は変更していません。
+
+Improved small text and TURN arrows, a happy hop at ordinary stage clears, a one-shot PSG clear jingle, and centered CLEAR / NO WAY windows. Stages, order and passwords are unchanged from v0.2.2.
 
 配置チップが仕掛けと重なるマスでも、箱・PAD・扉・スイッチ・家・固定方向床の絵と識別表示が残り、現在の開閉・作動状態を確認できます。
 Mechanism icons and identifiers remain visible beneath chips, including current gate and switch states.
@@ -65,13 +69,15 @@ There is no automatic save; write down stage-clear passwords. Joystick controls 
 
 **Pixel Party** — music supplied by kanon-ai, produced through a Suno (Premium) → PSG → AI music editor workflow. Two melodic PSG channels and percussion, with short sound-effect borrowing on channel C.
 
-ゲーム中はループし、タイトル／合言葉・行き詰まり画面では停止します。
+ゲーム中はループし、タイトル／合言葉・行き詰まり画面では停止します。クリア時は **Fairy Crystal - Clear Jingle**（kanon-ai提供）を一度だけ再生し、次の面でBGMを再開します。
+
+At stage clear, **Fairy Crystal - Clear Jingle**, supplied by kanon-ai, plays once. BGM resumes on the next stage.
 
 ## Development / 開発
 
 [Build instructions and test evidence / ビルドと検証](docs/BUILD.md)
 
-The updated rendering code passed 40,897 campaign checks per openMSX profile (MSX2 and TurboR), plus targeted controls, PAD, password and music tests. The final label-size adjustment changes graphics only; byte-exact VRAM fixtures passed 480 checks. See the build notes for tested hashes and scope. Physical hardware remains unverified.
+The current ROM passed exact 100-frame PSG jingle comparisons, clear-window restoration, and final-stage transitions on both openMSX profiles (MSX2 and TurboR), plus MSX2 music, cancellation and overlay checks. See build notes for tested hashes and scope. Physical hardware remains unverified.
 
 修正した表示処理はMSX2・TurboR設定で各40,897項目と追加検証を通過しました。最終の文字サイズ調整は画像のみの差分で、実描画データ480項目の照合も通過しています。実機未確認です。
 

@@ -29,6 +29,8 @@ for j in range(len(lv['sockets'])):
  if j+1<len(lv['sockets']):key(8,128);wait(1.3)
 key(7,128);wait(35)
 chk('final-celebration',f'debug read memory {sym["state"]}',4)
+chk('final-jingle-finished',f'debug read memory {sym["music_finished"]}',1)
+chk('final-jingle-once',f'debug read memory {sym["music_running"]}',0)
 for label in ['ending-a','ending-b']:
  ev('set throttle true');wait(.5)
  ev(f'openmsx::internal_screenshot -raw {label}.png');ev('set throttle false');wait(2)

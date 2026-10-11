@@ -1,0 +1,10 @@
+{
+  "machine": "Panasonic_FS-A1ST",
+  "checks": 12,
+  "expected": 12,
+  "failures": [],
+  "exact_psg_frames": 100,
+  "muted_frames": 496,
+  "rom_sha256": "7ad89f68c7008877a2740d94dcf5fa4797522633cbbf121920b912947e099791",
+  "hardware_tested": false
+}

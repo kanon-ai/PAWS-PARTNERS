@@ -23,3 +23,5 @@ Python, Pillow, Pasmo, openMSX, FFmpeg, and Windows fonts are used by the develo
 開発・動画生成ではPython、Pillow、Pasmo、openMSX、FFmpeg、Windowsのフォントを使用しています。実行ファイルとフォントファイルは配布に含めません。それぞれのライセンスが適用されます。
 
 No original Suno audio, BIOS image, emulator executable, or third-party game asset is included in this repository.
+
+- Clear phrase: **Fairy Crystal - Clear Jingle**, supplied by kanon-ai. Its separate [MIT notice](assets/music/clear-jingle/LICENSE) is retained alongside the source data.

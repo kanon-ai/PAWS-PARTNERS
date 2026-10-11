@@ -1,9 +1,10 @@
+from pixel_font import FONT as PIXEL_FONT
 from PIL import Image,ImageDraw,ImageFont
 
 def terrain_tile(image,c):
  im=image((28,28));d=ImageDraw.Draw(im);d.rectangle((0,0,27,27),fill=1)
  if c>=32:
-  font=ImageFont.truetype('C:/Windows/Fonts/consolab.ttf',8)
+  font=PIXEL_FONT
   if c in (43,44,45,46,47):
    d.rectangle((2,2,5,26),fill=12);d.rectangle((22,2,25,26),fill=12)
    d.text((7,1),'2A',font=font,fill=6)
@@ -41,7 +42,7 @@ def terrain_tile(image,c):
    d.text((9,1),'I' if c in (33,37) else 'II',font=font,fill=6)
   return im
  if c>=18:
-  font=ImageFont.truetype('C:/Windows/Fonts/consolab.ttf',8)
+  font=PIXEL_FONT
   if c in (18,19,21,29,30):
    pressed=c in (19,21,29)
    d.rectangle((1,17,26,26),fill=0)
@@ -106,7 +107,7 @@ def terrain_tile(image,c):
   d.rectangle((1,1,26,26),fill=7,outline=6)
   d.polygon([(7,7),(7,2),(11,5),(17,5),(21,2),(21,9)],fill=1)
   d.line((7,20,20 if c==16 else 7,12),fill=6,width=3)
-  d.text((3,19),'FLIP',font=ImageFont.truetype('C:/Windows/Fonts/consolab.ttf',8),fill=1)
+  d.text((3,19),'FLIP',font=PIXEL_FONT,fill=1)
  elif c in (15,17):
   d.rectangle((1,1,26,26),fill=7,outline=6)
   if c==15:
@@ -122,7 +123,7 @@ def terrain_tile(image,c):
  # Short labels reinforce the physical shape without replacing it.
  labels={1:'PUSH',2:'HOP',6:'FILL',3:'LOCK',7:'LOCK',4:'OPEN',8:'OPEN',11:'OPEN',12:'OPEN'}
  if c in labels:
-  font=ImageFont.truetype('C:/Windows/Fonts/consolab.ttf',8)
+  font=PIXEL_FONT
   d.rectangle((3,1,24,8),fill=5)
   d.text((4,0),labels[c],font=font,fill=1)
  return im
@@ -131,8 +132,8 @@ def tool_icon(image,part,facing=0,compact=False):
  im=image((24,24));d=ImageDraw.Draw(im)
  if part>=3:
   d.rounded_rectangle((1,1,22,23),radius=4,fill=11,outline=6)
-  font=ImageFont.truetype('C:/Windows/Fonts/consolab.ttf',8)
-  d.text((2,1),'WAIT',font=font,fill=1)
+  font=PIXEL_FONT
+  d.text((0,1),'WAIT',font=font,fill=1)
   shift=3 if compact else 0
   d.ellipse((3,10-shift,13,20-shift),outline=1);d.line((8,12-shift,8,15-shift,11,15-shift),fill=1)
   d.text((15,12-shift),str((part-2)*2),font=font,fill=1)
@@ -140,15 +141,21 @@ def tool_icon(image,part,facing=0,compact=False):
  if part:
   d.rounded_rectangle((1,1,22,23),radius=4,fill=14 if part==1 else 8,outline=6)
   # Keep the English label upright; rotate only the lower direction diagram.
-  font=ImageFont.truetype('C:/Windows/Fonts/consolab.ttf',8)
-  d.text((2,1),'TURN',font=font,fill=1)
+  font=PIXEL_FONT
+  d.text((0,1),'TURN',font=font,fill=1)
   arrow=image((12,12));ad=ImageDraw.Draw(arrow)
-  ad.line((5,11,5,5,10 if part==1 else 0,5),fill=15,width=2)
-  ad.polygon([(10,5),(7,2),(7,8)] if part==1 else [(0,5),(3,2),(3,8)],fill=15)
+  # Separate the shaft, elbow and arrowhead on an integer pixel grid.
+  ad.rectangle((5,6,6,11),fill=15)
+  if part==1:
+   ad.rectangle((5,5,8,6),fill=15)
+   ad.polygon([(11,5),(8,2),(8,8)],fill=15)
+  else:
+   ad.rectangle((3,5,6,6),fill=15)
+   ad.polygon([(0,5),(3,2),(3,8)],fill=15)
   arrow=arrow.rotate(-90*facing)
   mask=arrow.point([0]+[255]*255,mode='L')
   ink=image((12,12));ImageDraw.Draw(ink).rectangle((0,0,11,11),fill=1)
-  im.paste(ink,(6,7 if compact else 11),mask)
+  im.paste(ink,(6,8 if compact else 11),mask)
  return im
 
 def character(m,who,direction,phase):
@@ -176,6 +183,18 @@ def character(m,who,direction,phase):
 def generate(m):
  from presentation import rail
  R=m.R;pack=m.pack;image=m.image
+ results=bytearray()
+ for title,lines,color in [('CLEAR!', ['ENTER: NEXT','ESC: RETRY'],13),('NO WAY', ['ENTER: RETRY','ESC: TITLE'],8)]:
+  im=image((128,64));d=ImageDraw.Draw(im)
+  d.rectangle((0,0,127,63),fill=0,outline=6,width=2)
+  d.rectangle((4,4,123,23),fill=color)
+  label=Image.new('L',(len(title)*6-1,7),0)
+  ImageDraw.Draw(label).text((0,0),title,font=PIXEL_FONT,fill=255)
+  label=label.resize((label.width*2,14),Image.Resampling.NEAREST)
+  im.paste(0,((128-label.width)//2,7),label)
+  for i,line in enumerate(lines):d.text(((128-(len(line)*6-1))//2,29+i*10),line,font=PIXEL_FONT,fill=6)
+  results.extend(pack(im))
+ (R/'assets/results.bin').write_bytes(results)
  tiles=bytearray()
  for facing in range(4):
   for selected in range(2):
@@ -236,11 +255,11 @@ def mechanism_badge(image,code):
  """An icon plus identity/state; never replace a mechanism with a chip alone."""
  im=image((28,8));d=ImageDraw.Draw(im);d.rectangle((0,0,27,7),fill=0)
  if not code:return im
- font=ImageFont.truetype('C:/Windows/Fonts/consolab.ttf',8)
+ font=PIXEL_FONT
  labels={1:'BOX',2:'HOP',3:'R',4:'R',5:'ROCK',6:'FILL',7:'B',8:'B',9:'BRG',10:'CAT',11:'R',12:'B',13:'RAB',14:'FLP',15:'FIX',16:'FLP',17:'FIX',18:'PAD',19:'PAD',20:'A',21:'PAD',22:'A',23:'FIX',24:'FIX',25:'FIX',26:'FIX',28:'B',29:'PAD',30:'PAD',31:'B',32:'II',33:'I',34:'II',35:'WEAK',36:'I',37:'I',38:'II',39:'ONE',40:'USED',41:'!A',42:'!A',43:'2A',44:'2A',45:'2A',46:'2A',47:'2A',48:'R',49:'B'}
  label=labels.get(code,'?')
- if len(label)>3:font=ImageFont.truetype('C:/Windows/Fonts/consolab.ttf',7)
- d.text((11,-1),label,font=font,fill=6)
+ label={'ROCK':'ROK','FILL':'GAP','WEAK':'WEK','USED':'OFF'}.get(label,label)
+ d.text((11,0),label,font=font,fill=6)
  if code in (1,19):
   d.rectangle((1,0,9,5 if code==19 else 7),fill=7,outline=6)
   d.line((2,1,8,4 if code==19 else 6),fill=8);d.line((8,1,2,4 if code==19 else 6),fill=8)

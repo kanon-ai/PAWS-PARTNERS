@@ -6,3 +6,6 @@ __pycache__/
 /assets/*.inc
 /assets/*.png
 .DS_Store
+
+/assets/music/music-bank.bin
+/assets/music/clear-jingle/psg-stream.bin

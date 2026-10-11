@@ -169,3 +169,7 @@ If you would like help with your approach, open only the sections you need in th
 This is a free prototype, provided without warranty. Compatibility with every machine, cartridge, or emulator is not guaranteed.
 Bug reports are welcome, but replies, fixes, and future updates are not promised.
 See [LICENSE](../LICENSE), [DISCLAIMER](../DISCLAIMER.md), and [CREDITS](../CREDITS.md).
+
+## Results and music
+
+When both friends arrive home, CLEAR! appears in the center and the clear jingle plays once. Enter advances; Esc retries. NO WAY offers Enter to retry with placed chips preserved, or Esc to return to the title. F5 shows a static starting-layout map and pauses progression while open.

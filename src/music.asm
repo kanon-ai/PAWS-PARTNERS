@@ -49,6 +49,33 @@ music_irq:
     ld a,(state)
     cp 5
     jp z,music_silence
+    ; Select one-shot clear phrase for both normal and final stage clears.
+    ld b,0
+    cp 3
+    jr z,music_select_clear
+    cp 4
+    jr nz,music_select_done
+music_select_clear:
+    inc b
+music_select_done:
+    ld a,(music_track)
+    cp b
+    jr z,music_same_track
+    ld a,b
+    ld (music_track),a
+    xor a
+    ld (music_running),a
+    ld (music_finished),a
+    ld hl,music_shadow
+    ld b,14
+music_reset_shadow:
+    ld (hl),a
+    inc hl
+    djnz music_reset_shadow
+music_same_track:
+    ld a,(music_finished)
+    or a
+    jp nz,music_silence
     ld a,MUSIC_BANK
     ld (06800h),a
     ld a,(music_running)
@@ -57,6 +84,11 @@ music_irq:
     inc a
     ld (music_running),a
     ld hl,06000h
+    ld a,(music_track)
+    or a
+    jr z,music_start_address
+    ld hl,07800h
+music_start_address:
     ld a,(hl)
     inc hl
     ld (music_position),hl
@@ -104,6 +136,15 @@ music_next_packet:
     inc hl
     cp 255
     jp nz,music_store_next
+    ld a,(music_track)
+    or a
+    jr z,music_loop_bgm
+    ld a,1
+    ld (music_finished),a
+    ld a,(music_bank)
+    ld (06800h),a
+    jp music_silence
+music_loop_bgm:
     ld hl,06001h
     xor a
     ld de,(music_loops)
@@ -139,6 +180,9 @@ music_output_value:
     ld a,c
     cp 13
     jp nz,music_output_loop
+    ld a,(music_track)
+    or a
+    jp nz,music_irq_done
     ; Brief C-channel SFX borrow percussion, never either melodic channel.
     ld a,(sound_time)
     or a
@@ -169,6 +213,19 @@ music_output_value:
     out (0A1h),a
     jp music_irq_done
 music_silence:
+    ld a,(password_mode)
+    or a
+    jr nz,music_reset_track
+    ld a,(state)
+    cp 3
+    jr z,music_mute
+    cp 4
+    jr z,music_mute
+music_reset_track:
+    xor a
+    ld (music_track),a
+    ld (music_finished),a
+music_mute:
     xor a
     ld (music_running),a
     ld (sound_time),a
@@ -197,3 +254,6 @@ music_vblanks: db 0
 music_bank: db 3
 music_io: db 080h
 music_loops: dw 0
+
+music_track: db 0
+music_finished: db 0

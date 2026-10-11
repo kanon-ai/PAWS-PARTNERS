@@ -17,11 +17,11 @@ def generate(m):
     assert len(set(codes)) == len(codes)
     assert all(len(c)==9 and c[4]==' ' and c.replace(' ','').isalpha() for c in codes)
     inc = 'password_table:\n'+''.join(' db "'+c.replace(' ','')+'"\n' for c in codes[:len(m.LEVELS)])
-    font=ImageFont.truetype('C:/Windows/Fonts/consolab.ttf',10)
+    from pixel_font import FONT as font
     inc+='password_font:\n'
     for char in ' ABCDEFGHIJKLMNOPQRSTUVWXYZ_0123456789':
         im=m.image((8,8));im.paste(5,(0,0,8,8))
-        ImageDraw.Draw(im).text((1,-2),char,font=font,fill=0)
+        ImageDraw.Draw(im).text((1,0),char,font=font,fill=0)
         inc+=' db '+','.join(map(str,m.pack(im)))+'\n'
     (m.R/'assets/passwords.inc').write_text(inc)
     im=m.image((256,256));d=ImageDraw.Draw(im)
