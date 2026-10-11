@@ -18,29 +18,43 @@ socket_badge_type:
     ld hl,params+43
     add hl,de
     ld a,(hl)
-    cp 1
+    or a
     jr z,socket_badge_store
-    cp 2
+    ld b,a
+    ; Terrain cache contains the exact displayed state, including held-open gates.
+    ld l,e
+    ld h,0
+    add hl,hl
+    ld de,terrain_visual_cache
+    add hl,de
+    ld a,(hl)
+    cp 255
+    ld a,b
     jr z,socket_badge_store
-    cp 6
-    jr z,socket_badge_store
+    ld a,(hl)
+    sub TERRAIN_BANK
+    add a,a
+    add a,a
+    add a,a
+    add a,a
+    ld c,a
+    inc hl
+    ld a,(hl)
+    sub 060h
+    srl a
+    add a,c
+    ; Open red/blue gates share bridge graphics but retain their identity here.
     cp 9
+    jr nz,socket_badge_store
+    ld a,b
+    cp 3
+    ld a,48
     jr z,socket_badge_store
-    cp 14
+    ld a,b
+    cp 7
+    ld a,49
     jr z,socket_badge_store
-    cp 18
-    jr z,socket_badge_store
-    cp 19
-    jr z,socket_badge_store
-    cp 32
-    jr z,socket_badge_store
-    cp 35
-    jr z,socket_badge_store
-    cp 39
-    jr z,socket_badge_store
-    cp 40
-    jr z,socket_badge_store
-    xor a
+    ld a,9
 socket_badge_store:
     ld (socket_badge),a
     pop hl

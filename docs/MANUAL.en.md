@@ -1,6 +1,6 @@
 # PAWS PARTNERS: English manual
 
-> v0.2.1: redesigned 50-stage campaign. Tested on MSX2 and TurboR profiles in openMSX; physical hardware remains unverified.
+> Unpublished 50-stage redesign. Verified with MSX2 and TurboR emulator profiles; physical hardware has not been tested.
 
 [日本語](MANUAL.ja.md) · [Home / download](../README.md)
 
@@ -20,6 +20,9 @@ The game has 50 stages, including larger maps and puzzles about the order in whi
 - Leave the password blank and press **Enter** to start stage 1.
 
 Testing has been performed in openMSX. Physical hardware operation has not been verified.
+
+When a chip overlaps a mechanism, a small icon and identifier remain below the chip. R/B identify the red/blue circuits, CAT/RAB identify the homes, and FIX marks a fixed-direction floor. Gate crossbars mean closed; posts without crossbars mean open. PAD colour shows its state; a crate on a PAD shows both together.
+
 
 ## Your first puzzle
 

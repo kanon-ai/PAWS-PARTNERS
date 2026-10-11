@@ -2,7 +2,7 @@
   "stages": 50,
   "rom_bytes": 1048576,
   "used_bytes": 983040,
-  "sha256": "17be3652ac8fb90a8c68b1d052ae3e62ff053d97213326ceff1fd4bc61a1f7ad",
+  "sha256": "ac38954755d60358477c3052b2d7fe91494f991dfd9a3d1aa6b8c3f8ea850e43",
   "time_limit": false,
   "ram_kib": 64,
   "vram_kib": 64,

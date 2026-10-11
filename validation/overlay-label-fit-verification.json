@@ -1,0 +1,6 @@
+{
+  "baseline_sha256": "89d5ea4ba5ac14b7544c27a2346f13937faf7a57eb6272b7cee433fa59b63fc0",
+  "rom_sha256": "ac38954755d60358477c3052b2d7fe91494f991dfd9a3d1aa6b8c3f8ea850e43",
+  "changed_bytes": 92,
+  "scope": "label graphics only; all other ROM bytes identical"
+}

@@ -199,20 +199,10 @@ def generate(m):
      for x,y,sx,sy in [(0,0,1,1),(27,0,-1,1)]:d.line((x+sx*6,y,x,y,x,y+sy*6),fill=15,width=2)
     special.extend(pack(im).ljust(512,b'\0'))
  (R/'assets/special-tiles.bin').write_bytes(special)
- labels={1:'PUSH',2:'HOP',6:'FILL',9:'BRDG',14:'FLIP',18:'PAD',19:'BOX A',32:'SWAP',35:'WEAK',39:'ONCE',40:'USED'}
- badges=bytearray();font=ImageFont.truetype('C:/Windows/Fonts/consolab.ttf',8)
- for code in range(48):
-  im=image((28,8));d=ImageDraw.Draw(im);d.rectangle((0,0,27,7),fill=0)
-  label=labels.get(code,'');box=d.textbbox((0,0),label,font=font)
-  d.text(((28-(box[2]-box[0]))//2,-1),label,font=font,fill=7 if code==35 else 6)
-  if code in (1,19):
-   # Keep an actual crate visible when a configured chip overlays this cell.
-   d.rectangle((0,0,27,7),fill=0)
-   d.rectangle((1,0,9,7),fill=7,outline=6)
-   d.line((2,1,8,6),fill=8,width=1);d.line((8,1,2,6),fill=8,width=1)
-   d.text((11,-1),'BOX',font=font,fill=6)
-  badges.extend(pack(im).ljust(128,b'\0'))
- (R/'assets/socket-badges.bin').write_bytes(badges.ljust(8192,b'\0'))
+ badges=bytearray()
+ for code in range(64):
+  badges.extend(pack(mechanism_badge(image,code)).ljust(128,b'\0'))
+ (R/'assets/socket-badges.bin').write_bytes(badges)
  (R/'assets/gates.bin').write_bytes(bytes(8192))
  popup=image((128,112));d=ImageDraw.Draw(popup);d.rounded_rectangle((0,0,127,111),radius=8,fill=5,outline=7,width=2)
  d.text((14,5),'TOGETHER!',font=m.BIG,fill=0)
@@ -240,3 +230,54 @@ def generate(m):
  sheet.resize((512,256),Image.Resampling.NEAREST).save(R/'outputs/characters.png')
  (R/'assets/sprite2.inc').write_text('sprite_patterns:\n db '+','.join(map(str,patterns))+'\nsprite_colors:\n db '+','.join(map(str,colors))+'\n')
  (R/'assets/palettes.inc').write_text('initial_palette:\n db '+','.join(str(n) for r,g,b in m.P for n in [(round(r*7/255)<<4)|round(b*7/255),round(g*7/255)])+'\n')
+
+
+def mechanism_badge(image,code):
+ """An icon plus identity/state; never replace a mechanism with a chip alone."""
+ im=image((28,8));d=ImageDraw.Draw(im);d.rectangle((0,0,27,7),fill=0)
+ if not code:return im
+ font=ImageFont.truetype('C:/Windows/Fonts/consolab.ttf',8)
+ labels={1:'BOX',2:'HOP',3:'R',4:'R',5:'ROCK',6:'FILL',7:'B',8:'B',9:'BRG',10:'CAT',11:'R',12:'B',13:'RAB',14:'FLP',15:'FIX',16:'FLP',17:'FIX',18:'PAD',19:'PAD',20:'A',21:'PAD',22:'A',23:'FIX',24:'FIX',25:'FIX',26:'FIX',28:'B',29:'PAD',30:'PAD',31:'B',32:'II',33:'I',34:'II',35:'WEAK',36:'I',37:'I',38:'II',39:'ONE',40:'USED',41:'!A',42:'!A',43:'2A',44:'2A',45:'2A',46:'2A',47:'2A',48:'R',49:'B'}
+ label=labels.get(code,'?')
+ if len(label)>3:font=ImageFont.truetype('C:/Windows/Fonts/consolab.ttf',7)
+ d.text((11,-1),label,font=font,fill=6)
+ if code in (1,19):
+  d.rectangle((1,0,9,5 if code==19 else 7),fill=7,outline=6)
+  d.line((2,1,8,4 if code==19 else 6),fill=8);d.line((8,1,2,4 if code==19 else 6),fill=8)
+  if code==19:d.line((0,7,10,7),fill=12);d.point((0,6),fill=12)
+ elif code in (3,7,20,22,28,33,34,37,38,41,42,43,44,45,46,47,48,49):
+  col=8 if code in (3,48) else (11 if code in (7,28,49) else (10 if code in (33,34,37,38) else 12))
+  d.line((1,1,1,7),fill=col);d.line((9,1,9,7),fill=col)
+  if code in (3,7,20,28,33,34,41,43,45):
+   d.line((1,3,9,3),fill=col);d.line((1,6,9,6),fill=col)
+  if code in (43,44,45,46,47):
+   n={43:0,44:2,45:1,46:0,47:1}[code]
+   for i in range(2):d.rectangle((3+i*3,0,4+i*3,1),fill=14 if i<n else 2)
+ elif code in (4,8,11,12,31):
+  col=8 if code in (4,11) else 11;pressed=code in (11,12)
+  d.ellipse((1,3 if pressed else 0,9,7),fill=13 if pressed else col,outline=6)
+ elif code in (18,21,29,30):
+  pressed=code in (21,29);d.rectangle((1,3,9,7),fill=12 if pressed else 2,outline=6);d.rectangle((1,0,3,1),fill=12 if pressed else 2)
+  if code in (29,30):d.line((5,1,9,1),fill=6);d.point((8,0),fill=6);d.point((8,2),fill=6)
+ elif code in (10,13):
+  col=7 if code==10 else 11;d.polygon([(0,4),(5,0),(10,4)],fill=col);d.rectangle((2,4,8,7),fill=5);d.rectangle((4,5,6,7),fill=0)
+ elif code in (15,17,23,24,25,26):
+  dx,dy={15:(1,0),17:(0,1),23:(0,-1),24:(1,0),25:(0,1),26:(-1,0)}[code]
+  d.line((5-dx*3,4-dy*3,5+dx*3,4+dy*3),fill=6)
+  d.polygon([(5+dx*4,4+dy*3),(5-dy*2,4+dx*2),(5+dy*2,4-dx*2)],fill=6)
+ elif code in (32,36):
+  d.rectangle((0,1,4,6),fill=14 if code==36 else 2);d.rectangle((6,1,10,6),fill=14 if code==32 else 2)
+ elif code in (2,6):
+  d.rectangle((2,0,8,7),outline=11 if code==2 else 9);d.line((3,6,7,6),fill=11)
+ elif code==9:
+  for y in (0,3,6):d.rectangle((1,y,9,y+1),fill=7)
+ elif code in (39,40):
+  d.ellipse((1,0,9,7),fill=14 if code==39 else 2)
+  if code==40:d.line((2,4,4,6,8,1),fill=6)
+  else:d.line((5,1,5,6),fill=0)
+ elif code in (14,16):
+  d.rectangle((1,0,9,7),fill=7);d.line((3,6,7 if code==16 else 3,2),fill=0,width=2)
+ elif code==35:
+  d.rectangle((1,0,9,7),fill=7);d.line((5,0,3,3,7,4,4,7),fill=9)
+ else:d.rectangle((1,1,9,6),fill=2,outline=6)
+ return im

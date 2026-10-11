@@ -3,7 +3,7 @@
   "checks": 40897,
   "expected": 40897,
   "failures": [],
-  "rom_sha256": "548d38a04635cafa0b9ace6f475fe6630ac02d475f353a09dbe55967b05b3556",
+  "rom_sha256": "89d5ea4ba5ac14b7544c27a2346f13937faf7a57eb6272b7cee433fa59b63fc0",
   "hardware_tested": false,
   "wrong_paths": true
 }
