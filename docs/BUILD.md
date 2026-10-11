@@ -1,4 +1,4 @@
-# Build and verification — v0.2.0
+# Build and verification — v0.2.1
 
 Python 3, Pillow, Pasmo and Windows fonts are required. Fonts and BIOS files are not bundled.
 
@@ -14,11 +14,13 @@ The renderer uses Windows fonts under `C:/Windows/Fonts`. Different font version
 
 ## Current ROM
 
-SHA-256: `548d38a04635cafa0b9ace6f475fe6630ac02d475f353a09dbe55967b05b3556`
+SHA-256: `17be3652ac8fb90a8c68b1d052ae3e62ff053d97213326ceff1fd4bc61a1f7ad`
 
 1 MiB ASCII8. MSX2 or later, 64 KiB RAM / 64 KiB VRAM. TurboR uses Z80 mode.
 
-For this hash, both openMSX profiles `C-BIOS_MSX2_EU` and `Panasonic_FS-A1ST` passed:
+The v0.2.1 change affects only 126 bytes of crate badge graphics. Code and stage data match the tested v0.2.0 ROM. Existing runtime reports retain their original hashes. The four-stage promotional ROM was re-recorded and passed eight clear/retry checks.
+
+For the preceding v0.2.0 hash, both openMSX profiles `C-BIOS_MSX2_EU` and `Panasonic_FS-A1ST` passed:
 
 - Full 50-stage keyboard regression, including correct and empty placements, retry and final wrap: 40,897 checks each.
 - PAD boundary fixtures: 56 each (RAM-injected, separate from keyboard tests).

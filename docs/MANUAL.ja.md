@@ -1,6 +1,6 @@
 # PAWS PARTNERS：日本語マニュアル
 
-> v0.2.0：全50面再設計版。openMSXのMSX2・TurboR設定で検証済み、実機未確認です。
+> v0.2.1：全50面再設計版。openMSXのMSX2・TurboR設定で検証済み、実機未確認です。
 
 [English](MANUAL.en.md) · [トップ／ダウンロード](../README.md)
 

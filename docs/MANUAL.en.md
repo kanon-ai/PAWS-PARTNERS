@@ -1,6 +1,6 @@
 # PAWS PARTNERS: English manual
 
-> v0.2.0: redesigned 50-stage campaign. Tested on MSX2 and TurboR profiles in openMSX; physical hardware remains unverified.
+> v0.2.1: redesigned 50-stage campaign. Tested on MSX2 and TurboR profiles in openMSX; physical hardware remains unverified.
 
 [日本語](MANUAL.ja.md) · [Home / download](../README.md)
 

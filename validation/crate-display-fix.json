@@ -1,0 +1,20 @@
+{
+  "version": "0.2.1",
+  "affected_initial_stages": [
+    3,
+    10,
+    14,
+    15,
+    16,
+    21,
+    28,
+    29,
+    30,
+    32,
+    40,
+    48
+  ],
+  "changed_bytes": 126,
+  "scope": "crate badge graphics only; code and stage data identical",
+  "rom_sha256": "17be3652ac8fb90a8c68b1d052ae3e62ff053d97213326ceff1fd4bc61a1f7ad"
+}

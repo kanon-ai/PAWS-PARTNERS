@@ -38,7 +38,10 @@ Read the manuals for WAIT, FLIP, large-map browsing, retries, and stage password
 
 ## Status / 公開状況
 
-**v0.2.0 — redesigned 50-stage campaign / 全50面再設計版**
+**v0.2.1 — redesigned 50-stage campaign / 全50面再設計版**
+
+箱と配置チップが重なるマスにも、箱アイコンとBOX表示を残すように修正しました。
+Crate icons remain visible beneath configured chips.
 
 Stages with similar layouts have been revisited to give each puzzle a more distinct cooperative challenge. New pressure, inverse-pressure, two-PAD, phase-switching, one-shot and fragile-floor mechanisms combine with route and timing choices. Later stages include larger maps and a demanding final challenge tier.
 
@@ -68,9 +71,9 @@ There is no automatic save; write down stage-clear passwords. Joystick controls 
 
 [Build instructions and test evidence / ビルドと検証](docs/BUILD.md)
 
-The v0.2.0 ROM passed 40,897 full-campaign checks on each of two openMSX profiles (MSX2 and TurboR), plus PAD, cancellation, password and music tests. These are emulator checks; physical hardware is unverified.
+The gameplay-identical v0.2.0 ROM passed 40,897 full-campaign checks on each of two openMSX profiles (MSX2 and TurboR), plus PAD, cancellation, password and music tests. These are emulator checks; physical hardware is unverified.
 
-最新版ROMはopenMSXのMSX2・TurboR設定で各40,897項目の全50面検証と、PAD・中断・合言葉・音楽の追加検証を通過しています。実機では未確認です。
+ゲーム処理が同一のv0.2.0 ROMはopenMSXのMSX2・TurboR設定で各40,897項目と追加検証を通過しています。v0.2.1は箱表示の画像126バイトのみを変更し、動画で表示を確認しています。実機では未確認です。
 
 ## License and disclaimer / ライセンス・免責
 

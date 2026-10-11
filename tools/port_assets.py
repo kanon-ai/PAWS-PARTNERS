@@ -205,6 +205,12 @@ def generate(m):
   im=image((28,8));d=ImageDraw.Draw(im);d.rectangle((0,0,27,7),fill=0)
   label=labels.get(code,'');box=d.textbbox((0,0),label,font=font)
   d.text(((28-(box[2]-box[0]))//2,-1),label,font=font,fill=7 if code==35 else 6)
+  if code in (1,19):
+   # Keep an actual crate visible when a configured chip overlays this cell.
+   d.rectangle((0,0,27,7),fill=0)
+   d.rectangle((1,0,9,7),fill=7,outline=6)
+   d.line((2,1,8,6),fill=8,width=1);d.line((8,1,2,6),fill=8,width=1)
+   d.text((11,-1),'BOX',font=font,fill=6)
   badges.extend(pack(im).ljust(128,b'\0'))
  (R/'assets/socket-badges.bin').write_bytes(badges.ljust(8192,b'\0'))
  (R/'assets/gates.bin').write_bytes(bytes(8192))
