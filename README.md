@@ -103,3 +103,7 @@ Free prototype, provided **as is, without warranty**. Bug reports are welcome, b
 
 無償公開の試作版・無保証です。不具合報告をいただいても、返信・修正・今後の更新を保証できません。
 BIOS・エミュレーター本体・書き込みツールは同梱しません。
+
+## Expert Version / 高難易度版
+
+[Expert版・新作50面](expert/README.md) — [ROM](expert/rom/PAWS-PARTNERS-EXPERT-MSX2.rom)、[日本語マニュアル](expert/docs/MANUAL-ja.md) / [English manual](expert/docs/MANUAL-en.md)、[日本語ヒントブック](expert/docs/TECHNIQUE-GUIDE-ja.md) / [English hint book](expert/docs/TECHNIQUE-GUIDE-en.md)。ノーマル版とは別ディレクトリで配布しています。A separate edition; Normal files are unchanged.
