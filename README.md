@@ -15,6 +15,19 @@ A 50-stage cooperative puzzle game for **MSX2 and later**. Place TURN and WAIT c
 - **[日本語マニュアル](docs/MANUAL.ja.md)** / **[English manual](docs/MANUAL.en.md)**
 - [BGM付き紹介動画 / Music trailer](media/PAWS-PARTNERS-X-BGM.mp4) — approximately 56 seconds, fictional promotional stages, no campaign solutions. Music is laid continuously over the video; the actual game's title screen is silent.
 
+## PDF manuals / 手元で読めるPDF
+
+画像・フォントを埋め込んだA4サイズのPDFです。ダウンロード後はオフラインで閲覧・印刷できます。ヒントブックは面ごとの解答を載せず、考え方を紹介しています。
+
+Self-contained A4 PDFs for offline reading and printing. The hintbooks explain techniques without stage-by-stage solutions.
+
+| | 日本語 | English |
+|---|---|---|
+|マニュアル / Manual (8 pages)|[PDF](docs/pdf/PAWS-PARTNERS-Manual-ja.pdf)|[PDF](docs/pdf/PAWS-PARTNERS-Manual-en.pdf)|
+|ヒントブック / Hintbook (4 pages)|[PDF](docs/pdf/PAWS-PARTNERS-Hintbook-ja.pdf)|[PDF](docs/pdf/PAWS-PARTNERS-Hintbook-en.pdf)|
+
+**[4冊まとめてダウンロード / Download all four PDFs](https://github.com/kanon-ai/PAWS-PARTNERS/releases/download/v0.2.6/PAWS-PARTNERS-PDF-Guides-v0.2.6.zip)**
+
 ## Requirements / 動作条件
 
 MSX2 or later, **64 KiB RAM / 64 KiB VRAM**, keyboard, and a device or emulator supporting **1 MiB ASCII8** ROMs. MSX Turbo R runs the game in Z80 mode. No enhanced VDP is required. A 512 KiB-only flash cartridge is insufficient.

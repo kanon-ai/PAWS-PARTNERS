@@ -1,6 +1,6 @@
 # PAWS PARTNERS: English manual
 
-> Unpublished 50-stage redesign. Verified with MSX2 and TurboR emulator profiles; physical hardware has not been tested.
+> A 50-stage puzzle game. Verified with MSX2 and TurboR emulator profiles; physical hardware has not been tested.
 
 [日本語](MANUAL.ja.md) · [Home / download](../README.md)
 

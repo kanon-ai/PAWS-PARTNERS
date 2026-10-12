@@ -39,3 +39,7 @@ Repeat with `Panasonic_FS-A1ST`. Scripts expect openMSX at `C:/Program Files/ope
 ## 日本語
 
 通常は `tools/build_release.py` で配布データを再ビルドしてください。面の自動生成ツールは不要です。データやルールを変更した場合は `tools/build.py` の全探索検証を実行します。ソースと検証資料には解法が含まれます。実機動作は未確認です。
+
+## Printable documentation
+
+Install the optional `reportlab` package, then run `python tools/build_pdfs.py` on Windows with Meiryo installed. It reads the published Markdown and images and writes four self-contained PDFs under `docs/pdf/`, embedding font subsets. Fonts are not bundled as standalone files.
