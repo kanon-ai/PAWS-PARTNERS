@@ -2,11 +2,12 @@
 
 | 項目 / Item | 内容 / Details |
 |---|---|
-| Edition | Expert Version 1.0.1 |
+| Edition | Expert Version 1.0.2 |
 | Stages | 新作50面 / 50 new stages |
 | Target | MSX2, 64 KiB RAM, 64 KiB VRAM; TurboR Z80 mode |
 | ROM | 1,048,576 bytes; ASCII8 mapper |
 | Board | 最大16×12マス、通常表示は最大4区画 / Up to 16×12 tiles, up to four normal-view sections |
+| Inspector | F5 + hold SHIFT + arrows: inspect any tile; release to return |
 | Overview | F5: full-board placement and live simulation; pause/resume supported |
 | Goal | 二匹をそれぞれの家へ / Both friends reach their matching homes |
 | Time limit | なし / None |

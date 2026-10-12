@@ -527,3 +527,186 @@ The mark that may look like "0B" is a blue OPEN button picture followed by B (Bl
 The mark that may look like "1ONE" is a circled 1 followed by ONE: an unused switch that toggles the shared ON/OFF state once. After use it shows a check mark and OFF. Here OFF means this ONE switch is spent, not that the shared state is OFF.
 
 The PAD badge lights up while occupied and returns when the weight leaves. These small badges show the same states as the full-size mechanisms.
+
+
+## Normal tiles, F5 overview and small badges
+
+Each picture shows normal artwork / F5 overview artwork / badge below a placed chip, from left to right at the same magnification. The SWAP badge uses two squares and I/II to show the current shared state. Gate badges use posts and bars. II alone does not identify the mechanism. I gates allow passage when ON; II gates when OFF. Each arrival on SWAP toggles the state.
+
+![SWAP: OFF (II side)](images/compare-32.png)
+
+SWAP: OFF (II side)
+
+![SWAP: ON (I side)](images/compare-36.png)
+
+SWAP: ON (I side)
+
+![I gate: closed](images/compare-33.png)
+
+I gate: closed
+
+![I gate: open](images/compare-37.png)
+
+I gate: open
+
+![II gate: closed](images/compare-34.png)
+
+II gate: closed
+
+![II gate: open](images/compare-38.png)
+
+II gate: open
+
+![Box: cat can push](images/compare-1.png)
+
+Box: cat can push
+
+![Small hole: HOP](images/compare-2.png)
+
+Small hole: HOP
+
+![Red gate](images/compare-3.png)
+
+Red gate
+
+![Red OPEN](images/compare-4.png)
+
+Red OPEN
+
+![Impassable rock](images/compare-5.png)
+
+Impassable rock
+
+![Large hole: FILL](images/compare-6.png)
+
+Large hole: FILL
+
+![Blue gate](images/compare-7.png)
+
+Blue gate
+
+![Blue OPEN](images/compare-8.png)
+
+Blue OPEN
+
+![Bridge from a box](images/compare-9.png)
+
+Bridge from a box
+
+![Cat home](images/compare-10.png)
+
+Cat home
+
+![Rabbit home](images/compare-13.png)
+
+Rabbit home
+
+![Cat-operated FLIP](images/compare-14.png)
+
+Cat-operated FLIP
+
+![Linked floor: east](images/compare-15.png)
+
+Linked floor: east
+
+![Linked floor: south](images/compare-17.png)
+
+Linked floor: south
+
+![Empty PAD](images/compare-18.png)
+
+Empty PAD
+
+![Box on PAD](images/compare-19.png)
+
+Box on PAD
+
+![A: at least one](images/compare-20.png)
+
+A: at least one
+
+![Fixed east arrow](images/compare-24.png)
+
+Fixed east arrow
+
+![Cat right / rabbit left](images/compare-27.png)
+
+Cat right / rabbit left
+
+![Blue OPEN + east](images/compare-31.png)
+
+Blue OPEN + east
+
+![Floor crumbles on departure](images/compare-35.png)
+
+Floor crumbles on departure
+
+![ONE: unused](images/compare-39.png)
+
+ONE: unused
+
+![ONE: spent](images/compare-40.png)
+
+ONE: spent
+
+![!A: no weight](images/compare-41.png)
+
+!A: no weight
+
+![2A: at least two](images/compare-43.png)
+
+2A: at least two
+
+![2A: two lamps, open](images/compare-44.png)
+
+2A: two lamps, open
+
+![2A: one lamp, closed](images/compare-45.png)
+
+2A: one lamp, closed
+
+![Rocket: unused](images/compare-50.png)
+
+Rocket: unused
+
+![Rocket: spent](images/compare-51.png)
+
+Rocket: spent
+
+![LAND: arrive facing east](images/compare-52.png)
+
+LAND: arrive facing east
+
+![ALT 1: right](images/compare-53.png)
+
+ALT 1: right
+
+![ALT 2: left → 1](images/compare-54.png)
+
+ALT 2: left → 1
+
+![=1: exactly one](images/compare-55.png)
+
+=1: exactly one
+
+![Hourglass: wait once](images/compare-60.png)
+
+Hourglass: wait once
+
+![CYC 1: right](images/compare-61.png)
+
+CYC 1: right
+
+![CYC 2: straight](images/compare-62.png)
+
+CYC 2: straight
+
+![CYC 3: left → 1](images/compare-63.png)
+
+CYC 3: left → 1
+
+
+
+## Inspect a tile in the F5 overview
+
+Hold SHIFT and use the arrow keys to move an inspection cursor to any cell, including mechanisms outside placement sockets. BASE shows the underlying floor or mechanism. CHIP shows the placement tile and its small state badge. The panel appears on the opposite side from the inspected cell. Release SHIFT to close it and return to the original placement cursor. Your chips are unchanged. Actors are temporarily hidden and progress is held while inspecting; releasing SHIFT restores the previous running or paused state.

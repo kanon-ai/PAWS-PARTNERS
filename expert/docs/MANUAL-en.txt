@@ -59,3 +59,13 @@ When a TURN or WAIT chip covers a mechanism, a small picture and label at its lo
 The mark that may look like "0B" is a blue OPEN button picture followed by B (Blue), not the number zero. Its shape changes after it is pressed.
 The mark that may look like "1ONE" is a circled 1 followed by ONE: an unused switch that toggles the shared ON/OFF state once. After use it shows a check mark and OFF. Here OFF means this ONE switch is spent, not that the shared state is OFF.
 The PAD badge lights up while occupied and returns when the weight leaves. These small badges show the same states as the full-size mechanisms.
+
+
+Normal tiles, F5 overview and small badges
+Each picture shows normal artwork / F5 overview artwork / badge below a placed chip, from left to right at the same magnification. The SWAP badge uses two squares and I/II to show the current shared state. Gate badges use posts and bars. II alone does not identify the mechanism. I gates allow passage when ON; II gates when OFF. Each arrival on SWAP toggles the state.
+図はHTML/PDFをご覧ください。 / See HTML/PDF for the illustrations.
+
+
+Inspect a tile in the F5 overview
+
+Hold SHIFT and use the arrow keys to move an inspection cursor to any cell, including mechanisms outside placement sockets. BASE shows the underlying floor or mechanism. CHIP shows the placement tile and its small state badge. The panel appears on the opposite side from the inspected cell. Release SHIFT to close it and return to the original placement cursor. Your chips are unchanged. Actors are temporarily hidden and progress is held while inspecting; releasing SHIFT restores the previous running or paused state.

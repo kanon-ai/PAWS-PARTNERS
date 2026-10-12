@@ -1,4 +1,4 @@
-# PAWS PARTNERS Expert Version 1.0.1
+# PAWS PARTNERS Expert Version 1.0.2
 
 **新作50面の高難易度版 / 50 new expert puzzles**
 
@@ -21,18 +21,18 @@ The illustrated manuals explain tiles, state changes and small mechanism badges.
 
 ## BlueMSX+ auto-detection / 自動判別で起動しない場合
 
-Expert版をドラッグ＆ドロップしても起動しない場合は、次の登録ファイルをご利用ください。Expert **1.0.0 / 1.0.1**をASCII8として認識させます。
+Expert版をドラッグ＆ドロップしても起動しない場合は、次の登録ファイルをご利用ください。Expert **1.0.0 / 1.0.1 / 1.0.2**をASCII8として認識させます。
 
 1. [paws-partners-expert-db.xml をダウンロード](https://raw.githubusercontent.com/kanon-ai/PAWS-PARTNERS/main/expert/rom/paws-partners-expert-db.xml)して保存します。
-2. **実際に遊ぶPC**のBlueMSX+フォルダー内にある `Databases` へXMLをコピーします。既存のデータベースを置き換える必要はありません。
+2. **実際に遊ぶPC**のBlueMSX+フォルダー内にある `Databases` へXMLをコピーします。同名の古いXMLは今回のファイルに置き換えてください。他のデータベースはそのまま残してください。
 3. BlueMSX+を終了して起動し直し、ROMをドラッグ＆ドロップします。
 
 別の方法として、カートリッジを開く際にROM種別を **ASCII8** に指定することもできます。XMLはROMの内容（SHA-1）で識別するため、ファイル名を変えても有効です。対応版以外のROMには適用されません。今後ROMを更新する場合は、対応する登録情報も必要になります。
 
-If dragging and dropping the Expert ROM fails to start it, use this database entry for Expert **1.0.0 / 1.0.1**:
+If dragging and dropping the Expert ROM fails to start it, use this database entry for Expert **1.0.0 / 1.0.1 / 1.0.2**:
 
 1. Download and save [paws-partners-expert-db.xml](https://raw.githubusercontent.com/kanon-ai/PAWS-PARTNERS/main/expert/rom/paws-partners-expert-db.xml).
-2. Copy it into the `Databases` folder of BlueMSX+ **on the PC used to play**. Keep the existing database files.
+2. Copy it into the `Databases` folder of BlueMSX+ **on the PC used to play**. Replace an older file with the same name; keep all other database files.
 3. Close and restart BlueMSX+, then drag and drop the ROM.
 
 Alternatively, select **ASCII8** as the ROM type when opening the cartridge. The entry identifies the ROM by its SHA-1, so renaming the ROM does not affect recognition. Only the listed ROM versions match; future ROM revisions need corresponding entries.
@@ -63,7 +63,21 @@ MSX2 or later, 64 KiB RAM and 64 KiB VRAM, keyboard, and support for 1 MiB ASCII
 - 実行中Enterで停止・再開、Escで配置へ戻る / Enter pauses/resumes; Esc cancels back to planning.
 - F1でヘルプと現在のパスワード、F2でパスワード入力 / F1 shows help and the current password; F2 opens password entry.
 
-## Version 1.0.1 / 更新内容
+## Version 1.0.2 / 更新内容
+
+F5の縮小画面でSHIFTを押しながら矢印キーを使うと、任意のマスを拡大確認できます。SHIFTを離すと元の配置カーソルへ戻ります。小窓のBASEは床・仕掛け、CHIPは配置チップと状態表示です。確認中はキャラクターを一時的に隠して進行を止め、離すと元の実行・一時停止状態に戻ります。配置内容、50面、パスワード、音楽は変更していません。
+
+Hold SHIFT and use arrows in the F5 overview to inspect any cell. Release SHIFT to return to the original placement cursor. BASE shows the floor or mechanism; CHIP shows the placement tile and badge. Actors are temporarily hidden and progress is held while inspecting. Releasing SHIFT restores the previous running or paused state. Placements, all 50 stages, passwords and music are unchanged.
+
+日英マニュアルに通常・縮小・状態表示の比較図を追加しました。[ROM・対応XML・日英PDFの一括ダウンロード](rom/PAWS-PARTNERS-EXPERT-1.0.2.zip)も用意しています。
+
+The bilingual manuals now compare normal tiles, overview tiles and small badges. [Download ROM, matching XML and bilingual PDFs together](rom/PAWS-PARTNERS-EXPERT-1.0.2.zip).
+
+今回の変更はopenMSXのMSX2・TurboR設定で拡大表示、配置保持、復帰、停止・再開を確認し、従来の実行・クリア操作と各144タイルの描画も再確認しました。この更新のBlueMSX+での実行と実機動作は未確認です。XMLのSHA-1は同梱ROMとの一致を確認しています。
+
+This update was checked in openMSX MSX2 and TurboR profiles for inspection, retained placements, return, pause and resume. Existing run/clear controls and 144 tile comparisons per profile also passed. This update has not been runtime-tested in BlueMSX+ or on physical hardware. The XML SHA-1 matches the supplied ROM.
+
+## Version 1.0.1 / Previous update
 
 F5の縮小画面でチップを設定してEnterを押すと、縮小画面のまま実行を開始します。通常画面から開始した場合も、その表示を維持します。ステージとパスワードの変更はありません。
 
