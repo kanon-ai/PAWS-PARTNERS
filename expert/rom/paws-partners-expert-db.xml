@@ -38,4 +38,16 @@
       </megarom>
     </dump>
   </software>
+  <software>
+    <title>PAWS PARTNERS Expert Version 1.0.3</title>
+    <system>MSX</system>
+    <company>kanon-ai</company>
+    <year>2026</year>
+    <dump>
+      <megarom>
+        <type>ASCII8</type>
+        <hash algo="sha1">7515961dc5aa271eccb367201c49b3801265a161</hash>
+      </megarom>
+    </dump>
+  </software>
 </softwaredb>

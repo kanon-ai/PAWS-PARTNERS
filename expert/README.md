@@ -1,4 +1,4 @@
-# PAWS PARTNERS Expert Version 1.0.2
+# PAWS PARTNERS Expert Version 1.0.3
 
 **新作50面の高難易度版 / 50 new expert puzzles**
 
@@ -21,7 +21,7 @@ The illustrated manuals explain tiles, state changes and small mechanism badges.
 
 ## BlueMSX+ auto-detection / 自動判別で起動しない場合
 
-Expert版をドラッグ＆ドロップしても起動しない場合は、次の登録ファイルをご利用ください。Expert **1.0.0 / 1.0.1 / 1.0.2**をASCII8として認識させます。
+Expert版をドラッグ＆ドロップしても起動しない場合は、次の登録ファイルをご利用ください。Expert **1.0.0 / 1.0.1 / 1.0.2 / 1.0.3**をASCII8として認識させます。
 
 1. [paws-partners-expert-db.xml をダウンロード](https://raw.githubusercontent.com/kanon-ai/PAWS-PARTNERS/main/expert/rom/paws-partners-expert-db.xml)して保存します。
 2. **実際に遊ぶPC**のBlueMSX+フォルダー内にある `Databases` へXMLをコピーします。同名の古いXMLは今回のファイルに置き換えてください。他のデータベースはそのまま残してください。
@@ -29,7 +29,7 @@ Expert版をドラッグ＆ドロップしても起動しない場合は、次�
 
 別の方法として、カートリッジを開く際にROM種別を **ASCII8** に指定することもできます。XMLはROMの内容（SHA-1）で識別するため、ファイル名を変えても有効です。対応版以外のROMには適用されません。今後ROMを更新する場合は、対応する登録情報も必要になります。
 
-If dragging and dropping the Expert ROM fails to start it, use this database entry for Expert **1.0.0 / 1.0.1 / 1.0.2**:
+If dragging and dropping the Expert ROM fails to start it, use this database entry for Expert **1.0.0 / 1.0.1 / 1.0.2 / 1.0.3**:
 
 1. Download and save [paws-partners-expert-db.xml](https://raw.githubusercontent.com/kanon-ai/PAWS-PARTNERS/main/expert/rom/paws-partners-expert-db.xml).
 2. Copy it into the `Databases` folder of BlueMSX+ **on the PC used to play**. Replace an older file with the same name; keep all other database files.
@@ -63,7 +63,19 @@ MSX2 or later, 64 KiB RAM and 64 KiB VRAM, keyboard, and support for 1 MiB ASCII
 - 実行中Enterで停止・再開、Escで配置へ戻る / Enter pauses/resumes; Esc cancels back to planning.
 - F1でヘルプと現在のパスワード、F2でパスワード入力 / F1 shows help and the current password; F2 opens password entry.
 
-## Version 1.0.2 / 更新内容
+## Version 1.0.3 / 更新内容
+
+縮小モードでもクリア時にネコとウサギが飛び跳ねます。家がCLEAR窓に隠れる場合は、窓の下で喜ぶ姿を表示します。SWAPの小さな状態表示は、通常タイルと同じ紫背景と濃い緑／黄色に揃えました。ステージ、パスワード、判定、音楽は変更していません。
+
+The cat and rabbit now hop when a stage is cleared in the overview. If their homes overlap the CLEAR window, they celebrate below it. Small SWAP badges now match the full tile's purple background and dark-green/yellow indicators. Stages, passwords, rules and music are unchanged.
+
+[ROM・対応XML・日英PDFをまとめてダウンロード / Download ROM, matching XML and bilingual PDFs](rom/PAWS-PARTNERS-EXPERT-1.0.3.zip)
+
+openMSXのMSX2・TurboR設定で7面のクリア、二匹のジャンプ、座標保持、操作と描画を確認しました。拡大確認機能も再確認済みです。この更新のBlueMSX+実行および実機動作は未確認です。
+
+Verified stage 7 clearing, both hopping animations, unchanged logical actor positions, controls and drawing in openMSX MSX2 and TurboR profiles. The inspector was also rechecked. This update has not been runtime-tested in BlueMSX+ or on physical hardware.
+
+## Version 1.0.2 / Previous update
 
 F5の縮小画面でSHIFTを押しながら矢印キーを使うと、任意のマスを拡大確認できます。SHIFTを離すと元の配置カーソルへ戻ります。小窓のBASEは床・仕掛け、CHIPは配置チップと状態表示です。確認中はキャラクターを一時的に隠して進行を止め、離すと元の実行・一時停止状態に戻ります。配置内容、50面、パスワード、音楽は変更していません。
 
