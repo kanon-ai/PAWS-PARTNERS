@@ -1,0 +1,175 @@
+# PAWS PARTNERS Expert Version — Thinking Hints
+
+## Prefer to discover everything yourself?
+
+The following are general hints about ways to use the mechanisms. Read only
+
+the sections that interest you when you get stuck.
+
+## 1. Work backward from home
+
+What must be true when a friend reaches the last gate? Consider the switch
+
+state and where the box or the other friend must be. A friend who goes home
+
+before finishing a shared task may no longer be available to help.
+
+## 2. Separate the first passage from later passages
+
+Some floors change after use. Consider each visit separately: who arrives,
+
+and from which direction? Time spent standing on a floor is different from
+
+the number of new arrivals on it.
+
+## 3. Read a turn from both friends' viewpoints
+
+RIGHT and LEFT are relative to the direction a character is travelling.
+
+The same chip may send a friend approaching from another side down a
+
+different path. Find shared locations before planning each route alone.
+
+## 4. Leaving a space empty is a choice
+
+Not every placement space needs a chip. Continuing without turning may be
+
+useful. An empty placement does not disable a fixed mechanism underneath,
+
+so remember to check that location's picture or label too.
+
+## 5. Choose where to wait
+
+An equally long wait can have different results before and after releasing
+
+the other friend. Ask what event you are waiting for and which state must
+
+be preserved until then. More waiting is not always helpful.
+
+## 6. A box may have several jobs
+
+A box can be an obstruction, a PAD weight, or material for filling a gap.
+
+After finding a useful job for it, ask whether you still need it later.
+
+A resource that is consumed may need to serve another purpose first.
+
+## 7. Count current PAD weights
+
+If a character leaves but a box remains, the box can keep providing weight.
+
+Some gates may be blocked by extra weight. Check the gate's symbol and work
+
+out the required count at the moment of passage. More is not always better.
+
+## 8. Treat changing and restoring as separate tasks
+
+A change that helps one friend may leave the other unable to proceed.
+
+Ask who needs the change, how long that state is needed, and who will restore
+
+it. A detour may be an essential task rather than wasted movement.
+
+## 9. Observe the first unexpected event
+
+Before replacing every chip, identify where the run first differed from
+
+your prediction: a closed gate, an earlier arrival, or a changed floor.
+
+Change one suspected cause and try again to understand the relationship.
+
+## 10. Use the overview instead of memorizing the map
+
+Use F5 to see homes, gates, switches, and shared routes. Remember dependencies
+
+such as preparing one area before passing a gate elsewhere, rather than
+
+trying to memorize every step. There is no time limit for planning.
+
+During a run, F5 shows both friends and mechanisms moving on the whole map.
+
+Press Enter to pause and inspect the situation; press Enter again to resume.
+
+F5 returns to the normal view. Esc cancels the run and returns to planning.
+
+## 11. Write down visits to changing floors
+
+For ALT and CYC, do not plan every future visit from the arrow visible now.
+
+Make one row per arrival: display before arrival / arriving friend / entry
+
+direction / exit direction / display after use. This helps you track a floor
+
+shared by both friends. Check who needs each visit in the sequence. Simply
+
+standing still does not count as another arrival.
+
+## 12. Making room is another way to help
+
+A route may exist but remain unavailable while the other friend occupies it.
+
+For a rocket, check whether its destination is free too. Helping can mean
+
+making room or leaving an opportunity unused, as well as opening a route.
+
+When investigating a blocked move, consider the other friend's position
+
+alongside the floor and gate states.
+
+## 13. Choose who spends a single use
+
+The first visitor consumes an hourglass or ONE effect. Is it spent before
+
+the friend who needs it arrives? Replacing it mentally with WAIT or SWAP
+
+can be misleading on the second visit. Plan separately for unused and spent
+
+states, and consider leaving an effect available for somebody else.
+
+## 14. Make a weight schedule
+
+Try columns for event / boxes on PADs / friends on PADs / total. How does
+
+each box push, filled hole or departing friend change the count? Opening a
+
+gate does not always require adding weight. Count what remains on PADs at
+
+that moment, not how many times they have been visited.
+
+## 15. A different entrance can mean a different exit
+
+A relative turn leads to different exits when approached from different
+
+directions. For a species fork, read the effect from each friend's incoming
+
+heading instead of guessing from the picture. Sketch who reaches a shared
+
+location and from which direction to understand what that location can do.
+
+## 16. Think before and after, not just longer waits
+
+Separate the event you must wait for from the event you must reach in time.
+
+A longer wait may solve one conflict while making another piece of help
+
+arrive too late. Pause the F5 overview and examine the first event that
+
+differs from your prediction, one cause at a time.
+
+## 17. A small observation worksheet
+
+Changing floor: visit / friend / entry / display before / exit / display after.
+
+Gate: required condition / who creates it / who can restore it.
+
+Single use: when it must remain unused / who spends it / its later role.
+
+You need not fill out every column. Start with one shared location.
+
+This book contains no stage-by-stage instructions, chip solutions or passwords.
+
+## Finally
+
+A short placement sequence can still take a long time to discover. Find a
+
+way for both friends to get home first. There is no need to solve it quickly.
