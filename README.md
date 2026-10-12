@@ -2,6 +2,21 @@
 
 **ネコとうさぎを、それぞれの家へ。 / Guide two friends to their own homes.**
 
+## 通常版・高難易度版を選ぶ / Choose your edition
+
+**高難易度の新作50面「Expert Version」も公開中！ / Expert Version: 50 new challenging puzzles!**
+
+| | 通常版 / Normal | 高難易度版 / Expert |
+|---|---|---|
+| 内容 / Content | 基本から楽しむ50面 / 50 introductory-to-challenging stages | 新しい仕掛けと連携を考える別の50面 / 50 separate puzzles with new mechanisms |
+| リリース / Release | [Normal v0.2.6](https://github.com/kanon-ai/PAWS-PARTNERS/releases/tag/v0.2.6) | **[Expert v1.0.3](https://github.com/kanon-ai/PAWS-PARTNERS/releases/tag/expert-v1.0.3)** |
+| 案内 / Details | このページ / This page | [Expertの説明・日英マニュアル・ヒントブック / Expert guides](expert/README.md) |
+
+**[Expert版を一括ダウンロード / Download Expert ZIP](https://github.com/kanon-ai/PAWS-PARTNERS/releases/download/expert-v1.0.3/PAWS-PARTNERS-EXPERT-1.0.3.zip)** — ROM・BlueMSX+対応XML・日英マニュアルとヒントブックPDF入り / Includes ROM, BlueMSX+ XML and bilingual manual/hint-book PDFs.
+
+両版ともMSX2以降向け・時間制限なし。Expert版は通常版と別のパスワードを使用します。
+Both editions target MSX2 or later and have no time limit. Expert uses separate passwords.
+
 A 50-stage cooperative puzzle game for **MSX2 and later**. Place TURN and WAIT chips, push crates, hop over holes, and coordinate switches. There is no time limit.
 
 ネコとうさぎの得意技と、到着する順番を考えるパズルです。方向転換やWAITを配置してから二匹を出発させます。時間制限なし・全50面。
@@ -10,7 +25,7 @@ A 50-stage cooperative puzzle game for **MSX2 and later**. Place TURN and WAIT c
 
 ## Download / ダウンロード
 
-- **[Latest release / 最新版](https://github.com/kanon-ai/PAWS-PARTNERS/releases/latest)** — ROM and manuals in one ZIP.
+- **[Normal release / 通常版](https://github.com/kanon-ai/PAWS-PARTNERS/releases/tag/v0.2.6)** — ROM and manuals in one ZIP.
 - [ROM directly / ROM単体](rom/PAWS-PARTNERS-MSX2.rom) — 1 MiB, ASCII8.
 - **[日本語マニュアル](docs/MANUAL.ja.md)** / **[English manual](docs/MANUAL.en.md)**
 - [BGM付き紹介動画 / Music trailer](media/PAWS-PARTNERS-X-BGM.mp4) — approximately 56 seconds, fictional promotional stages, no campaign solutions. Music is laid continuously over the video; the actual game's title screen is silent.

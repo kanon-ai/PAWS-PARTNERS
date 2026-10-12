@@ -8,6 +8,8 @@ Guide the cat and rabbit to their own homes. Plan shared floor states, divide du
 
 ## Download / ダウンロード
 
+- **[GitHub Release: Expert v1.0.3](https://github.com/kanon-ai/PAWS-PARTNERS/releases/tag/expert-v1.0.3)**
+
 - [ROM: PAWS-PARTNERS-EXPERT-MSX2.rom](rom/PAWS-PARTNERS-EXPERT-MSX2.rom) — 1 MiB, ASCII8
 - [日本語マニュアル](docs/MANUAL-ja.md) / [English manual](docs/MANUAL-en.md)
 - [日本語ヒントブック](docs/TECHNIQUE-GUIDE-ja.md) / [English hint book](docs/TECHNIQUE-GUIDE-en.md)
