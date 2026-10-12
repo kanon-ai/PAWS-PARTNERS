@@ -19,6 +19,24 @@ Guide the cat and rabbit to their own homes. Plan shared floor states, divide du
 
 The illustrated manuals explain tiles, state changes and small mechanism badges. The hint books discuss techniques rather than listing solutions or passwords. Offline HTML and text editions are included in docs; keep the images folder with the HTML files.
 
+## BlueMSX+ auto-detection / 自動判別で起動しない場合
+
+Expert版をドラッグ＆ドロップしても起動しない場合は、次の登録ファイルをご利用ください。Expert **1.0.0 / 1.0.1**をASCII8として認識させます。
+
+1. [paws-partners-expert-db.xml をダウンロード](https://raw.githubusercontent.com/kanon-ai/PAWS-PARTNERS/main/expert/rom/paws-partners-expert-db.xml)して保存します。
+2. **実際に遊ぶPC**のBlueMSX+フォルダー内にある `Databases` へXMLをコピーします。既存のデータベースを置き換える必要はありません。
+3. BlueMSX+を終了して起動し直し、ROMをドラッグ＆ドロップします。
+
+別の方法として、カートリッジを開く際にROM種別を **ASCII8** に指定することもできます。XMLはROMの内容（SHA-1）で識別するため、ファイル名を変えても有効です。対応版以外のROMには適用されません。今後ROMを更新する場合は、対応する登録情報も必要になります。
+
+If dragging and dropping the Expert ROM fails to start it, use this database entry for Expert **1.0.0 / 1.0.1**:
+
+1. Download and save [paws-partners-expert-db.xml](https://raw.githubusercontent.com/kanon-ai/PAWS-PARTNERS/main/expert/rom/paws-partners-expert-db.xml).
+2. Copy it into the `Databases` folder of BlueMSX+ **on the PC used to play**. Keep the existing database files.
+3. Close and restart BlueMSX+, then drag and drop the ROM.
+
+Alternatively, select **ASCII8** as the ROM type when opening the cartridge. The entry identifies the ROM by its SHA-1, so renaming the ROM does not affect recognition. Only the listed ROM versions match; future ROM revisions need corresponding entries.
+
 ## Offline PDF / 手元で読むPDF
 
 画像入りのPDFです。ダウンロード後はネット接続や別の画像フォルダーなしで読めます。A4で印刷できます。

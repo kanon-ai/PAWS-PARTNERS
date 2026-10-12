@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='utf-8'?>
+<softwaredb>
+  <software>
+    <title>PAWS PARTNERS Expert Version 1.0.0</title>
+    <system>MSX</system>
+    <company>kanon-ai</company>
+    <year>2026</year>
+    <dump>
+      <original value="true" />
+      <megarom>
+        <type>ASCII8</type>
+        <hash algo="sha1">5652c3e353620fa0748e11cf412aa95170e81900</hash>
+      </megarom>
+    </dump>
+  </software>
+  <software>
+    <title>PAWS PARTNERS Expert Version 1.0.1</title>
+    <system>MSX</system>
+    <company>kanon-ai</company>
+    <year>2026</year>
+    <dump>
+      <original value="true" />
+      <megarom>
+        <type>ASCII8</type>
+        <hash algo="sha1">f04c10f303abeeb5f1653e42b058fccf8c6733f7</hash>
+      </megarom>
+    </dump>
+  </software>
+</softwaredb>
