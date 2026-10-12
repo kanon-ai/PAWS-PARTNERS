@@ -19,6 +19,18 @@ Guide the cat and rabbit to their own homes. Plan shared floor states, divide du
 
 The illustrated manuals explain tiles, state changes and small mechanism badges. The hint books discuss techniques rather than listing solutions or passwords. Offline HTML and text editions are included in docs; keep the images folder with the HTML files.
 
+## Offline PDF / 手元で読むPDF
+
+画像入りのPDFです。ダウンロード後はネット接続や別の画像フォルダーなしで読めます。A4で印刷できます。
+
+Self-contained PDFs for offline reading and A4 printing; no separate image files are required.
+
+- [日本語マニュアル / Manual (Japanese)](docs/MANUAL-ja.pdf)
+- [English manual](docs/MANUAL-en.pdf)
+- [日本語ヒントブック / Hints (Japanese)](docs/TECHNIQUE-GUIDE-ja.pdf)
+- [English hint book](docs/TECHNIQUE-GUIDE-en.pdf)
+- [4冊まとめてダウンロード / Download all four PDFs](docs/PAWS-PARTNERS-EXPERT-PDF-GUIDES.zip)
+
 ## Requirements / 動作条件
 
 MSX2以降、RAM 64KiB・VRAM 64KiB以上、キーボード、1MiB ASCII8 ROM対応環境。TurboRでもZ80モードで動作します。拡張VDPは不要です。512KiB専用カートリッジには収まりません。
